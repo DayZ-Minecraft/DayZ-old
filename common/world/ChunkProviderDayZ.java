@@ -237,7 +237,7 @@ public class ChunkProviderDayZ extends ChunkProviderGenerate implements IChunkPr
     }
 
     @Override
-    public void func_82695_e(int par1, int par2)
+    public void recreateStructures(int par1, int par2)
     {
         if (this.mapFeaturesEnabled)
         {
