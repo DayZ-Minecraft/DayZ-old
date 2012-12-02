@@ -24,8 +24,8 @@ public class MapGenTown extends MapGenStructure
 
     protected boolean canSpawnStructureAtCoords(int par1, int par2)
     {
-        byte var3 = 32;
-        byte var4 = 8;
+        byte var3 = 20;
+        byte var4 = 5;
         int var5 = par1;
         int var6 = par2;
 

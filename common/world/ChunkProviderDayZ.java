@@ -12,7 +12,6 @@ import net.minecraft.src.MapGenBase;
 import net.minecraft.src.MapGenCaves;
 import net.minecraft.src.MapGenMineshaft;
 import net.minecraft.src.MapGenRavine;
-import net.minecraft.src.MapGenVillage;
 import net.minecraft.src.NoiseGeneratorOctaves;
 import net.minecraft.src.SpawnerAnimals;
 import net.minecraft.src.World;
@@ -55,7 +54,7 @@ public class ChunkProviderDayZ extends ChunkProviderGenerate implements IChunkPr
     private MapGenBase caveGenerator = new MapGenCaves();
 
     /** Holds Village Generator */
-    private MapGenVillage villageGenerator = new MapGenVillage();
+    private MapGenTown villageGenerator = new MapGenTown(1);
 
     /** Holds Mineshaft Generator */
     private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
