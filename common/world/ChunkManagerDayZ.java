@@ -16,6 +16,7 @@ import net.minecraft.src.WorldType;
 import cpw.mods.fml.common.Side;
 import cpw.mods.fml.common.asm.SideOnly;
 import dayz.DayZ;
+import dayz.common.world.genlayer.GenLayerDayZ;
 
 public class ChunkManagerDayZ extends WorldChunkManager
 {
@@ -41,7 +42,7 @@ public class ChunkManagerDayZ extends WorldChunkManager
     public ChunkManagerDayZ(long par1, WorldType par3WorldType)
     {
         this();
-        GenLayer[] var4 = GenLayerDayZ.initializeAllBiomeGenerators(par1, par3WorldType);
+        GenLayer var4[] = GenLayerDayZ.getGenLayers(par1, (WorldTypeBase)par3WorldType);
         this.genBiomes = var4[0];
         this.biomeIndexLayer = var4[1];
     }

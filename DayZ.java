@@ -47,6 +47,7 @@ import dayz.common.world.BiomeGenForest;
 import dayz.common.world.BiomeGenPlainsDayZ;
 import dayz.common.world.BiomeGenRiverDayZ;
 import dayz.common.world.WorldTypeBase;
+import dayz.common.world.WorldTypeDayZTaiga;
 
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, versionBounds = Util.VERSION)
 @Mod(modid = Util.ID, name = Util.NAME, version = Util.VERSION)
@@ -57,7 +58,7 @@ public class DayZ
     public static final BiomeGenBase biomeDayZForest = (new BiomeGenForest(25));
     public static final BiomeGenBase biomeDayZPlains = (new BiomeGenPlainsDayZ(26));
     public static final BiomeGenBase biomeDayZRiver = (new BiomeGenRiverDayZ(27));
-	public static WorldTypeBase worldTypeBase = new WorldTypeBase();
+	public static WorldTypeBase worldTypeBase = new WorldTypeDayZTaiga();
 	public static CreativeTabs creativeTabDayZ = new CreativeTabDayZ();
 	public static Random random = new Random();
 	public static dayz.common.Properties properties;

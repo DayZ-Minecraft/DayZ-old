@@ -1,0 +1,1 @@
+Clone into the src/common directory, make sure to call the folder 'dayz'.
