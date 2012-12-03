@@ -1,7 +1,6 @@
 package dayz.common;
 
 import java.io.File;
-import java.util.List;
 import java.util.logging.Level;
 
 import net.minecraft.src.Block;
@@ -10,14 +9,10 @@ import net.minecraft.src.EnumCreatureType;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.TileEntityChest;
 import net.minecraft.src.WeightedRandomChestContent;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
-import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.event.world.ChunkEvent;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.IPlayerTracker;
 import cpw.mods.fml.common.Loader;
@@ -211,7 +206,7 @@ public class CommonProxy implements IPlayerTracker
         	new ItemStack(DayZ.nails, 1, 0)
         });
         
-        GameRegistry.addRecipe(new ItemStack(DayZ.nails, 1), new Object [] 
+        GameRegistry.addRecipe(new ItemStack(DayZ.nails, 8), new Object [] 
         {
         	"#", "#",
         	Character.valueOf('#'), Item.ingotIron
@@ -225,7 +220,7 @@ public class CommonProxy implements IPlayerTracker
         
         GameRegistry.addRecipe(new ItemStack(DayZ.baseballbat, 1), new Object [] 
         {
-        	"#", "#", "!",
+        	"#", "!", "!",
         	Character.valueOf('#'), Block.planks,
         	Character.valueOf('!'), Item.stick
         });
