@@ -1,7 +1,6 @@
 package dayz.common;
 
 import java.io.File;
-import java.util.List;
 import java.util.logging.Level;
 
 import net.minecraft.src.Block;
@@ -10,14 +9,10 @@ import net.minecraft.src.EnumCreatureType;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.TileEntityChest;
 import net.minecraft.src.WeightedRandomChestContent;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
-import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.event.world.ChunkEvent;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.IPlayerTracker;
 import cpw.mods.fml.common.Loader;
@@ -138,9 +133,9 @@ public class CommonProxy implements IPlayerTracker
         EntityRegistry.registerModEntity(EntityBullet.class, "Bullet", 1, DayZ.INSTANCE, 250, 5, true);
         EntityRegistry.registerModEntity(EntityGrenade.class, "Grenade", 1, DayZ.INSTANCE, 250, 5, true);
                
-        EntityRegistry.addSpawn(EntityZombieDayZ.class, 200, 1, 4, EnumCreatureType.creature, DayZ.biomeDayZForest, DayZ.biomeDayZPlains, DayZ.biomeDayZRiver);
-        EntityRegistry.addSpawn(EntityCrawler.class, 100, 1, 4, EnumCreatureType.creature, DayZ.biomeDayZForest, DayZ.biomeDayZPlains, DayZ.biomeDayZRiver);
-        EntityRegistry.addSpawn(EntityBandit.class, 10, 1, 4, EnumCreatureType.creature, DayZ.biomeDayZForest, DayZ.biomeDayZPlains, DayZ.biomeDayZRiver);
+        EntityRegistry.addSpawn(EntityZombieDayZ.class, 200, 1, 4, EnumCreatureType.creature, DayZ.biomeDayZForest, DayZ.biomeDayZPlains, DayZ.biomeDayZRiver, DayZ.biomeDayZSnowMountains, DayZ.biomeDayZSnowPlains);
+        EntityRegistry.addSpawn(EntityCrawler.class, 100, 1, 4, EnumCreatureType.creature, DayZ.biomeDayZForest, DayZ.biomeDayZPlains, DayZ.biomeDayZRiver, DayZ.biomeDayZSnowMountains, DayZ.biomeDayZSnowPlains);
+        EntityRegistry.addSpawn(EntityBandit.class, 10, 1, 4, EnumCreatureType.creature, DayZ.biomeDayZForest, DayZ.biomeDayZPlains, DayZ.biomeDayZRiver, DayZ.biomeDayZSnowMountains, DayZ.biomeDayZSnowPlains);
 
     /************* 						Names 							*************/
         
@@ -148,6 +143,7 @@ public class CommonProxy implements IPlayerTracker
         LanguageRegistry.instance().addStringLocalization("entity.DayZZombie.name", "en_US", "Zombie");
         LanguageRegistry.instance().addStringLocalization("entity.Bandit.name", "en_US", "Bandit");
         LanguageRegistry.instance().addStringLocalization("generator.DAYZBASE", "en_US", "Day Z Original");
+        LanguageRegistry.instance().addStringLocalization("generator.DAYZSNOW", "en_US", "Day Z Snow");
         LanguageRegistry.instance().addStringLocalization("itemGroup.creativeTabDayZ", "en_US", "Day Z");
 
         
@@ -211,7 +207,7 @@ public class CommonProxy implements IPlayerTracker
         	new ItemStack(DayZ.nails, 1, 0)
         });
         
-        GameRegistry.addRecipe(new ItemStack(DayZ.nails, 1), new Object [] 
+        GameRegistry.addRecipe(new ItemStack(DayZ.nails, 8), new Object [] 
         {
         	"#", "#",
         	Character.valueOf('#'), Item.ingotIron
@@ -225,7 +221,7 @@ public class CommonProxy implements IPlayerTracker
         
         GameRegistry.addRecipe(new ItemStack(DayZ.baseballbat, 1), new Object [] 
         {
-        	"#", "#", "!",
+        	"#", "!", "!",
         	Character.valueOf('#'), Block.planks,
         	Character.valueOf('!'), Item.stick
         });
