@@ -41,13 +41,15 @@ import dayz.common.items.ItemMakarov;
 import dayz.common.items.ItemRemington;
 import dayz.common.items.ItemWaterbottleDirty;
 import dayz.common.items.ItemWaterbottleFull;
-import dayz.common.items.ItemWhiskeybottleFull;
 import dayz.common.items.ItemWeaponMelee;
+import dayz.common.items.ItemWhiskeybottleFull;
 import dayz.common.world.BiomeGenForest;
 import dayz.common.world.BiomeGenPlainsDayZ;
 import dayz.common.world.BiomeGenRiverDayZ;
+import dayz.common.world.BiomeGenSnowDayZ;
 import dayz.common.world.WorldTypeBase;
-import dayz.common.world.WorldTypeDayZTaiga;
+import dayz.common.world.WorldTypeSnow;
+import dayz.common.world.WorldTypeTaiga;
 
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, versionBounds = Util.VERSION)
 @Mod(modid = Util.ID, name = Util.NAME, version = Util.VERSION)
@@ -58,7 +60,10 @@ public class DayZ
     public static final BiomeGenBase biomeDayZForest = (new BiomeGenForest(25));
     public static final BiomeGenBase biomeDayZPlains = (new BiomeGenPlainsDayZ(26));
     public static final BiomeGenBase biomeDayZRiver = (new BiomeGenRiverDayZ(27));
-	public static WorldTypeBase worldTypeBase = new WorldTypeDayZTaiga();
+    public static final BiomeGenBase biomeDayZSnowPlains = (new BiomeGenSnowDayZ(28).setMinMaxHeight(0.0F, 0.0F).setBiomeName("Snow Plains").setEnableSnow());
+    public static final BiomeGenBase biomeDayZSnowMountains = (new BiomeGenSnowDayZ(29).setMinMaxHeight(0.0F, 0.5F).setBiomeName("Snow Mountains").setEnableSnow());
+	public static WorldTypeBase worldTypeBase = new WorldTypeTaiga();
+	public static WorldTypeBase worldTypeSnow = new WorldTypeSnow();
 	public static CreativeTabs creativeTabDayZ = new CreativeTabDayZ();
 	public static Random random = new Random();
 	public static dayz.common.Properties properties;
