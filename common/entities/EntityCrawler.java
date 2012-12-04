@@ -10,17 +10,16 @@ import net.minecraft.src.EntityAINearestAttackableTarget;
 import net.minecraft.src.EntityAISwimming;
 import net.minecraft.src.EntityAIWander;
 import net.minecraft.src.EntityAIWatchClosest;
-import net.minecraft.src.EntityAgeable;
 import net.minecraft.src.EntityLiving;
 import net.minecraft.src.EntityMob;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntityPlayerMP;
-import net.minecraft.src.EntityPlayerSP;
 import net.minecraft.src.EntityVillager;
 import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.Potion;
-import net.minecraft.src.PotionEffect;
 import net.minecraft.src.World;
+import dayz.common.DayZEnactEffect;
+import dayz.common.EffectBleeding;
+import dayz.common.EffectZombification;
 
 public class EntityCrawler extends EntityMob
 {
@@ -163,28 +162,42 @@ public class EntityCrawler extends EntityMob
     	if (this.worldObj.difficultySetting == 1)
     	{
     		int j = rand.nextInt(10);
+    		int k = rand.nextInt(20);
             if (j == 0)
             {
-            	((EntityLiving)par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, 120 * 20, 0));
+            	((EntityLiving)par1Entity).addPotionEffect(new DayZEnactEffect(EffectBleeding.INSTANCE.getId(), 20 * 120, 1));
+            }
+            if (k == 0)
+            {
+            	((EntityLiving)par1Entity).addPotionEffect(new DayZEnactEffect(EffectZombification.INSTANCE.getId(), 20 * 120, 1));
             }
     		return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), 2);
         }
     	else if (this.worldObj.difficultySetting == 2)
         {
     		int j = rand.nextInt(5);
+    		int k = rand.nextInt(10);
             if (j == 0)
             {
-            	((EntityLiving)par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, 120 * 20, 0));
+            	((EntityLiving)par1Entity).addPotionEffect(new DayZEnactEffect(EffectBleeding.INSTANCE.getId(), 20 * 120, 1));
             }
-
+            if (k == 0)
+            {
+            	((EntityLiving)par1Entity).addPotionEffect(new DayZEnactEffect(EffectZombification.INSTANCE.getId(), 20 * 120, 1));
+            }
             return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), 3);
         }
         else if (this.worldObj.difficultySetting == 3)
         {
         	int j = rand.nextInt(3);
+    		int k = rand.nextInt(6);
             if (j == 0)
             {
-            	((EntityLiving)par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, 120 * 20, 0));
+            	((EntityLiving)par1Entity).addPotionEffect(new DayZEnactEffect(EffectBleeding.INSTANCE.getId(), 20 * 120, 1));
+            }
+            if (k == 0)
+            {
+            	((EntityLiving)par1Entity).addPotionEffect(new DayZEnactEffect(EffectZombification.INSTANCE.getId(), 20 * 120, 1));
             }
             return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), 6);
         }
@@ -224,48 +237,5 @@ public class EntityCrawler extends EntityMob
     public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.writeEntityToNBT(par1NBTTagCompound);
-    }
-    
-    @Override
-    public void onKillEntity(EntityLiving entityliving)
-    {
-        if (!this.worldObj.isRemote)
-        {
-        	int chanceOfRespawn = 1; //rand.nextInt(2);
-   		 	EntityCrawler var2 = new EntityCrawler(this.worldObj);
-
-            if (entityliving instanceof EntityPlayer)
-            {
-            	if (chanceOfRespawn == 1)
-            	{
-            		var2.setLocationAndAngles(entityliving.posX, entityliving.posY, entityliving.posZ, entityliving.rotationYaw, entityliving.rotationPitch);
-            		 this.worldObj.spawnEntityInWorld(var2);
-            	}
-            }
-            else if (entityliving instanceof EntityPlayerMP)
-            {
-            	if (chanceOfRespawn == 1)
-            	{
-            		var2.setLocationAndAngles(entityliving.posX, entityliving.posY, entityliving.posZ, entityliving.rotationYaw, entityliving.rotationPitch);
-            		 this.worldObj.spawnEntityInWorld(var2);
-            	}
-            }
-            else if (entityliving instanceof EntityBandit)
-            {
-            	if (chanceOfRespawn == 1)
-            	{
-            		var2.setLocationAndAngles(entityliving.posX, entityliving.posY, entityliving.posZ, entityliving.rotationYaw, entityliving.rotationPitch);
-            		 this.worldObj.spawnEntityInWorld(var2);
-            	}
-            }
-            else if (entityliving instanceof EntityVillager)
-            {
-            	if (chanceOfRespawn == 1)
-            	{
-            		 var2.setLocationAndAngles(entityliving.posX, entityliving.posY, entityliving.posZ, entityliving.rotationYaw, entityliving.rotationPitch);
-            		 this.worldObj.spawnEntityInWorld(var2);
-            	}
-            }
-        }
     }
 }

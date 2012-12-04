@@ -370,6 +370,10 @@ public class CommonProxy implements IPlayerTracker
         BiomeManager.addVillageBiome(DayZ.biomeDayZPlains, true);
         BiomeManager.addVillageBiome(DayZ.biomeDayZRiver, true);
         GameRegistry.registerPlayerTracker(new CommonProxy());
+        EffectBleeding.INSTANCE.register();
+        EffectZombification.INSTANCE.register();
+        DayZDamageSource.bleedOut.registerDeathMessage();
+        DayZDamageSource.zombieInfection.registerDeathMessage();
 	}
 	
 	public static void DayZpostload(FMLPostInitializationEvent event) 

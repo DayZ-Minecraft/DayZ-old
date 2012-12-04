@@ -111,8 +111,8 @@ public class DayZ
     public static final Item lemonade = new ItemDayzDrink(3011, 4, 1.0F).setIconCoord(4, 0).setItemName("lemonade").setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item waterbottledirty = new ItemWaterbottleDirty(3012, 0, 2, false).setIconCoord(9, 0).setItemName("waterbottledirty").setCreativeTab(DayZ.creativeTabDayZ);
 
-    public static final Item bandage = new ItemDayzHeal(3013, 10, false).setIconCoord(1, 0).setItemName("bandage").setCreativeTab(DayZ.creativeTabDayZ);
-    public static final Item antibiotics = new ItemDayzHeal(3014, 0, true).setIconCoord(0, 0).setItemName("antibiotics").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item bandage = new ItemDayzHeal(3013, 0, true, false).setIconCoord(1, 0).setItemName("bandage").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item antibiotics = new ItemDayzHeal(3014, 0, false, true).setIconCoord(0, 0).setItemName("antibiotics").setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item bloodbag = new ItemBloodBag(3015).setIconCoord(2, 0).setItemName("bloodbag").setCreativeTab(DayZ.creativeTabDayZ);
 
     public static final Item ak74u = new ItemAk74u(3016).setIconCoord(0, 0).setItemName("ak74u").setCreativeTab(DayZ.creativeTabDayZ);

@@ -11,8 +11,6 @@ import dayz.DayZ;
 
 public class WorldTypeBase extends WorldType
 {	
-    public static final BiomeGenBase[] allowedBiomes = new BiomeGenBase[] {DayZ.biomeDayZForest};
-
     public WorldTypeBase(int par1, String par2Str)
     {
         super(par1, par2Str, 0);
@@ -105,5 +103,10 @@ public class WorldTypeBase extends WorldType
 	{
 		return null;
 	}
-
+	
+	@Override
+    public int getSpawnFuzz()
+    {
+        return 100;
+    }
 }
