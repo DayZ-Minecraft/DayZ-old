@@ -1,23 +1,26 @@
 package dayz.common.items;
 
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EnumAction;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
+import dayz.common.EffectBleeding;
+import dayz.common.EffectZombification;
 
 public class ItemDayzHeal extends Item
 {
     private int healAmount;
-    private boolean cancelEffects;
-    private EnumAction acionOnUse;
+    private boolean stopBleeding;
+    private boolean stopInfection;
 
-    public ItemDayzHeal(int i, int amountToHeal, boolean getcancelEffects)
+    public ItemDayzHeal(int i, int amountToHeal, boolean stopBleeding, boolean stopInfection)
     {
         super(i);
         maxStackSize = 1;
         healAmount = amountToHeal;
-        cancelEffects = getcancelEffects;
+        this.stopBleeding = stopBleeding;
+        this.stopInfection = stopInfection;
+        
     }
 
     public int getHealAmount()
@@ -31,9 +34,13 @@ public class ItemDayzHeal extends Item
     {
     	itemstack.stackSize--;
         entityplayer.heal(healAmount);
-        if (cancelEffects == true)
+        if (stopBleeding == true)
         {
-        	entityplayer.clearActivePotions();
+        	entityplayer.removePotionEffect(EffectBleeding.INSTANCE.id);
+        }
+        if (stopInfection == true)
+        {
+        	entityplayer.removePotionEffect(EffectZombification.INSTANCE.id);
         }
         return itemstack;
     }
