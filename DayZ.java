@@ -134,7 +134,9 @@ public class DayZ
     public static final Item plank = (new ItemWeaponMelee(3028, EnumToolMaterial.WOOD, 7)).setItemName("plank").setIconCoord(2, 1).setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item planknailed = (new ItemWeaponMelee(3029, EnumToolMaterial.WOOD, 8)).setItemName("planknailed").setIconCoord(3, 1).setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item pipe = (new ItemWeaponMelee(3030, EnumToolMaterial.WOOD, 8)).setItemName("pipe").setIconCoord(4, 1).setCreativeTab(DayZ.creativeTabDayZ);
-
+    public static final Item crowbar = (new ItemWeaponMelee(3041, EnumToolMaterial.WOOD, 8)).setItemName("crowbar").setIconCoord(5, 1).setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item machate = (new ItemWeaponMelee(3042, EnumToolMaterial.WOOD, 7)).setItemName("machate").setIconCoord(6, 1).setCreativeTab(DayZ.creativeTabDayZ);
+  
     public static final Item camohelmet = (new ItemCamo(3031, enumArmorMaterialCamo, 5, 0)).setItemName("camohelmet").setIconCoord(0, 0);
     public static final Item camochest = (new ItemCamo(3032, enumArmorMaterialCamo, 5, 1)).setItemName("camochest").setIconCoord(1, 0);
     public static final Item camolegs = (new ItemCamo(3033, enumArmorMaterialCamo, 5, 2)).setItemName("camolegs").setIconCoord(2, 0);
