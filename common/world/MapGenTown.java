@@ -12,7 +12,7 @@ import dayz.DayZ;
 public class MapGenTown extends MapGenStructure
 {
     /** A list of all the biomes villages can spawn in. */
-    public static List villageSpawnBiomes = Arrays.asList(new BiomeGenBase[] {DayZ.biomeDayZForest, DayZ.biomeDayZPlains});
+    public static List villageSpawnBiomes = Arrays.asList(new BiomeGenBase[] {DayZ.biomeDayZForest, DayZ.biomeDayZPlains, DayZ.biomeDayZSnowPlains});
 
     /** World terrain type, 0 for normal, 1 for flat map */
     private final int terrainType;

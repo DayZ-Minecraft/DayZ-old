@@ -2,6 +2,8 @@ package dayz.common.world;
 
 import java.util.Random;
 
+import dayz.DayZ;
+
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
 import net.minecraft.src.BlockSand;
@@ -153,36 +155,15 @@ public class ChunkProviderDayZ extends ChunkProviderGenerate implements IChunkPr
         int var13;
         int var14;
 
-        if (!var11 && this.rand.nextInt(4) == 0)
+        if (var6 != DayZ.biomeDayZSnowPlains)
         {
-            var12 = var4 + this.rand.nextInt(16) + 8;
-            var13 = this.rand.nextInt(128);
-            var14 = var5 + this.rand.nextInt(16) + 8;
-            (new WorldGenLakes(Block.waterStill.blockID)).generate(this.worldObj, this.rand, var12, var13, var14);
-        }
-
-        if (!var11 && this.rand.nextInt(8) == 0)
-        {
-            var12 = var4 + this.rand.nextInt(16) + 8;
-            var13 = this.rand.nextInt(this.rand.nextInt(120) + 8);
-            var14 = var5 + this.rand.nextInt(16) + 8;
-
-            if (var13 < 63 || this.rand.nextInt(10) == 0)
-            {
-                (new WorldGenLakes(Block.lavaStill.blockID)).generate(this.worldObj, this.rand, var12, var13, var14);
-            }
-        }
-
-        for (var12 = 0; var12 < 8; ++var12)
-        {
-            var13 = var4 + this.rand.nextInt(16) + 8;
-            var14 = this.rand.nextInt(128);
-            int var15 = var5 + this.rand.nextInt(16) + 8;
-
-            if ((new WorldGenDungeons()).generate(this.worldObj, this.rand, var13, var14, var15))
-            {
-                ;
-            }
+	        if (!var11 && this.rand.nextInt(4) == 0)
+	        {
+	            var12 = var4 + this.rand.nextInt(16) + 8;
+	            var13 = this.rand.nextInt(128);
+	            var14 = var5 + this.rand.nextInt(16) + 8;
+	            (new WorldGenLakes(Block.waterStill.blockID)).generate(this.worldObj, this.rand, var12, var13, var14);
+	        }
         }
         
         for (var12 = 0; var12 < 8; ++var12)
