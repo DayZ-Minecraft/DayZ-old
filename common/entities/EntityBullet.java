@@ -1,5 +1,7 @@
 package dayz.common.entities;
 
+import dayz.common.DayZEnactEffect;
+import dayz.common.EffectBleeding;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.Block;
 import net.minecraft.src.DamageSource;
@@ -103,6 +105,34 @@ public class EntityBullet extends EntityThrowable
             if (par1MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.shootingEntity), var2))
             {
                 ;
+            }
+            
+            if (par1MovingObjectPosition.entityHit instanceof EntityPlayer)
+            {
+            	if (this.worldObj.difficultySetting == 1)
+            	{
+            		int j = rand.nextInt(10);
+                    if (j == 0)
+                    {
+                    	((EntityLiving)par1MovingObjectPosition.entityHit).addPotionEffect(new DayZEnactEffect(EffectBleeding.INSTANCE.getId(), 20 * 120, 1));
+                    }
+                }
+            	else if (this.worldObj.difficultySetting == 2)
+                {
+            		int j = rand.nextInt(5);
+                    if (j == 0)
+                    {
+                    	((EntityLiving)par1MovingObjectPosition.entityHit).addPotionEffect(new DayZEnactEffect(EffectBleeding.INSTANCE.getId(), 20 * 120, 1));
+                    }
+                }
+                else if (this.worldObj.difficultySetting == 3)
+                {
+                	int j = rand.nextInt(3);
+                    if (j == 0)
+                    {
+                    	((EntityLiving)par1MovingObjectPosition.entityHit).addPotionEffect(new DayZEnactEffect(EffectBleeding.INSTANCE.getId(), 20 * 120, 1));
+                    }
+                }
             }
         }
         else if (par1MovingObjectPosition.typeOfHit == EnumMovingObjectType.TILE)

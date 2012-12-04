@@ -1,5 +1,8 @@
 package dayz.common.entities;
 
+import dayz.common.DayZEnactEffect;
+import dayz.common.EffectBleeding;
+import dayz.common.EffectZombification;
 import net.minecraft.src.DamageSource;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityAIAttackOnCollide;
@@ -11,6 +14,7 @@ import net.minecraft.src.EntityAISwimming;
 import net.minecraft.src.EntityAIWander;
 import net.minecraft.src.EntityAIWatchClosest;
 import net.minecraft.src.EntityAgeable;
+import net.minecraft.src.EntityLiving;
 import net.minecraft.src.EntityMob;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntityPlayerMP;
@@ -137,22 +141,52 @@ public class EntityBandit extends EntityMob
     @Override
     public boolean attackEntityAsMob(Entity par1Entity)
     {
-        	if (this.worldObj.difficultySetting == 1)
-        	{
-        		return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), 1);
-            }
-        	else if (this.worldObj.difficultySetting == 2)
+    	if (this.worldObj.difficultySetting == 1)
+    	{
+    		int j = rand.nextInt(10);
+    		int k = rand.nextInt(20);
+            if (j == 0)
             {
-                return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), 2);
+            	((EntityLiving)par1Entity).addPotionEffect(new DayZEnactEffect(EffectBleeding.INSTANCE.getId(), 20 * 120, 1));
             }
-            else if (this.worldObj.difficultySetting == 3)
+            if (k == 0)
             {
-                return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), 4);
+            	((EntityLiving)par1Entity).addPotionEffect(new DayZEnactEffect(EffectZombification.INSTANCE.getId(), 20 * 120, 1));
             }
-            else
+    		return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), 1);
+        }
+    	else if (this.worldObj.difficultySetting == 2)
+        {
+    		int j = rand.nextInt(5);
+    		int k = rand.nextInt(10);
+            if (j == 0)
             {
-            	return false;
+            	((EntityLiving)par1Entity).addPotionEffect(new DayZEnactEffect(EffectBleeding.INSTANCE.getId(), 20 * 120, 1));
             }
+            if (k == 0)
+            {
+            	((EntityLiving)par1Entity).addPotionEffect(new DayZEnactEffect(EffectZombification.INSTANCE.getId(), 20 * 120, 1));
+            }
+            return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), 2);
+        }
+        else if (this.worldObj.difficultySetting == 3)
+        {
+        	int j = rand.nextInt(3);
+    		int k = rand.nextInt(6);
+            if (j == 0)
+            {
+            	((EntityLiving)par1Entity).addPotionEffect(new DayZEnactEffect(EffectBleeding.INSTANCE.getId(), 20 * 120, 1));
+            }
+            if (k == 0)
+            {
+            	((EntityLiving)par1Entity).addPotionEffect(new DayZEnactEffect(EffectZombification.INSTANCE.getId(), 20 * 120, 1));
+            }
+            return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), 4);
+        }
+        else
+        {
+        	return false;
+        }
     }
 
     /**
