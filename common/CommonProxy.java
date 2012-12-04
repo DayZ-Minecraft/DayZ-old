@@ -239,6 +239,8 @@ public class CommonProxy implements IPlayerTracker
     	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.glock17.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.pipe.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.planknailed.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.crowbar.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.machate.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.remingtonammo.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.map.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.coal.shiftedIndex, 0, 1, 1, 5));
@@ -310,6 +312,8 @@ public class CommonProxy implements IPlayerTracker
     	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.glock17.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.pipe.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.planknailed.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.crowbar.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.machate.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.remingtonammo.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.map.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.coal.shiftedIndex, 0, 1, 1, 5));
