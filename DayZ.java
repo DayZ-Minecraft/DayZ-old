@@ -87,7 +87,6 @@ public class DayZ
 	public static int chainlinkfenceID;
 	public static int sandbagblockID;
 	public static int nailsID;
-	
 	public static boolean canCheckUpdate;
 	public static boolean canShowDebugScreen;
 	public static boolean canShowNameOnDebugScreen;
