@@ -93,6 +93,7 @@ public class DayZ
 	public static boolean canShowCoordinatesOnDebugScreen;
 	public static boolean canGenerateExplosives;
 	public static int chanceToRegenChestContents;
+	public static boolean canSpawnZombiesInDefaultWorld;
 	
     public static final Item matches = (new ItemFirestarter(3000, 8)).setIconCoord(2, 0).setItemName("matches");
 

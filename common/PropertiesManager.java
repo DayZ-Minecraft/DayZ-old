@@ -85,4 +85,9 @@ public class PropertiesManager
     {
     	DayZ.nailsID = par1;
     } 
+    
+    public static void setcanSpawnZombiesInDefaultWorld(boolean par1)
+    {
+    	DayZ.canSpawnZombiesInDefaultWorld = par1;
+    } 
 }
