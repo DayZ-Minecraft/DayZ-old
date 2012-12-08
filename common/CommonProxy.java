@@ -1,7 +1,7 @@
 package dayz.common;
 
 import java.io.File;
-import java.util.logging.Level;
+import java.util.List;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityPlayer;
@@ -9,13 +9,22 @@ import net.minecraft.src.EnumCreatureType;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
+import net.minecraft.src.TileEntity;
 import net.minecraft.src.WeightedRandomChestContent;
+import net.minecraft.src.WorldType;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.ChestGenHooks;
-import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.event.world.WorldEvent;
+
+import com.google.common.base.Strings;
+
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.IPlayerTracker;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.ModContainer;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -47,30 +56,6 @@ public class CommonProxy implements IPlayerTracker
     	DayZLog.configureLogging();
 
         DayZ.properties = new Properties(new File("dayz.properties"));
-        
-    	Configuration config = new Configuration(event.getSuggestedConfigurationFile());
-		try 
-		{
-			config.load();
-
-			DayZ.barbedwireID = config.getBlock("barbedwireID", 160).getInt();
-			DayZ.dayzchestallID = config.getBlock("dayzchestallID", 161).getInt();
-			DayZ.dayzchestrareID = config.getBlock("dayzchestrareID", 162).getInt();
-			DayZ.dayzchestcommonID = config.getBlock("dayzchestcommonID", 163).getInt();
-			DayZ.chainlinkfenceID = config.getBlock("chainlinkfenceID", 164).getInt();
-			DayZ.sandbagblockID = config.getBlock("sandbagblockID", 165).getInt();
-			DayZ.nailsID = config.getBlock("nailsID", 170).getInt();
-
-		}
-		catch (final Exception e) 
-		{
-			DayZLog.log(Level.SEVERE, e, "DayZ had a problem loading it's configuration.");
-		} 
-		finally 
-		{
-			config.save();
-			DayZLog.info("Config Loaded");
-		}
 				
 		if (DayZ.canCheckUpdate == true)
 		{
@@ -91,16 +76,17 @@ public class CommonProxy implements IPlayerTracker
         PropertiesManager.setCanShowCoordinatesOnDebugScreen(DayZ.properties.getBooleanProperty("check-update", true));
         PropertiesManager.setCanGenerateExplosives(DayZ.properties.getBooleanProperty("can-generate-explosives", true));
         DayZ.chanceToRegenChestContents = DayZ.properties.getIntProperty("chance-to-regen-chest-contents", 5);
+        PropertiesManager.setcanSpawnZombiesInDefaultWorld(DayZ.properties.getBooleanProperty("can-spawn-zombies-in-default-world", false));
 
-        DayZ.barbedwireID = config.getBlock("barbedwireID", 160).getInt();
-		DayZ.dayzchestallID = config.getBlock("dayzchestallID", 161).getInt();
-		DayZ.dayzchestrareID = config.getBlock("dayzchestrareID", 162).getInt();
-		DayZ.dayzchestcommonID = config.getBlock("dayzchestcommonID", 163).getInt();
-		DayZ.chainlinkfenceID = config.getBlock("chainlinkfenceID", 164).getInt();
-		DayZ.sandbagblockID = config.getBlock("sandbagblockID", 165).getInt();
-		DayZ.nailsID = config.getBlock("nailsID", 170).getInt();		
+        DayZ.barbedwireID = DayZ.properties.getIntProperty("barbedwireID", 160);
+		DayZ.dayzchestallID = DayZ.properties.getIntProperty("dayzchestallID", 161);
+		DayZ.dayzchestrareID = DayZ.properties.getIntProperty("dayzchestrareID", 162);
+		DayZ.dayzchestcommonID = DayZ.properties.getIntProperty("dayzchestcommonID", 163);
+		DayZ.chainlinkfenceID = DayZ.properties.getIntProperty("chainlinkfenceID", 164);
+		DayZ.sandbagblockID = DayZ.properties.getIntProperty("sandbagblockID", 165);
+		DayZ.nailsID = DayZ.properties.getIntProperty("nailsID", 170);
+		
         DayZ.logger.info("Properties Loaded");
-        
 	}
     
 	public static void DayZload(FMLInitializationEvent event) 
@@ -112,8 +98,8 @@ public class CommonProxy implements IPlayerTracker
         DayZ.dayzchestrare = new BlockChestRare(DayZ.dayzchestrareID).setBlockName("dayzchestrare").setBlockUnbreakable().setCreativeTab(DayZ.creativeTabDayZ);
         DayZ.dayzchestcommon = new BlockChestCommon(DayZ.dayzchestcommonID).setBlockName("dayzchestcommon").setBlockUnbreakable().setCreativeTab(DayZ.creativeTabDayZ);
         DayZ.chainlinkfence = (new BlockFence(DayZ.chainlinkfenceID, 1, 1, Material.iron, false)).setHardness(5.0F).setResistance(10.0F).setStepSound(Block.soundMetalFootstep).setBlockName("chainlinkfence").setCreativeTab(DayZ.creativeTabDayZ);
-        DayZ.sandbagblock = (new BlockBase(DayZ.sandbagblockID, 2, Material.clay)).setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundGrassFootstep).setBlockName("sandbagblock").setCreativeTab(DayZ.creativeTabDayZ);
-        DayZ.nails = new BlockNails(DayZ.nailsID, 3, Material.leaves).setBlockName("nails").setHardness(1F).setResistance(1F).setCreativeTab(DayZ.creativeTabDayZ);
+        DayZ.sandbagblock = (new BlockBase(DayZ.sandbagblockID, 2, Material.clay)).setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundSandFootstep).setBlockName("sandbagblock").setCreativeTab(DayZ.creativeTabDayZ);
+        DayZ.nails = new BlockNails(DayZ.nailsID, 3, Material.circuits).setBlockName("nails").setHardness(1F).setResistance(1F).setCreativeTab(DayZ.creativeTabDayZ);
         
     	GameRegistry.registerBlock(DayZ.barbedwire);
     	GameRegistry.registerBlock(DayZ.dayzchestall);
@@ -137,6 +123,12 @@ public class CommonProxy implements IPlayerTracker
         EntityRegistry.addSpawn(EntityCrawler.class, 100, 1, 4, EnumCreatureType.creature, DayZ.biomeDayZForest, DayZ.biomeDayZPlains, DayZ.biomeDayZRiver, DayZ.biomeDayZSnowMountains, DayZ.biomeDayZSnowPlains);
         EntityRegistry.addSpawn(EntityBandit.class, 10, 1, 4, EnumCreatureType.creature, DayZ.biomeDayZForest, DayZ.biomeDayZPlains, DayZ.biomeDayZRiver, DayZ.biomeDayZSnowMountains, DayZ.biomeDayZSnowPlains);
 
+        if (DayZ.canSpawnZombiesInDefaultWorld == true)
+        {
+            EntityRegistry.addSpawn(EntityZombieDayZ.class, 200, 1, 4, EnumCreatureType.creature, WorldType.base12Biomes);
+            EntityRegistry.addSpawn(EntityCrawler.class, 100, 1, 4, EnumCreatureType.creature, WorldType.base12Biomes);
+            EntityRegistry.addSpawn(EntityBandit.class, 10, 1, 4, EnumCreatureType.creature, WorldType.base12Biomes);
+        }
     /************* 						Names 							*************/
         
         LanguageRegistry.instance().addStringLocalization("entity.Crawler.name", "en_US", "Crawler");
@@ -242,7 +234,7 @@ public class CommonProxy implements IPlayerTracker
     	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.pipe.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.planknailed.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.crowbar.shiftedIndex, 0, 1, 1, 5));
-    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.machate.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.machete.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.remingtonammo.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.map.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.coal.shiftedIndex, 0, 1, 1, 5));
@@ -315,7 +307,7 @@ public class CommonProxy implements IPlayerTracker
     	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.pipe.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.planknailed.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.crowbar.shiftedIndex, 0, 1, 1, 5));
-    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.machate.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.machete.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.remingtonammo.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.map.shiftedIndex, 0, 1, 1, 5));
     	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.coal.shiftedIndex, 0, 1, 1, 5));
@@ -403,6 +395,7 @@ public class CommonProxy implements IPlayerTracker
 			}
 			DayZ.logger.info("Make sure your server.properties has one of the lines to create a DayZ world.");
 			DayZ.logger.info("level-type=DAYZBASE            - To create the original DayZ world.");
+			DayZ.logger.info("level-type=DAYZSNOW            - To create snowy DayZ world.");
 		}	
 	}
 
@@ -427,6 +420,6 @@ public class CommonProxy implements IPlayerTracker
 	@Override
 	public void onPlayerRespawn(EntityPlayer player) 
 	{
-		
+
 	}		
 }
