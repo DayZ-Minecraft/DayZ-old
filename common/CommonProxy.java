@@ -1,30 +1,24 @@
 package dayz.common;
 
 import java.io.File;
-import java.util.List;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.EntityPlayerMP;
 import net.minecraft.src.EnumCreatureType;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
-import net.minecraft.src.TileEntity;
 import net.minecraft.src.WeightedRandomChestContent;
 import net.minecraft.src.WorldType;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.ChestGenHooks;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.event.world.WorldEvent;
-
-import com.google.common.base.Strings;
-
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.IPlayerTracker;
 import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.ModContainer;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -48,6 +42,7 @@ import dayz.common.entities.EntityBullet;
 import dayz.common.entities.EntityCrawler;
 import dayz.common.entities.EntityGrenade;
 import dayz.common.entities.EntityZombieDayZ;
+import dayz.common.playerdata.PlayerData;
 
 public class CommonProxy implements IPlayerTracker 
 {	
@@ -402,24 +397,67 @@ public class CommonProxy implements IPlayerTracker
 	@Override
 	public void onPlayerLogin(EntityPlayer player) 
 	{
-
+		PlayerData.loadData(player);
 	}
 
 	@Override
 	public void onPlayerLogout(EntityPlayer player) 
 	{
-		
+		PlayerData.saveData(player);
 	}
 
 	@Override
 	public void onPlayerChangedDimension(EntityPlayer player) 
 	{
-		
+		PlayerData.saveData(player);
 	}
 
 	@Override
 	public void onPlayerRespawn(EntityPlayer player) 
 	{
-
-	}		
+		PlayerData.loadData(player);
+	}
+	
+	@ForgeSubscribe
+	public void playerKilledEntity(LivingDeathEvent event)
+	{
+		if (event.source.getSourceOfDamage() instanceof EntityPlayer)
+		{
+			if (event.entityLiving instanceof EntityZombieDayZ)
+			{
+				int totalZombieKills = PlayerData.getPlayerData((EntityPlayer)event.source.getSourceOfDamage()).totalZombieKills;
+				PlayerData.getPlayerData((EntityPlayer)event.source.getSourceOfDamage()).totalZombieKills = totalZombieKills + 1;
+			}
+			if (event.entityLiving instanceof EntityCrawler)
+			{
+				int totalZombieKills = PlayerData.getPlayerData((EntityPlayer)event.source.getSourceOfDamage()).totalZombieKills;
+				PlayerData.getPlayerData((EntityPlayer)event.source.getSourceOfDamage()).totalZombieKills = totalZombieKills + 1;
+			}
+			if (event.entityLiving instanceof EntityPlayer)
+			{
+				int totalPlayerKills = PlayerData.getPlayerData((EntityPlayer)event.source.getSourceOfDamage()).totalPlayerKills;
+				PlayerData.getPlayerData((EntityPlayer)event.source.getSourceOfDamage()).totalPlayerKills = totalPlayerKills + 1;
+			}
+		}
+	}
+	
+	/*
+	@ForgeSubscribe
+	public void useBloodbag(EntityInteractEvent event)
+	{
+		EntityPlayer player = event.entityPlayer;
+		
+		if (event.target instanceof EntityPlayerMP)
+		{
+			if (player.inventory.getCurrentItem() == new ItemStack(DayZ.bloodbag))
+			{
+				EntityPlayerMP target = (EntityPlayerMP)event.target;
+		    	if (!target.isOnLadder() && !target.isAirBorne && !target.isBurning() && !target.isEating() && !target.isSprinting() && !target.isWet() && target.getHealth() < 20)
+		    	{
+		    		player.inventory.getCurrentItem().stackSize--;
+		    		target.heal(20);
+		    	}
+			}
+		}
+	}*/
 }

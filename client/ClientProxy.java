@@ -36,6 +36,7 @@ import dayz.common.entities.EntityBullet;
 import dayz.common.entities.EntityCrawler;
 import dayz.common.entities.EntityGrenade;
 import dayz.common.entities.EntityZombieDayZ;
+import dayz.common.playerdata.PlayerData;
 
 public class ClientProxy implements ITickHandler, IPlayerTracker
 {	
@@ -120,10 +121,12 @@ public class ClientProxy implements ITickHandler, IPlayerTracker
 	            }
 	            FMLClientHandler.instance().getClient().fontRenderer.drawString("Blood: " + (mc.thePlayer.getHealth() * 600), i - 110, 28, 0xffffff);
 	            FMLClientHandler.instance().getClient().fontRenderer.drawString("Zombies: " + zombies, i - 110, 38, 0xffffff);
-	            FMLClientHandler.instance().getClient().fontRenderer.drawString("Version: " + Util.VERSION + Updater.preRelease(), i - 110, 48, 0xffffff);
+	            FMLClientHandler.instance().getClient().fontRenderer.drawString("Zombies killed: " + PlayerData.getPlayerData(mc.thePlayer).totalZombieKills, i - 110, 48, 0xffffff);
+	            FMLClientHandler.instance().getClient().fontRenderer.drawString("Players killed: " + PlayerData.getPlayerData(mc.thePlayer).totalPlayerKills, i - 110, 58, 0xffffff);
+	            FMLClientHandler.instance().getClient().fontRenderer.drawString("Version: " + Util.VERSION + Updater.preRelease(), i - 110, 68, 0xffffff);
 	            if (DayZ.canShowCoordinatesOnDebugScreen == true)
 	            {
-		            FMLClientHandler.instance().getClient().fontRenderer.drawString("Coords: " + (int)mc.thePlayer.posX + ", " + (int)mc.thePlayer.posZ, i - 110, 58, 0xffffff);
+		            FMLClientHandler.instance().getClient().fontRenderer.drawString("Coords: " + (int)mc.thePlayer.posX + ", " + (int)mc.thePlayer.posZ, i - 110, 78, 0xffffff);
 	            }
 	        }
     	}
@@ -134,7 +137,7 @@ public class ClientProxy implements ITickHandler, IPlayerTracker
 	{
 		if (DayZ.isUpToDate == false && DayZ.canCheckUpdate == true)
         {
-			player.sendChatToPlayer("Day Z is not up to date. The latest release is " + Updater.getWebVersion() + ". You have " + Util.VERSION + Updater.preRelease());
+			player.sendChatToPlayer("Day Z is not up to date. The latest release is " + Updater.getWebVersion() + ". You have " + Util.VERSION + Updater.preRelease() + ".");
         }
 	}
 
