@@ -43,6 +43,7 @@ import dayz.common.items.ItemWaterbottleDirty;
 import dayz.common.items.ItemWaterbottleFull;
 import dayz.common.items.ItemWeaponMelee;
 import dayz.common.items.ItemWhiskeybottleFull;
+import dayz.common.playerdata.Thirst;
 import dayz.common.world.BiomeGenForest;
 import dayz.common.world.BiomeGenPlainsDayZ;
 import dayz.common.world.BiomeGenRiverDayZ;
@@ -149,7 +150,7 @@ public class DayZ
      */
     @PreInit
     public void DayZpreload(FMLPreInitializationEvent event)
-    { 
+    { 		
 		MinecraftForge.EVENT_BUS.register(new CommonProxy());
 		CommonProxy.DayZpreload(event);
     	if (FMLCommonHandler.instance().getSide().isClient())

@@ -1,11 +1,14 @@
 package dayz.common;
 
 import java.io.File;
+import java.util.EnumSet;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.src.Block;
+import net.minecraft.src.DamageSource;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityPlayerMP;
 import net.minecraft.src.EnumCreatureType;
+import net.minecraft.src.GuiScreen;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
@@ -15,16 +18,19 @@ import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.IPlayerTracker;
+import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.Side;
+import cpw.mods.fml.common.TickType;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.common.registry.VillagerRegistry;
 import dayz.DayZ;
 import dayz.DayZLog;
@@ -43,8 +49,9 @@ import dayz.common.entities.EntityCrawler;
 import dayz.common.entities.EntityGrenade;
 import dayz.common.entities.EntityZombieDayZ;
 import dayz.common.playerdata.PlayerData;
+import dayz.common.playerdata.Thirst;
 
-public class CommonProxy implements IPlayerTracker 
+public class CommonProxy implements IPlayerTracker, ITickHandler
 {	
 	public static void DayZpreload(FMLPreInitializationEvent event) 
 	{
@@ -363,10 +370,12 @@ public class CommonProxy implements IPlayerTracker
         BiomeManager.addVillageBiome(DayZ.biomeDayZPlains, true);
         BiomeManager.addVillageBiome(DayZ.biomeDayZRiver, true);
         GameRegistry.registerPlayerTracker(new CommonProxy());
+        TickRegistry.registerTickHandler(new CommonProxy(), Side.SERVER);
         EffectBleeding.INSTANCE.register();
         EffectZombification.INSTANCE.register();
         DayZDamageSource.bleedOut.registerDeathMessage();
         DayZDamageSource.zombieInfection.registerDeathMessage();
+        DayZDamageSource.thirstDeath.registerDeathMessage();
 	}
 	
 	public static void DayZpostload(FMLPostInitializationEvent event) 
@@ -410,54 +419,96 @@ public class CommonProxy implements IPlayerTracker
 	public void onPlayerChangedDimension(EntityPlayer player) 
 	{
 		PlayerData.saveData(player);
+		PlayerData.loadData(player);
 	}
 
 	@Override
 	public void onPlayerRespawn(EntityPlayer player) 
 	{
-		PlayerData.loadData(player);
+		Thirst.resetThirst(player);
 	}
 	
 	@ForgeSubscribe
 	public void playerKilledEntity(LivingDeathEvent event)
 	{
-		if (event.source.getSourceOfDamage() instanceof EntityPlayer)
+		if (event.source.getEntity() instanceof EntityPlayer)
 		{
 			if (event.entityLiving instanceof EntityZombieDayZ)
 			{
-				int totalZombieKills = PlayerData.getPlayerData((EntityPlayer)event.source.getSourceOfDamage()).totalZombieKills;
-				PlayerData.getPlayerData((EntityPlayer)event.source.getSourceOfDamage()).totalZombieKills = totalZombieKills + 1;
+				int totalZombieKills = PlayerData.getPlayerData((EntityPlayer)event.source.getEntity()).totalZombieKills;
+				PlayerData.getPlayerData((EntityPlayer)event.source.getEntity()).totalZombieKills = totalZombieKills + 1;
 			}
 			if (event.entityLiving instanceof EntityCrawler)
 			{
-				int totalZombieKills = PlayerData.getPlayerData((EntityPlayer)event.source.getSourceOfDamage()).totalZombieKills;
-				PlayerData.getPlayerData((EntityPlayer)event.source.getSourceOfDamage()).totalZombieKills = totalZombieKills + 1;
+				int totalZombieKills = PlayerData.getPlayerData((EntityPlayer)event.source.getEntity()).totalZombieKills;
+				PlayerData.getPlayerData((EntityPlayer)event.source.getEntity()).totalZombieKills = totalZombieKills + 1;
 			}
 			if (event.entityLiving instanceof EntityPlayer)
 			{
-				int totalPlayerKills = PlayerData.getPlayerData((EntityPlayer)event.source.getSourceOfDamage()).totalPlayerKills;
-				PlayerData.getPlayerData((EntityPlayer)event.source.getSourceOfDamage()).totalPlayerKills = totalPlayerKills + 1;
+				int totalPlayerKills = PlayerData.getPlayerData((EntityPlayer)event.source.getEntity()).totalPlayerKills;
+				PlayerData.getPlayerData((EntityPlayer)event.source.getEntity()).totalPlayerKills = totalPlayerKills + 1;
 			}
 		}
 	}
-	
-	/*
-	@ForgeSubscribe
-	public void useBloodbag(EntityInteractEvent event)
+
+	@Override
+	public void tickStart(EnumSet<TickType> type, Object... tickData) 
 	{
-		EntityPlayer player = event.entityPlayer;
 		
-		if (event.target instanceof EntityPlayerMP)
+	}
+
+	@Override
+	public void tickEnd(EnumSet<TickType> type, Object... tickData) 
+	{
+		if (type.equals(EnumSet.of(TickType.PLAYER)))
 		{
-			if (player.inventory.getCurrentItem() == new ItemStack(DayZ.bloodbag))
-			{
-				EntityPlayerMP target = (EntityPlayerMP)event.target;
-		    	if (!target.isOnLadder() && !target.isAirBorne && !target.isBurning() && !target.isEating() && !target.isSprinting() && !target.isWet() && target.getHealth() < 20)
-		    	{
-		    		player.inventory.getCurrentItem().stackSize--;
-		    		target.heal(20);
-		    	}
-			}
+			onPlayerTick((EntityPlayer)tickData[0]);
+		}	
+	}
+
+	@Override
+	public EnumSet<TickType> ticks() 
+	{
+        return EnumSet.of(TickType.PLAYER);
+	}
+
+	@Override
+	public String getLabel() 
+	{
+		return "DayZ Thirst";
+	}
+	
+	private void onPlayerTick(EntityPlayer player) 
+	{
+		if (Thirst.getLevel(player) == 20000)
+		{
+			player.sendChatToPlayer("I should find some water...");
+			Thirst.addThirst(player, 1);
+			return;
 		}
-	}*/
+		else if (Thirst.getLevel(player) >= 24000)
+		{
+			player.attackEntityFrom(DayZDamageSource.thirstDeath, 21);
+			return;
+		} 
+		else if (player.isSprinting())
+		{
+			Thirst.addThirst(player, 2);
+			return;
+		}
+		else if (player.isJumping)
+		{
+			Thirst.addThirst(player, 2);
+			return;
+		}
+		else if (player.isDead)
+		{
+			return;
+		}
+		else
+		{
+			Thirst.addThirst(player, 1);
+			return;
+		}
+	}
 }
