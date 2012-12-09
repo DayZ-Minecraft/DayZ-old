@@ -166,11 +166,11 @@ public class ChunkProviderDayZ extends ChunkProviderGenerate implements IChunkPr
 	        }
         }
         
-        for (var12 = 0; var12 < 8; ++var12)
+        for (var12 = 0; var12 < 12; ++var12)
         {
-            var13 = var4 + this.rand.nextInt(32) + 8;
+            var13 = var4 + this.rand.nextInt(16) + 8;
             var14 = this.rand.nextInt(128);
-            int var15 = var5 + this.rand.nextInt(32) + 8;
+            int var15 = var5 + this.rand.nextInt(16) + 8;
             
             DayZStructureHandler.DayZStructure(this.worldObj, this.rand, var13, var14, var15);
         }
