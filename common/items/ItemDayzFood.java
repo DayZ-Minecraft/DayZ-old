@@ -1,5 +1,6 @@
 package dayz.common.items;
 
+import dayz.DayZ;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemFood;
 import net.minecraft.src.ItemStack;
@@ -38,7 +39,7 @@ public class ItemDayzFood extends ItemFood
         par3EntityPlayer.getFoodStats().addStats(this);
         par2World.playSoundAtEntity(par3EntityPlayer, "random.burp", 0.5F, par2World.rand.nextFloat() * 0.1F + 0.9F);
         this.func_77849_c(par1ItemStack, par2World, par3EntityPlayer);
-        return par1ItemStack;
+        return new ItemStack(DayZ.emptyCan);
     }
 
     @Override
