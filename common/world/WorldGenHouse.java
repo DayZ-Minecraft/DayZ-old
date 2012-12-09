@@ -3,15 +3,13 @@ package dayz.common.world;
 import java.util.Random;
 
 import net.minecraft.src.Block;
-import net.minecraft.src.ItemStack;
 import net.minecraft.src.TileEntityChest;
-import net.minecraft.src.WeightedRandomChestContent;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
 import dayz.DayZ;
 import dayz.DayZLog;
-import dayz.Util;
-import dayz.common.ChestHookRegistry;
+import dayz.common.WeightedRandomChestDayZ;
+import dayz.common.blocks.EnumChestType;
 
 public class WorldGenHouse extends WorldGenerator
 {
@@ -187,7 +185,7 @@ public class WorldGenHouse extends WorldGenerator
         
         world.setBlockWithNotify(i + 8, j + 1, k + 5, chest);
         TileEntityChest tileentitychest = (TileEntityChest)world.getBlockTileEntity(i + 8, j + 1, k + 5);
-		WeightedRandomChestContent.generateChestContents(rand, ChestHookRegistry.chestCommonContents, tileentitychest, rand.nextInt(5) + 1);	
+		WeightedRandomChestDayZ.generateChestContents(rand, EnumChestType.COMMON, tileentitychest, rand.nextInt(5) + 1);	
         DayZLog.info("Day Z House Chest Created At " + (i + 8) + ", " + (j + 1) + ", " + (k + 5) + ".");
         
         world.setBlock(i + 8, j + 1, k + 4, 58);
