@@ -1,30 +1,19 @@
 package dayz.common;
 
 import java.io.File;
-import java.util.List;
-
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EnumCreatureType;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
-import net.minecraft.src.TileEntity;
 import net.minecraft.src.WeightedRandomChestContent;
 import net.minecraft.src.WorldType;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.ChestGenHooks;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.event.world.WorldEvent;
-
-import com.google.common.base.Strings;
-
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.IPlayerTracker;
 import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.ModContainer;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -38,11 +27,11 @@ import dayz.Updater;
 import dayz.Util;
 import dayz.common.blocks.BlockBarbedWire;
 import dayz.common.blocks.BlockBase;
-import dayz.common.blocks.BlockChestAll;
-import dayz.common.blocks.BlockChestCommon;
-import dayz.common.blocks.BlockChestRare;
+import dayz.common.blocks.BlockChestDayZ;
 import dayz.common.blocks.BlockFence;
 import dayz.common.blocks.BlockNails;
+import dayz.common.blocks.EnumChestType;
+import dayz.common.blocks.TileEntityChestDayZ;
 import dayz.common.entities.EntityBandit;
 import dayz.common.entities.EntityBullet;
 import dayz.common.entities.EntityCrawler;
@@ -94,9 +83,9 @@ public class CommonProxy implements IPlayerTracker
     	/************* 						Blocks 							*************/
     	
         DayZ.barbedwire = new BlockBarbedWire(DayZ.barbedwireID, 0).setBlockName("barbedwire").setHardness(3F).setResistance(2F).setCreativeTab(DayZ.creativeTabDayZ);
-        DayZ.dayzchestall = new BlockChestAll(DayZ.dayzchestallID).setBlockName("dayzchestall").setBlockUnbreakable().setCreativeTab(DayZ.creativeTabDayZ);
-        DayZ.dayzchestrare = new BlockChestRare(DayZ.dayzchestrareID).setBlockName("dayzchestrare").setBlockUnbreakable().setCreativeTab(DayZ.creativeTabDayZ);
-        DayZ.dayzchestcommon = new BlockChestCommon(DayZ.dayzchestcommonID).setBlockName("dayzchestcommon").setBlockUnbreakable().setCreativeTab(DayZ.creativeTabDayZ);
+        DayZ.dayzchestall = new BlockChestDayZ(DayZ.dayzchestallID, EnumChestType.ALL).setBlockName("dayzchestall");
+        DayZ.dayzchestrare = new BlockChestDayZ(DayZ.dayzchestrareID, EnumChestType.RARE).setBlockName("dayzchestrare").setBlockUnbreakable().setCreativeTab(DayZ.creativeTabDayZ);
+        DayZ.dayzchestcommon = new BlockChestDayZ(DayZ.dayzchestcommonID, EnumChestType.COMMON).setBlockName("dayzchestcommon").setBlockUnbreakable().setCreativeTab(DayZ.creativeTabDayZ);
         DayZ.chainlinkfence = (new BlockFence(DayZ.chainlinkfenceID, 1, 1, Material.iron, false)).setHardness(5.0F).setResistance(10.0F).setStepSound(Block.soundMetalFootstep).setBlockName("chainlinkfence").setCreativeTab(DayZ.creativeTabDayZ);
         DayZ.sandbagblock = (new BlockBase(DayZ.sandbagblockID, 2, Material.clay)).setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundSandFootstep).setBlockName("sandbagblock").setCreativeTab(DayZ.creativeTabDayZ);
         DayZ.nails = new BlockNails(DayZ.nailsID, 3, Material.circuits).setBlockName("nails").setHardness(1F).setResistance(1F).setCreativeTab(DayZ.creativeTabDayZ);
@@ -137,6 +126,9 @@ public class CommonProxy implements IPlayerTracker
         LanguageRegistry.instance().addStringLocalization("generator.DAYZBASE", "en_US", "Day Z Original");
         LanguageRegistry.instance().addStringLocalization("generator.DAYZSNOW", "en_US", "Day Z Snow");
         LanguageRegistry.instance().addStringLocalization("itemGroup.creativeTabDayZ", "en_US", "Day Z");
+        LanguageRegistry.instance().addStringLocalization("container.ALL", "en_US", "DayZ Chest");
+        LanguageRegistry.instance().addStringLocalization("container.RARE", "en_US", "DayZ Rare Chest");
+        LanguageRegistry.instance().addStringLocalization("container.COMMON", "en_US", "DayZ Common Chest");
 
         
         LanguageRegistry.addName(DayZ.dbshotgun, "Doublebarrel Shotgun");
@@ -368,6 +360,7 @@ public class CommonProxy implements IPlayerTracker
         BiomeManager.addVillageBiome(DayZ.biomeDayZPlains, true);
         BiomeManager.addVillageBiome(DayZ.biomeDayZRiver, true);
         GameRegistry.registerPlayerTracker(new CommonProxy());
+        GameRegistry.registerTileEntity(TileEntityChestDayZ.class, "DayZChestAll");
         EffectBleeding.INSTANCE.register();
         EffectZombification.INSTANCE.register();
         DayZDamageSource.bleedOut.registerDeathMessage();
