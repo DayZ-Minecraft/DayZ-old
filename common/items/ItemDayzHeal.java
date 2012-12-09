@@ -36,11 +36,17 @@ public class ItemDayzHeal extends Item
         entityplayer.heal(healAmount);
         if (stopBleeding == true)
         {
-        	entityplayer.removePotionEffect(EffectBleeding.INSTANCE.id);
+        	if (entityplayer.isPotionActive(EffectBleeding.INSTANCE))
+        	{
+        		entityplayer.removePotionEffect(EffectBleeding.INSTANCE.id);
+        	}
         }
         if (stopInfection == true)
         {
-        	entityplayer.removePotionEffect(EffectZombification.INSTANCE.id);
+        	if (entityplayer.isPotionActive(EffectZombification.INSTANCE))
+        	{
+        		entityplayer.removePotionEffect(EffectZombification.INSTANCE.id);
+        	}
         }
         return itemstack;
     }
