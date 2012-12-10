@@ -151,9 +151,7 @@ public class TileEntityChestDayZ extends TileEntityChest implements IInventory
         		return;
     		}
     	}
-    	
-    	DayZLog.info("Chest tick");
-    	
+    	    	
     	int i = this.xCoord;
     	int j = this.yCoord;
     	int k = this.zCoord;
