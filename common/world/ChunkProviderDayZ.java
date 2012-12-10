@@ -166,15 +166,6 @@ public class ChunkProviderDayZ extends ChunkProviderGenerate implements IChunkPr
 	        }
         }
         
-        for (var12 = 0; var12 < 12; ++var12)
-        {
-            var13 = var4 + this.rand.nextInt(16) + 8;
-            var14 = this.rand.nextInt(128);
-            int var15 = var5 + this.rand.nextInt(16) + 8;
-            
-            DayZStructureHandler.DayZStructure(this.worldObj, this.rand, var13, var14, var15);
-        }
-        
         var6.decorate(this.worldObj, this.rand, var4, var5);
         SpawnerAnimals.performWorldGenSpawning(this.worldObj, var6, var4 + 8, var5 + 8, 16, 16, this.rand);
         var4 += 8;
@@ -199,6 +190,15 @@ public class ChunkProviderDayZ extends ChunkProviderGenerate implements IChunkPr
         }
 
         BlockSand.fallInstantly = false;
+        
+        for (var12 = 0; var12 < 12; ++var12)
+        {
+            var13 = var4 + this.rand.nextInt(16) + 8;
+            var14 = this.rand.nextInt(128);
+            int var15 = var5 + this.rand.nextInt(16) + 8;
+            
+            DayZStructureHandler.DayZStructure(this.worldObj, this.rand, var13, var14, var15);
+        }
     }
 
     @Override
