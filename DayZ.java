@@ -33,6 +33,7 @@ import dayz.common.items.ItemDayzFood;
 import dayz.common.items.ItemDayzHeal;
 import dayz.common.items.ItemDbShotgun;
 import dayz.common.items.ItemEmptyBottle;
+import dayz.common.items.ItemEmptyCan;
 import dayz.common.items.ItemEnfield;
 import dayz.common.items.ItemFirestarter;
 import dayz.common.items.ItemGlock17;
@@ -96,7 +97,8 @@ public class DayZ
 	public static boolean canSpawnZombiesInDefaultWorld;
 	
     public static final Item matches = (new ItemFirestarter(3000, 8)).setIconCoord(2, 0).setItemName("matches");
-
+    public static final Item emptyCan = new ItemEmptyCan(3043).setItemName("emptycan").setIconCoord(13, 0).setCreativeTab(DayZ.creativeTabDayZ);
+    
 	public static final Item heinz = new ItemDayzFood(3002, 6, 1, false).setIconCoord(11, 0).setItemName("heinz").setCreativeTab(DayZ.creativeTabDayZ);
 	public static final Item cannedspag = new ItemDayzFood(3003, 6, 1, false).setIconCoord(2, 0).setItemName("cannedspag").setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item cannedbeans = new ItemDayzFood(3004, 6, 1, false).setIconCoord(0, 0).setItemName("cannedbeans").setCreativeTab(DayZ.creativeTabDayZ);
