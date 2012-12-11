@@ -6,9 +6,8 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.Potion;
 import net.minecraft.src.PotionEffect;
 import net.minecraft.src.World;
-import cpw.mods.fml.common.Loader;
 import dayz.DayZ;
-import dayz.common.external.*;
+import dayz.common.playerdata.PlayerData;
 
 public class ItemWhiskeybottleFull extends ItemDayzDrink
 {
@@ -39,10 +38,7 @@ public class ItemWhiskeybottleFull extends ItemDayzDrink
     public ItemStack onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
         par1ItemStack.stackSize--;
-        if (Loader.isModLoaded("ThirstMod"))
-    	{
-        	ThirstModHooks.addThirst(par3EntityPlayer, thirstReplenish, saturationModifier);
-    	}
+    	PlayerData.subtractThirst(par3EntityPlayer, 3000);
         par2World.playSoundAtEntity(par3EntityPlayer, "random.burp", 0.5F, par2World.rand.nextFloat() * 0.1F + 0.9F);
         par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 30 * 20, 6));
         par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.confusion.id, 30 * 20, 6));

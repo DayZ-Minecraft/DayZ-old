@@ -4,6 +4,7 @@ import java.util.EnumSet;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.GuiScreen;
 import net.minecraft.src.ModelBiped;
 import net.minecraft.src.RenderBiped;
 import net.minecraft.src.ScaledResolution;
@@ -15,7 +16,6 @@ import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.IPlayerTracker;
 import cpw.mods.fml.common.ITickHandler;
-import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Side;
 import cpw.mods.fml.common.TickType;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -90,6 +90,14 @@ public class ClientProxy implements ITickHandler, IPlayerTracker
 		{
 			onRenderTick(type, tickData);
 		} 
+        else if (type.equals(EnumSet.of(TickType.CLIENT)))
+        {
+            GuiScreen guiscreen = Minecraft.getMinecraft().currentScreen;
+            if (guiscreen == null)
+            {
+                onTickInGame();
+            }
+        }
 	}
 
 	@Override
@@ -104,6 +112,18 @@ public class ClientProxy implements ITickHandler, IPlayerTracker
 		return "DayZ";
 	}
 	
+	private void onTickInGame() 
+	{
+		Minecraft minecraft = FMLClientHandler.instance().getClient();
+		if (minecraft.thePlayer != null) 
+		{
+			if (minecraft.thePlayer.capabilities.isCreativeMode == false) 
+			{
+				minecraft.ingameGUI = new GuiScreenDayZ(minecraft);
+			}
+		}
+	}
+	
 	public void onRenderTick(EnumSet<TickType> type, Object... tickData)
     {
     	Minecraft mc = Minecraft.getMinecraft();
@@ -113,8 +133,8 @@ public class ClientProxy implements ITickHandler, IPlayerTracker
         
     	if (DayZ.canShowDebugScreen == true)
     	{
-	        if (mc.inGameHasFocus && mc.isGuiEnabled())
-	        {
+	        if (mc.inGameHasFocus/* && mc.isGuiEnabled()*/)
+	        {    			
 	            int zombies = (mc.theWorld.countEntities(EntityZombieDayZ.class) + (mc.theWorld.countEntities(EntityCrawler.class)));
 	            if (DayZ.canShowNameOnDebugScreen == true)
 	            {

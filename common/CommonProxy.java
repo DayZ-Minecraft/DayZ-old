@@ -484,22 +484,18 @@ public class CommonProxy implements IPlayerTracker, ITickHandler
 		{
 			player.sendChatToPlayer("I should find some water...");
 			Thirst.addThirst(player, 1);
-			return;
 		}
 		else if (Thirst.getLevel(player) >= 24000)
 		{
-			player.attackEntityFrom(DayZDamageSource.thirstDeath, 21);
-			return;
+			player.attackEntityFrom(DayZDamageSource.thirstDeath, 20);
 		} 
 		else if (player.isSprinting())
 		{
 			Thirst.addThirst(player, 2);
-			return;
 		}
 		else if (player.isJumping)
 		{
 			Thirst.addThirst(player, 2);
-			return;
 		}
 		else if (player.isDead)
 		{
@@ -508,7 +504,6 @@ public class CommonProxy implements IPlayerTracker, ITickHandler
 		else
 		{
 			Thirst.addThirst(player, 1);
-			return;
 		}
 	}
 }
