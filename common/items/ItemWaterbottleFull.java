@@ -4,9 +4,8 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EnumAction;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
-import cpw.mods.fml.common.Loader;
 import dayz.DayZ;
-import dayz.common.external.*;
+import dayz.common.playerdata.PlayerData;
 
 public class ItemWaterbottleFull extends ItemDayzDrink
 {
@@ -36,10 +35,7 @@ public class ItemWaterbottleFull extends ItemDayzDrink
     public ItemStack onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
         par1ItemStack.stackSize--;
-        if (Loader.isModLoaded("ThirstMod"))
-    	{
-        	ThirstModHooks.addThirst(par3EntityPlayer, thirstReplenish, saturationModifier);
-    	}
+    	PlayerData.subtractThirst(par3EntityPlayer, 6000);
         par2World.playSoundAtEntity(par3EntityPlayer, "random.burp", 0.5F, par2World.rand.nextFloat() * 0.1F + 0.9F);
 
         if (par1ItemStack.stackSize <= 0)

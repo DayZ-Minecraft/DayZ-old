@@ -1,6 +1,7 @@
 package dayz.common.items;
 
 import dayz.DayZ;
+import dayz.common.playerdata.PlayerData;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EnumAction;
 import net.minecraft.src.Item;
@@ -42,6 +43,7 @@ public class ItemWaterbottleDirty extends ItemFood
     public ItemStack onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
     	par1ItemStack.stackSize--;
+    	PlayerData.subtractThirst(par3EntityPlayer, 1000);
     	par3EntityPlayer.getFoodStats().addStats(this);
     	par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.poison.id, 30 * 20, 6));
     	par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 30 * 20, 6));

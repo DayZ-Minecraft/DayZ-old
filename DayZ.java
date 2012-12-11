@@ -43,6 +43,7 @@ import dayz.common.items.ItemWaterbottleDirty;
 import dayz.common.items.ItemWaterbottleFull;
 import dayz.common.items.ItemWeaponMelee;
 import dayz.common.items.ItemWhiskeybottleFull;
+import dayz.common.playerdata.Thirst;
 import dayz.common.world.BiomeGenForest;
 import dayz.common.world.BiomeGenPlainsDayZ;
 import dayz.common.world.BiomeGenRiverDayZ;
@@ -87,13 +88,13 @@ public class DayZ
 	public static int chainlinkfenceID;
 	public static int sandbagblockID;
 	public static int nailsID;
-	
 	public static boolean canCheckUpdate;
 	public static boolean canShowDebugScreen;
 	public static boolean canShowNameOnDebugScreen;
 	public static boolean canShowCoordinatesOnDebugScreen;
 	public static boolean canGenerateExplosives;
 	public static int chanceToRegenChestContents;
+	public static boolean canSpawnZombiesInDefaultWorld;
 	
     public static final Item matches = (new ItemFirestarter(3000, 8)).setIconCoord(2, 0).setItemName("matches");
 
@@ -135,7 +136,7 @@ public class DayZ
     public static final Item planknailed = (new ItemWeaponMelee(3029, EnumToolMaterial.WOOD, 8)).setItemName("planknailed").setIconCoord(3, 1).setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item pipe = (new ItemWeaponMelee(3030, EnumToolMaterial.WOOD, 8)).setItemName("pipe").setIconCoord(4, 1).setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item crowbar = (new ItemWeaponMelee(3041, EnumToolMaterial.WOOD, 8)).setItemName("crowbar").setIconCoord(5, 1).setCreativeTab(DayZ.creativeTabDayZ);
-    public static final Item machate = (new ItemWeaponMelee(3042, EnumToolMaterial.WOOD, 7)).setItemName("machate").setIconCoord(6, 1).setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item machete = (new ItemWeaponMelee(3042, EnumToolMaterial.WOOD, 7)).setItemName("machate").setIconCoord(6, 1).setCreativeTab(DayZ.creativeTabDayZ);
   
     public static final Item camohelmet = (new ItemCamo(3031, enumArmorMaterialCamo, 5, 0)).setItemName("camohelmet").setIconCoord(0, 0);
     public static final Item camochest = (new ItemCamo(3032, enumArmorMaterialCamo, 5, 1)).setItemName("camochest").setIconCoord(1, 0);
@@ -149,7 +150,7 @@ public class DayZ
      */
     @PreInit
     public void DayZpreload(FMLPreInitializationEvent event)
-    { 
+    { 		
 		MinecraftForge.EVENT_BUS.register(new CommonProxy());
 		CommonProxy.DayZpreload(event);
     	if (FMLCommonHandler.instance().getSide().isClient())

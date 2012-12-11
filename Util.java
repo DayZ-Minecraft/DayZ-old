@@ -15,7 +15,7 @@ public class Util
 {
 	public static final String ID = "Day Z Minecraft";
 	public static final String NAME = "Day Z Minecraft";
-	public static final String VERSION = "7.0";
+	public static final String VERSION = "7.1";
 	public static final boolean ISPRERELEASE = true;
 	public static final String MCVERSION = "1.4.5";
 	public static final String DESC = "An unknown infection has wiped out most of the world's population. Go Solo or team up with friends to take on the world as you choose your path in this brutal and chilling landscape using whatever means you stumble upon to survive.";

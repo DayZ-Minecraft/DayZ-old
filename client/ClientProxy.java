@@ -4,6 +4,7 @@ import java.util.EnumSet;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.GuiScreen;
 import net.minecraft.src.ModelBiped;
 import net.minecraft.src.RenderBiped;
 import net.minecraft.src.ScaledResolution;
@@ -15,7 +16,6 @@ import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.IPlayerTracker;
 import cpw.mods.fml.common.ITickHandler;
-import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Side;
 import cpw.mods.fml.common.TickType;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -36,6 +36,8 @@ import dayz.common.entities.EntityBullet;
 import dayz.common.entities.EntityCrawler;
 import dayz.common.entities.EntityGrenade;
 import dayz.common.entities.EntityZombieDayZ;
+import dayz.common.playerdata.PlayerData;
+import dayz.common.playerdata.Thirst;
 
 public class ClientProxy implements ITickHandler, IPlayerTracker
 {	
@@ -88,6 +90,14 @@ public class ClientProxy implements ITickHandler, IPlayerTracker
 		{
 			onRenderTick(type, tickData);
 		} 
+        else if (type.equals(EnumSet.of(TickType.CLIENT)))
+        {
+            GuiScreen guiscreen = Minecraft.getMinecraft().currentScreen;
+            if (guiscreen == null)
+            {
+                onTickInGame();
+            }
+        }
 	}
 
 	@Override
@@ -102,6 +112,18 @@ public class ClientProxy implements ITickHandler, IPlayerTracker
 		return "DayZ";
 	}
 	
+	private void onTickInGame() 
+	{
+		Minecraft minecraft = FMLClientHandler.instance().getClient();
+		if (minecraft.thePlayer != null) 
+		{
+			if (minecraft.thePlayer.capabilities.isCreativeMode == false) 
+			{
+				minecraft.ingameGUI = new GuiScreenDayZ(minecraft);
+			}
+		}
+	}
+	
 	public void onRenderTick(EnumSet<TickType> type, Object... tickData)
     {
     	Minecraft mc = Minecraft.getMinecraft();
@@ -111,8 +133,8 @@ public class ClientProxy implements ITickHandler, IPlayerTracker
         
     	if (DayZ.canShowDebugScreen == true)
     	{
-	        if (mc.inGameHasFocus && mc.isGuiEnabled())
-	        {
+	        if (mc.inGameHasFocus/* && mc.isGuiEnabled()*/)
+	        {    			
 	            int zombies = (mc.theWorld.countEntities(EntityZombieDayZ.class) + (mc.theWorld.countEntities(EntityCrawler.class)));
 	            if (DayZ.canShowNameOnDebugScreen == true)
 	            {
@@ -120,10 +142,13 @@ public class ClientProxy implements ITickHandler, IPlayerTracker
 	            }
 	            FMLClientHandler.instance().getClient().fontRenderer.drawString("Blood: " + (mc.thePlayer.getHealth() * 600), i - 110, 28, 0xffffff);
 	            FMLClientHandler.instance().getClient().fontRenderer.drawString("Zombies: " + zombies, i - 110, 38, 0xffffff);
-	            FMLClientHandler.instance().getClient().fontRenderer.drawString("Version: " + Util.VERSION + Updater.preRelease(), i - 110, 48, 0xffffff);
+	            FMLClientHandler.instance().getClient().fontRenderer.drawString("Zombies killed: " + PlayerData.getPlayerData(mc.thePlayer).totalZombieKills, i - 110, 48, 0xffffff);
+	            FMLClientHandler.instance().getClient().fontRenderer.drawString("Players killed: " + PlayerData.getPlayerData(mc.thePlayer).totalPlayerKills, i - 110, 58, 0xffffff);
+	            FMLClientHandler.instance().getClient().fontRenderer.drawString("Thirst: " + Thirst.getLevel(mc.thePlayer), i - 110, 68, 0xffffff);
+	            FMLClientHandler.instance().getClient().fontRenderer.drawString("Version: " + Util.VERSION + Updater.preRelease(), i - 110, 78, 0xffffff);
 	            if (DayZ.canShowCoordinatesOnDebugScreen == true)
 	            {
-		            FMLClientHandler.instance().getClient().fontRenderer.drawString("Coords: " + (int)mc.thePlayer.posX + ", " + (int)mc.thePlayer.posZ, i - 110, 58, 0xffffff);
+		            FMLClientHandler.instance().getClient().fontRenderer.drawString("Coords: " + (int)mc.thePlayer.posX + ", " + (int)mc.thePlayer.posZ, i - 110, 88, 0xffffff);
 	            }
 	        }
     	}
@@ -134,7 +159,7 @@ public class ClientProxy implements ITickHandler, IPlayerTracker
 	{
 		if (DayZ.isUpToDate == false && DayZ.canCheckUpdate == true)
         {
-			player.sendChatToPlayer("Day Z is not up to date. The latest release is " + Updater.getWebVersion() + ". You have " + Util.VERSION + Updater.preRelease());
+			player.sendChatToPlayer("Day Z is not up to date. The latest release is " + Updater.getWebVersion() + ". You have " + Util.VERSION + Updater.preRelease() + ".");
         }
 	}
 
