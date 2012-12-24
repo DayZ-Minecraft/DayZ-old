@@ -1,12 +1,10 @@
 package dayz.common;
 
-import java.awt.List;
 import java.util.Arrays;
 
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.item.ItemStack;
 import dayz.DayZ;
-
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.ItemStack;
 
 public class EffectBleeding extends DayZEffect
 {

@@ -1,16 +1,10 @@
 package dayz.common.items;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityPlayerMP;
-import net.minecraft.src.EnumAction;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.World;
-
-import org.lwjgl.input.Mouse;
-
-import cpw.mods.fml.client.FMLClientHandler;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import dayz.DayZ;
 import dayz.common.entities.EntityBullet;
 

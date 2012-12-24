@@ -1,8 +1,9 @@
 package dayz.common.playerdata;
 
 import java.util.HashMap;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.NBTTagCompound;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
 
 public class PlayerData
 {

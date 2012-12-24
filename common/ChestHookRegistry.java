@@ -1,13 +1,9 @@
 package dayz.common;
 
-import java.util.Random;
-
-import dayz.DayZ;
-import net.minecraft.src.Block;
-import net.minecraft.src.Item;
-import net.minecraft.src.TileEntityChest;
-import net.minecraft.src.WeightedRandomChestContent;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
+import dayz.DayZ;
 
 public class ChestHookRegistry
 {	
@@ -203,4 +199,146 @@ public class ChestHookRegistry
     	new WeightedRandomChestContent(Item.boat.shiftedIndex, 0, 1, 1, 5),
     	new WeightedRandomChestContent(Item.emerald.shiftedIndex, 0, 1, 3, 5)
     };
+
+	public static void chestGeneration() 
+	{
+        ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.ak74uammo.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.leeenfieldammo.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.dbshotgunammo.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.bandage.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.baseballbatnailed.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.makarov.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.glock17.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.pipe.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.planknailed.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.crowbar.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.machete.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.remingtonammo.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.map.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.coal.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.ingotIron.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.writableBook.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.arrow.shiftedIndex, 0, 1, 8, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.bone.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.bloodbag.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Block.tripWireSource.blockID, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.silk.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.boat.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.emerald.shiftedIndex, 0, 1, 3, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.baseballbat.shiftedIndex, 0, 1, 1, 7));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.makarovammo.shiftedIndex, 0, 1, 1, 7));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.glock17ammo.shiftedIndex, 0, 1, 1, 7));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.plank.shiftedIndex, 0, 1, 1, 7));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.whiskeybottlefull.shiftedIndex, 0, 1, 1, 7));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.nails.blockID, 0, 1, 1, 7));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.beefRaw.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.beefCooked.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.porkRaw.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.porkCooked.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.fishRaw.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.fishCooked.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.appleRed.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.bowlSoup.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.melon.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(Item.cookie.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.cannedbeans.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.cannedfish.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.cannedspag.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.cannedpasta.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.heinz.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.chocolate.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.lemonade.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.antibiotics.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.waterbottledirty.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.waterbottleempty.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.whiskeybottleempty.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.BONUS_CHEST, new WeightedRandomChestContent(DayZ.waterbottledirty.shiftedIndex, 0, 1, 1, 9));
+    	
+        ChestGenHooks.removeItem(ChestGenHooks.BONUS_CHEST, new ItemStack(Item.stick));
+        ChestGenHooks.removeItem(ChestGenHooks.BONUS_CHEST, new ItemStack(Block.planks));
+        ChestGenHooks.removeItem(ChestGenHooks.BONUS_CHEST, new ItemStack(Block.wood));
+        ChestGenHooks.removeItem(ChestGenHooks.BONUS_CHEST, new ItemStack(Item.axeStone));
+        ChestGenHooks.removeItem(ChestGenHooks.BONUS_CHEST, new ItemStack(Item.axeWood));
+        ChestGenHooks.removeItem(ChestGenHooks.BONUS_CHEST, new ItemStack(Item.pickaxeStone));
+        ChestGenHooks.removeItem(ChestGenHooks.BONUS_CHEST, new ItemStack(Item.pickaxeWood));
+        ChestGenHooks.removeItem(ChestGenHooks.BONUS_CHEST, new ItemStack(Item.appleRed));
+        ChestGenHooks.removeItem(ChestGenHooks.BONUS_CHEST, new ItemStack(Item.bread));
+        
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.leeenfield.shiftedIndex, 0, 1, 1, 1));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.dbshotgun.shiftedIndex, 0, 1, 1, 1));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.ak74u.shiftedIndex, 0, 1, 1, 1));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.remington.shiftedIndex, 0, 1, 1, 1));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.barbedwire.blockID, 0, 1, 1, 3));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.camohelmet.shiftedIndex, 0, 1, 1, 3));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.camochest.shiftedIndex, 0, 1, 1, 3));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.camolegs.shiftedIndex, 0, 1, 1, 3));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.camoboots.shiftedIndex, 0, 1, 1, 3));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Block.cake.blockID, 0, 1, 1, 3));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.bow.shiftedIndex, 0, 1, 1, 3));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.ak74uammo.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.leeenfieldammo.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.dbshotgunammo.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.bandage.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.baseballbatnailed.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.makarov.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.glock17.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.pipe.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.planknailed.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.crowbar.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.machete.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.remingtonammo.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.map.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.coal.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.ingotIron.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.writableBook.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.arrow.shiftedIndex, 0, 1, 8, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.bone.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.bloodbag.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Block.tripWireSource.blockID, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.silk.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.boat.shiftedIndex, 0, 1, 1, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.emerald.shiftedIndex, 0, 1, 3, 5));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.baseballbat.shiftedIndex, 0, 1, 1, 7));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.makarovammo.shiftedIndex, 0, 1, 1, 7));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.glock17ammo.shiftedIndex, 0, 1, 1, 7));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.plank.shiftedIndex, 0, 1, 1, 7));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.whiskeybottlefull.shiftedIndex, 0, 1, 1, 7));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.nails.blockID, 0, 1, 1, 7));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.beefRaw.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.beefCooked.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.porkRaw.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.porkCooked.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.fishRaw.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.fishCooked.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.appleRed.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.bowlSoup.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.melon.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(Item.cookie.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.cannedbeans.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.cannedfish.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.cannedspag.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.cannedpasta.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.heinz.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.chocolate.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.lemonade.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.antibiotics.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.waterbottledirty.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.waterbottleempty.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.whiskeybottleempty.shiftedIndex, 0, 1, 1, 9));
+    	ChestGenHooks.addItem(ChestGenHooks.VILLAGE_BLACKSMITH, new WeightedRandomChestContent(DayZ.waterbottledirty.shiftedIndex, 0, 1, 1, 9));
+        
+    	ChestGenHooks.removeItem(ChestGenHooks.VILLAGE_BLACKSMITH, new ItemStack(Item.ingotIron));
+        ChestGenHooks.removeItem(ChestGenHooks.VILLAGE_BLACKSMITH, new ItemStack(Item.ingotGold));
+        ChestGenHooks.removeItem(ChestGenHooks.VILLAGE_BLACKSMITH, new ItemStack(Item.diamond));
+        ChestGenHooks.removeItem(ChestGenHooks.VILLAGE_BLACKSMITH, new ItemStack(Item.bread));
+        ChestGenHooks.removeItem(ChestGenHooks.VILLAGE_BLACKSMITH, new ItemStack(Item.appleRed));
+        ChestGenHooks.removeItem(ChestGenHooks.VILLAGE_BLACKSMITH, new ItemStack(Item.pickaxeSteel));
+        ChestGenHooks.removeItem(ChestGenHooks.VILLAGE_BLACKSMITH, new ItemStack(Item.swordSteel));
+        ChestGenHooks.removeItem(ChestGenHooks.VILLAGE_BLACKSMITH, new ItemStack(Item.plateSteel));
+        ChestGenHooks.removeItem(ChestGenHooks.VILLAGE_BLACKSMITH, new ItemStack(Item.helmetSteel));
+        ChestGenHooks.removeItem(ChestGenHooks.VILLAGE_BLACKSMITH, new ItemStack(Item.bootsSteel));
+        ChestGenHooks.removeItem(ChestGenHooks.VILLAGE_BLACKSMITH, new ItemStack(Item.legsSteel));
+        ChestGenHooks.removeItem(ChestGenHooks.VILLAGE_BLACKSMITH, new ItemStack(Block.obsidian));
+        ChestGenHooks.removeItem(ChestGenHooks.VILLAGE_BLACKSMITH, new ItemStack(Block.sapling));
+	}
 }

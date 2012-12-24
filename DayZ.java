@@ -3,12 +3,10 @@ package dayz;
 import java.util.Random;
 import java.util.logging.Logger;
 
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.Block;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EnumArmorMaterial;
-import net.minecraft.src.EnumToolMaterial;
-import net.minecraft.src.Item;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.EnumArmorMaterial;
+import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -40,14 +38,13 @@ import dayz.common.items.ItemGrenade;
 import dayz.common.items.ItemMakarov;
 import dayz.common.items.ItemRemington;
 import dayz.common.items.ItemWaterbottleDirty;
-import dayz.common.items.ItemWaterbottleFull;
 import dayz.common.items.ItemWeaponMelee;
 import dayz.common.items.ItemWhiskeybottleFull;
-import dayz.common.playerdata.Thirst;
 import dayz.common.world.BiomeGenForest;
 import dayz.common.world.BiomeGenPlainsDayZ;
 import dayz.common.world.BiomeGenRiverDayZ;
 import dayz.common.world.BiomeGenSnowDayZ;
+import dayz.common.world.WorldEvents;
 import dayz.common.world.WorldTypeBase;
 import dayz.common.world.WorldTypeSnow;
 import dayz.common.world.WorldTypeTaiga;
@@ -57,6 +54,7 @@ import dayz.common.world.WorldTypeTaiga;
 public class DayZ
 {	
 	public static Logger logger = Logger.getLogger("Minecraft");
+
 	public static EnumArmorMaterial enumArmorMaterialCamo = EnumHelper.addArmorMaterial("camo", 29, new int[] {2, 6, 5, 2}, 9);
     public static final BiomeGenBase biomeDayZForest = (new BiomeGenForest(25));
     public static final BiomeGenBase biomeDayZPlains = (new BiomeGenPlainsDayZ(26));
@@ -105,12 +103,12 @@ public class DayZ
     public static final Item chocolate = new ItemDayzFood(3006, 4, 0.5F, false).setIconCoord(3, 0).setItemName("chocolate").setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item cannedpasta = new ItemDayzFood(3035, 6, 1, false).setIconCoord(12, 0).setItemName("cannedpasta").setCreativeTab(DayZ.creativeTabDayZ);
 
-    public static final Item waterbottlefull = new ItemWaterbottleFull(3007, 8, 1.0F).setIconCoord(5, 0).setItemName("waterbottlefull").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item waterbottlefull = new ItemDayzDrink(3007, 6000, DayZ.waterbottleempty).setIconCoord(5, 0).setItemName("waterbottlefull").setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item waterbottleempty = new ItemEmptyBottle(3008, Block.waterMoving.blockID, true).setIconCoord(8, 0).setItemName("waterbottleempty").setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item whiskeybottleempty = new ItemEmptyBottle(3009, Block.waterMoving.blockID, false).setIconCoord(6, 0).setItemName("whiskeybottleempty").setCreativeTab(DayZ.creativeTabDayZ);
-    public static final Item whiskeybottlefull = new ItemWhiskeybottleFull(3010, 4, 1.0F).setIconCoord(7, 0).setItemName("whiskeybottlefull").setCreativeTab(DayZ.creativeTabDayZ);
-    public static final Item lemonade = new ItemDayzDrink(3011, 4, 1.0F).setIconCoord(4, 0).setItemName("lemonade").setCreativeTab(DayZ.creativeTabDayZ);
-    public static final Item waterbottledirty = new ItemWaterbottleDirty(3012, 0, 2, false).setIconCoord(9, 0).setItemName("waterbottledirty").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item whiskeybottlefull = new ItemWhiskeybottleFull(3010, 3000, DayZ.waterbottleempty).setIconCoord(7, 0).setItemName("whiskeybottlefull").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item lemonade = new ItemDayzDrink(3011, 3000, null).setIconCoord(4, 0).setItemName("lemonade").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item waterbottledirty = new ItemWaterbottleDirty(3012, 1000, DayZ.waterbottleempty).setIconCoord(9, 0).setItemName("waterbottledirty").setCreativeTab(DayZ.creativeTabDayZ);
 
     public static final Item bandage = new ItemDayzHeal(3013, 0, true, false).setIconCoord(1, 0).setItemName("bandage").setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item antibiotics = new ItemDayzHeal(3014, 0, false, true).setIconCoord(0, 0).setItemName("antibiotics").setCreativeTab(DayZ.creativeTabDayZ);
@@ -152,6 +150,7 @@ public class DayZ
     public void DayZpreload(FMLPreInitializationEvent event)
     { 		
 		MinecraftForge.EVENT_BUS.register(new CommonProxy());
+		MinecraftForge.TERRAIN_GEN_BUS.register(new WorldEvents());
 		CommonProxy.DayZpreload(event);
     	if (FMLCommonHandler.instance().getSide().isClient())
     	{

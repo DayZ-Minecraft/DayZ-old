@@ -1,7 +1,7 @@
 package dayz.common.world;
 
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.GenLayer;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.gen.layer.GenLayer;
 import dayz.DayZ;
 
 public class WorldTypeSnow extends WorldTypeBase

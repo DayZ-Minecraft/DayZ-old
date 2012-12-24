@@ -5,12 +5,12 @@ import static net.minecraftforge.common.ChestGenHooks.VILLAGE_BLACKSMITH;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.ComponentVillage;
-import net.minecraft.src.ComponentVillageStartPiece;
-import net.minecraft.src.StructureBoundingBox;
-import net.minecraft.src.StructureComponent;
-import net.minecraft.src.World;
+import net.minecraft.block.Block;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.structure.ComponentVillage;
+import net.minecraft.world.gen.structure.ComponentVillageStartPiece;
+import net.minecraft.world.gen.structure.StructureBoundingBox;
+import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraftforge.common.ChestGenHooks;
 
 public class ComponentVillageHouse2DayZ extends ComponentVillage
@@ -74,7 +74,7 @@ public class ComponentVillageHouse2DayZ extends ComponentVillage
         this.fillWithBlocks(par1World, par3StructureBoundingBox, 7, 2, 4, 8, 2, 5, 0, 0, false);
         this.placeBlockAtCurrentPosition(par1World, Block.cobblestone.blockID, 0, 6, 1, 3, par3StructureBoundingBox);
         //this.placeBlockAtCurrentPosition(par1World, Block.stoneOvenIdle.blockID, 0, 6, 2, 3, par3StructureBoundingBox);
-        this.generateStructureChestContents(par1World, par3StructureBoundingBox, par2Random, 6, 2, 3, ChestGenHooks.getItems(VILLAGE_BLACKSMITH), ChestGenHooks.getCount(VILLAGE_BLACKSMITH, par2Random));
+        this.generateStructureChestContents(par1World, par3StructureBoundingBox, par2Random, 6, 2, 3, ChestGenHooks.getItems(VILLAGE_BLACKSMITH, par2Random), ChestGenHooks.getCount(VILLAGE_BLACKSMITH, par2Random));
         //this.placeBlockAtCurrentPosition(par1World, Block.stoneOvenIdle.blockID, 0, 6, 3, 3, par3StructureBoundingBox);
         this.placeBlockAtCurrentPosition(par1World, Block.stoneDoubleSlab.blockID, 0, 8, 1, 1, par3StructureBoundingBox);
         this.placeBlockAtCurrentPosition(par1World, Block.thinGlass.blockID, 0, 0, 2, 2, par3StructureBoundingBox);
@@ -98,7 +98,7 @@ public class ComponentVillageHouse2DayZ extends ComponentVillage
             if (par3StructureBoundingBox.isVecInside(var5, var4, var6))
             {
                 this.hasMadeChest = true;
-                this.generateStructureChestContents(par1World, par3StructureBoundingBox, par2Random, 5, 1, 5, ChestGenHooks.getItems(VILLAGE_BLACKSMITH), ChestGenHooks.getCount(VILLAGE_BLACKSMITH, par2Random));
+                this.generateStructureChestContents(par1World, par3StructureBoundingBox, par2Random, 5, 1, 5, ChestGenHooks.getItems(VILLAGE_BLACKSMITH, par2Random), ChestGenHooks.getCount(VILLAGE_BLACKSMITH, par2Random));
             }
         }
 

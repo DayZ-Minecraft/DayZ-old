@@ -5,12 +5,12 @@ import static net.minecraftforge.common.ChestGenHooks.VILLAGE_BLACKSMITH;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.ComponentVillage;
-import net.minecraft.src.ComponentVillageStartPiece;
-import net.minecraft.src.StructureBoundingBox;
-import net.minecraft.src.StructureComponent;
-import net.minecraft.src.World;
+import net.minecraft.block.Block;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.structure.ComponentVillage;
+import net.minecraft.world.gen.structure.ComponentVillageStartPiece;
+import net.minecraft.world.gen.structure.StructureBoundingBox;
+import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraftforge.common.ChestGenHooks;
 
 public class ComponentVillageHouse1DayZ extends ComponentVillage
@@ -112,7 +112,7 @@ public class ComponentVillageHouse1DayZ extends ComponentVillage
         this.placeBlockAtCurrentPosition(par1World, Block.fence.blockID, 0, 4, 1, 3, par3StructureBoundingBox);
         this.placeBlockAtCurrentPosition(par1World, Block.pressurePlatePlanks.blockID, 0, 4, 2, 3, par3StructureBoundingBox);
         //this.placeBlockAtCurrentPosition(par1World, Block.workbench.blockID, 0, 7, 1, 1, par3StructureBoundingBox);
-        this.generateStructureChestContents(par1World, par3StructureBoundingBox, par2Random, 7, 1, 1, ChestGenHooks.getItems(VILLAGE_BLACKSMITH), ChestGenHooks.getCount(VILLAGE_BLACKSMITH, par2Random));
+        this.generateStructureChestContents(par1World, par3StructureBoundingBox, par2Random, 7, 1, 1, ChestGenHooks.getItems(VILLAGE_BLACKSMITH, par2Random), ChestGenHooks.getCount(VILLAGE_BLACKSMITH, par2Random));
         this.placeBlockAtCurrentPosition(par1World, 0, 0, 1, 1, 0, par3StructureBoundingBox);
         this.placeBlockAtCurrentPosition(par1World, 0, 0, 1, 2, 0, par3StructureBoundingBox);
         this.placeDoorAtCurrentPosition(par1World, par3StructureBoundingBox, par2Random, 1, 1, 0, this.getMetadataWithOffset(Block.doorWood.blockID, 1));

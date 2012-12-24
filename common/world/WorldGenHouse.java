@@ -2,15 +2,13 @@ package dayz.common.world;
 
 import java.util.Random;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntityChest;
-import net.minecraft.src.WeightedRandomChestContent;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldGenerator;
+import net.minecraft.block.Block;
+import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import dayz.DayZ;
 import dayz.DayZLog;
-import dayz.Util;
 import dayz.common.ChestHookRegistry;
 
 public class WorldGenHouse extends WorldGenerator

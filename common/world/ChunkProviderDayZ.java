@@ -2,23 +2,21 @@ package dayz.common.world;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockSand;
+import net.minecraft.world.SpawnerAnimals;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.ChunkProviderGenerate;
+import net.minecraft.world.gen.MapGenBase;
+import net.minecraft.world.gen.MapGenCaves;
+import net.minecraft.world.gen.MapGenRavine;
+import net.minecraft.world.gen.NoiseGeneratorOctaves;
+import net.minecraft.world.gen.feature.WorldGenLakes;
+import net.minecraft.world.gen.structure.MapGenMineshaft;
 import dayz.DayZ;
-
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockSand;
-import net.minecraft.src.Chunk;
-import net.minecraft.src.ChunkProviderGenerate;
-import net.minecraft.src.IChunkProvider;
-import net.minecraft.src.MapGenBase;
-import net.minecraft.src.MapGenCaves;
-import net.minecraft.src.MapGenMineshaft;
-import net.minecraft.src.MapGenRavine;
-import net.minecraft.src.NoiseGeneratorOctaves;
-import net.minecraft.src.SpawnerAnimals;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldGenDungeons;
-import net.minecraft.src.WorldGenLakes;
 
 public class ChunkProviderDayZ extends ChunkProviderGenerate implements IChunkProvider
 {

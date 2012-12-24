@@ -2,28 +2,24 @@ package dayz.common.world;
 
 import java.util.Random;
 
-import net.minecraft.src.BiomeDecorator;
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.EntityChicken;
-import net.minecraft.src.EntityCow;
-import net.minecraft.src.EntityPig;
-import net.minecraft.src.EntitySheep;
-import net.minecraft.src.EntityWolf;
-import net.minecraft.src.SpawnListEntry;
-import net.minecraft.src.WorldGenTaiga1;
-import net.minecraft.src.WorldGenTaiga2;
-import net.minecraft.src.WorldGenerator;
-import dayz.common.entities.EntityBandit;
-import dayz.common.entities.EntityCrawler;
-import dayz.common.entities.EntityZombieDayZ;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntityWolf;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.SpawnListEntry;
+import net.minecraft.world.gen.feature.WorldGenTaiga1;
+import net.minecraft.world.gen.feature.WorldGenTaiga2;
+import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class BiomeGenForest extends BiomeGenBase 
 {
 	public BiomeGenForest(int id) 
 	{
 		super(id);
-		setColor(747097);
-		setBiomeName("DayZ Forest");
+		setColor(1456435);
+		setBiomeName("Forest");
 		temperature = BiomeGenBase.forest.temperature;
 		rainfall = BiomeGenBase.forest.rainfall;
 		minHeight = 0.1F;
@@ -36,13 +32,11 @@ public class BiomeGenForest extends BiomeGenBase
         spawnableCreatureList.add(new SpawnListEntry(EntityCow.class, 4, 4, 4));
         spawnableCreatureList.add(new SpawnListEntry(EntityChicken.class, 4, 4, 4));
         spawnableCreatureList.add(new SpawnListEntry(EntityWolf.class, 4, 4, 4));
+        theBiomeDecorator.flowersPerChunk = 4;
+        theBiomeDecorator.deadBushPerChunk = 4;
+        theBiomeDecorator.treesPerChunk = 7;
+        theBiomeDecorator.grassPerChunk = 10;
     }
-
-	@Override
-	public BiomeDecorator createBiomeDecorator() 
-	{
-		return new BiomeDecoratorOverride.Builder(this).biomeColour(1456435).flowersPerChunk(4).deadBushPerChunk(4).treesPerChunk(7).grassPerChunk(10).build();
-	}
 
     @Override
     public WorldGenerator getRandomWorldGenForTrees(Random par1Random)

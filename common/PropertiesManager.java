@@ -1,22 +1,5 @@
 package dayz.common;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.util.Random;
-import java.util.logging.Level;
-
-import net.minecraft.src.CryptManager;
-import net.minecraft.src.DedicatedPlayerList;
-import net.minecraft.src.DedicatedServerListenThread;
-import net.minecraft.src.EnumGameType;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.PropertyManager;
-import net.minecraft.src.RConThreadMain;
-import net.minecraft.src.RConThreadQuery;
-import net.minecraft.src.WorldSettings;
-import net.minecraft.src.WorldType;
-import cpw.mods.fml.common.FMLCommonHandler;
 import dayz.DayZ;
 
 public class PropertiesManager 

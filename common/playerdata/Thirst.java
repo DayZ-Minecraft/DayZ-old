@@ -1,10 +1,6 @@
 package dayz.common.playerdata;
 
-import tarun1998.thirstmod.utils.ThirstUtils;
-import net.minecraft.src.EntityPlayer;
-import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraft.entity.player.EntityPlayer;
 
 public class Thirst 
 {	

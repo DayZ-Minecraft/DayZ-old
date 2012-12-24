@@ -1,7 +1,8 @@
 package dayz.common;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
 import dayz.DayZ;
-import net.minecraft.src.*;
 
 public class CreativeTabDayZ extends CreativeTabs
 {

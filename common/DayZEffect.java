@@ -1,10 +1,13 @@
 package dayz.common;
 
-import net.minecraft.src.Potion;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public abstract class DayZEffect extends Potion
-{
+{	
+	public static java.util.List<ItemStack> curativeItems;
+
 	/**
 	 * Creates a new type of potion
 	 * 

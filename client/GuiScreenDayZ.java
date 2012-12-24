@@ -3,30 +3,32 @@ package dayz.client;
 import java.awt.Color;
 import java.util.List;
 import java.util.Random;
+
+import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.Block;
-import net.minecraft.src.BossStatus;
-import net.minecraft.src.Chunk;
-import net.minecraft.src.EnumSkyBlock;
-import net.minecraft.src.FontRenderer;
-import net.minecraft.src.FoodStats;
-import net.minecraft.src.GuiIngame;
-import net.minecraft.src.GuiNewChat;
-import net.minecraft.src.GuiPlayerInfo;
-import net.minecraft.src.InventoryPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Material;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.NetClientHandler;
-import net.minecraft.src.Potion;
-import net.minecraft.src.RenderHelper;
-import net.minecraft.src.RenderItem;
-import net.minecraft.src.ScaledResolution;
-import net.minecraft.src.StatCollector;
-import net.minecraft.src.StringUtils;
-import net.minecraft.src.Tessellator;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.GuiIngame;
+import net.minecraft.client.gui.GuiNewChat;
+import net.minecraft.client.gui.GuiPlayerInfo;
+import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.multiplayer.NetClientHandler;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.entity.boss.BossStatus;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.util.FoodStats;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.StatCollector;
+import net.minecraft.util.StringUtils;
+import net.minecraft.world.EnumSkyBlock;
+import net.minecraft.world.chunk.Chunk;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+
 import dayz.DayZ;
 
 public class GuiScreenDayZ extends GuiIngame
