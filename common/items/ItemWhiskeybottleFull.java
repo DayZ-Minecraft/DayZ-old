@@ -2,6 +2,7 @@ package dayz.common.items;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -11,34 +12,21 @@ import dayz.common.playerdata.PlayerStats;
 
 public class ItemWhiskeybottleFull extends ItemDayzDrink
 {
-    public final int field_35430_a = 32;
-    private final float saturationModifier;
-    private final int thirstReplenish;
-    private boolean alwaysEdible;
-    private int potionId;
-    private int potionDuration;
-    private int potionAmplifier;
-    private float potionEffectProbability;
+    private int thirst;
+    private Item returnItem;
 
-    
-    public ItemWhiskeybottleFull(int itemID, int thirstreplenish, float saturationmodifier)
+    public ItemWhiskeybottleFull(int itemID, int thirst, Item returnItem)
     {
-        super(itemID, 0, saturationmodifier);
-        this.saturationModifier = saturationmodifier;
+        super(itemID, thirst);
+        this.thirst = thirst;
+        this.returnItem = returnItem;
         this.maxStackSize = 1;
-        this.thirstReplenish = thirstreplenish;
-    }
-
-
-    public ItemWhiskeybottleFull(int par1, int par2, boolean par3)
-    {
-        this(par1, par2, 0.6F);
     }
 
     public ItemStack onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
         par1ItemStack.stackSize--;
-        PlayerStats.subtractThirst(par3EntityPlayer, 3000);
+        PlayerStats.subtractThirst(par3EntityPlayer, thirst);
         par2World.playSoundAtEntity(par3EntityPlayer, "random.burp", 0.5F, par2World.rand.nextFloat() * 0.1F + 0.9F);
         par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 30 * 20, 6));
         par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.confusion.id, 30 * 20, 6));
@@ -49,7 +37,7 @@ public class ItemWhiskeybottleFull extends ItemDayzDrink
         }
         else
         {
-            par3EntityPlayer.inventory.addItemStackToInventory(new ItemStack(DayZ.whiskeybottleempty));
+            par3EntityPlayer.inventory.addItemStackToInventory(new ItemStack(returnItem));
         }
 
         return par1ItemStack;
