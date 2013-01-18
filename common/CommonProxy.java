@@ -112,7 +112,7 @@ public class CommonProxy
         LanguageRegistry.addName(DayZ.cannedfish, "Can of Sardines");
         LanguageRegistry.addName(DayZ.waterbottlefull, "Full Waterbottle");
         LanguageRegistry.addName(DayZ.waterbottleempty, "Empty Waterbottle");
-        LanguageRegistry.addName(DayZ.whiskeybottlefull, "Full Whiskey Bottle");
+        LanguageRegistry.addName(DayZ.whiskeybottlefull, "Whiskey");
         LanguageRegistry.addName(DayZ.whiskeybottleempty, "Empty Whiskey Bottle");
         LanguageRegistry.addName(DayZ.bandage, "Bandage");
         LanguageRegistry.addName(DayZ.antibiotics, "Anti-biotics");
@@ -146,7 +146,17 @@ public class CommonProxy
         LanguageRegistry.addName(DayZ.grenade, "Grenade"); 
         LanguageRegistry.addName(DayZ.crowbar, "Crowbar"); 
         LanguageRegistry.addName(DayZ.machete, "Machete"); 
-        LanguageRegistry.addName(DayZ.emptyCan, "Empty Can"); 
+        LanguageRegistry.addName(DayZ.emptyCan, "Empty Can");
+        LanguageRegistry.addName(DayZ.orangeDrink, "Orange Drink");
+        LanguageRegistry.addName(DayZ.colaDrink, "Cola");
+        LanguageRegistry.addName(DayZ.colaDrink2, "Cola");
+        LanguageRegistry.addName(DayZ.energyDrink, "Energy Drink");
+        LanguageRegistry.addName(DayZ.colaDrink3, "Cola");
+        LanguageRegistry.addName(DayZ.appleDrink, "Apple Drink"); 
+        LanguageRegistry.addName(DayZ.vodkabottleempty, "Empty Vodka Bottle"); 
+        LanguageRegistry.addName(DayZ.vodkabottlefull, "Vodka"); 
+        LanguageRegistry.addName(DayZ.ciderbottleempty, "Empty Cider Bottle"); 
+        LanguageRegistry.addName(DayZ.ciderbottlefull, "Cider"); 
                 
         GameRegistry.addShapelessRecipe(new ItemStack(DayZ.baseballbatnailed, 1), new Object[] 
         {

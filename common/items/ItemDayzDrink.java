@@ -9,8 +9,7 @@ import dayz.common.playerdata.PlayerStats;
 
 public class ItemDayzDrink extends ItemFood
 {
-    private final float saturationModifier;
-    private final int thirstReplenish;
+    private final int thirst;
 
     /**
      * Day Z Drink Item
@@ -18,18 +17,17 @@ public class ItemDayzDrink extends ItemFood
      * @param saturationmodifier The hunger bar saturation to be restored
      * @param drinkEffect Potion effect of the drink
      */
-    public ItemDayzDrink(int itemID, int thirstreplenish, float saturationmodifier)
+    public ItemDayzDrink(int itemID, int thirst)
     {
-        super(itemID, 0, saturationmodifier, false);
-        this.saturationModifier = saturationmodifier;
+        super(itemID, 0, thirst, false);
+        this.thirst = thirst;
         this.maxStackSize = 1;
-        this.thirstReplenish = thirstreplenish;
     }
 
     @Override
     public ItemStack onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
-    	PlayerStats.subtractThirst(par3EntityPlayer, 3000);
+    	PlayerStats.subtractThirst(par3EntityPlayer, thirst);
     	par1ItemStack.stackSize--;
         par2World.playSoundAtEntity(par3EntityPlayer, "random.burp", 0.5F, par2World.rand.nextFloat() * 0.1F + 0.9F);
         return par1ItemStack;
