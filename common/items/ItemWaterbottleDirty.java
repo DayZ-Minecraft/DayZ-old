@@ -1,14 +1,15 @@
 package dayz.common.items;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.world.World;
 import dayz.DayZ;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EnumAction;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemFood;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Potion;
-import net.minecraft.src.PotionEffect;
-import net.minecraft.src.World;
+import dayz.common.playerdata.PlayerStats;
 
 public class ItemWaterbottleDirty extends ItemFood
 {
@@ -42,6 +43,7 @@ public class ItemWaterbottleDirty extends ItemFood
     public ItemStack onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
     	par1ItemStack.stackSize--;
+    	PlayerStats.subtractThirst(par3EntityPlayer, 1000);
     	par3EntityPlayer.getFoodStats().addStats(this);
     	par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.poison.id, 30 * 20, 6));
     	par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 30 * 20, 6));
@@ -54,6 +56,12 @@ public class ItemWaterbottleDirty extends ItemFood
     public EnumAction getItemUseAction(ItemStack par1ItemStack)
     {
         return EnumAction.drink;
+    }
+    
+    public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer)
+    { 	
+        entityplayer.setItemInUse(itemstack, getMaxItemUseDuration(itemstack));
+        return itemstack;
     }
 
     public int getHealAmount()

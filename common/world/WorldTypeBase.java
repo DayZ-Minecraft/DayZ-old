@@ -1,13 +1,12 @@
 package dayz.common.world;
 
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.GenLayer;
-import net.minecraft.src.GenLayerHills;
-import net.minecraft.src.IChunkProvider;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldChunkManager;
-import net.minecraft.src.WorldType;
-import dayz.DayZ;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldType;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.WorldChunkManager;
+import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.layer.GenLayer;
+import net.minecraft.world.gen.layer.GenLayerHills;
 
 public class WorldTypeBase extends WorldType
 {	

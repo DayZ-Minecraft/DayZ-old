@@ -1,9 +1,9 @@
-package dayz.common;
+package dayz.common.misc;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.src.DamageSource;
+import net.minecraft.util.DamageSource;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class DayZDamageSource extends DamageSource
@@ -15,6 +15,7 @@ public class DayZDamageSource extends DamageSource
 	 */
 	public static final DayZDamageSource bleedOut = (DayZDamageSource) new DayZDamageSource("bleedOut", "%1$s lost too much blood").setDamageBypassesArmor();
 	public static final DayZDamageSource zombieInfection = (DayZDamageSource) new DayZDamageSource("zombieInfection", "%1$s became a zombie").setDamageBypassesArmor();
+	public static final DayZDamageSource thirstDeath = (DayZDamageSource) new DayZDamageSource("thirstDeath", "%1$s ran out of water").setDamageBypassesArmor();
 
 	public String deathMessage;
 

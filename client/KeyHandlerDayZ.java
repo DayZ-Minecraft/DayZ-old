@@ -2,10 +2,7 @@ package dayz.client;
 
 import java.util.EnumSet;
 
-import net.minecraft.src.KeyBinding;
-
-import org.lwjgl.input.Keyboard;
-
+import net.minecraft.client.settings.KeyBinding;
 import cpw.mods.fml.client.registry.KeyBindingRegistry.KeyHandler;
 import cpw.mods.fml.common.TickType;
 

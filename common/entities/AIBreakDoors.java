@@ -1,7 +1,7 @@
 package dayz.common.entities;
 
-import net.minecraft.src.EntityAIBreakDoor;
-import net.minecraft.src.EntityLiving;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.ai.EntityAIBreakDoor;
 
 public class AIBreakDoors extends EntityAIBreakDoor
 {

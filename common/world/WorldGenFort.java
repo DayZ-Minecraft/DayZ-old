@@ -2,14 +2,15 @@ package dayz.common.world;
 
 import java.util.Random;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.TileEntityChest;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldGenerator;
+import net.minecraft.block.Block;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import dayz.DayZ;
-import dayz.DayZLog;
-import dayz.common.WeightedRandomChestDayZ;
 import dayz.common.blocks.EnumChestType;
+import dayz.common.blocks.TileEntityChestDayZ;
+import dayz.common.misc.DayZLog;
+import dayz.common.misc.WeightedRandomChestDayZ;
 
 public class WorldGenFort extends WorldGenerator
 {
@@ -365,8 +366,11 @@ public class WorldGenFort extends WorldGenerator
         
         int chest = DayZ.dayzchestall.blockID;
         world.setBlockWithNotify(i + 5, j + 11, k + 5, chest);
-        TileEntityChest tileentitychest = (TileEntityChest)world.getBlockTileEntity(i + 5, j + 11, k + 5);
-		WeightedRandomChestDayZ.generateChestContents(rand, EnumChestType.RARE, tileentitychest, rand.nextInt(5) + 1);	
+        TileEntity tileentitychest = world.getBlockTileEntity(i + 5, j + 11, k + 5);
+        if (tileentitychest != null)
+        {
+    		WeightedRandomChestDayZ.generateChestContents(rand, EnumChestType.RARE, (TileEntityChestDayZ)tileentitychest, rand.nextInt(5) + 1);
+        }
         DayZLog.info("Day Z Fort Chest Created At " + (i + 5) + ", " + (j + 11) + ", " + (k + 5) + ".");
 
         world.setBlock(i + 5, j + 11, k + 4, 0);

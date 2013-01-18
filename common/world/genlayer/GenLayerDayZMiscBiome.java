@@ -1,8 +1,8 @@
 package dayz.common.world.genlayer;
 
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.GenLayer;
-import net.minecraft.src.IntCache;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.gen.layer.GenLayer;
+import net.minecraft.world.gen.layer.IntCache;
 import dayz.common.world.WorldTypeBase;
 
 public class GenLayerDayZMiscBiome extends GenLayer
