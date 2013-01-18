@@ -1,10 +1,10 @@
 package dayz.common.items;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import dayz.DayZ;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ItemFood;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.World;
 
 public class ItemDayzFood extends ItemFood
 {

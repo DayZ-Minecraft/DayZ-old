@@ -1,16 +1,10 @@
 package dayz.common.items;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityPlayerMP;
-import net.minecraft.src.EnumAction;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.World;
-
-import org.lwjgl.input.Mouse;
-
-import cpw.mods.fml.client.FMLClientHandler;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import dayz.DayZ;
 import dayz.common.entities.EntityBullet;
 
@@ -32,7 +26,7 @@ public class ItemAk74u extends Item
     {
         boolean flag = entityplayer.capabilities.isCreativeMode;
 
-        if (itemstack.getItemDamage() >= 30 && entityplayer.inventory.hasItem(DayZ.ak74uammo.shiftedIndex))
+        if (itemstack.getItemDamage() >= 30 && entityplayer.inventory.hasItem(DayZ.ak74uammo.itemID))
         {
             int j = getMaxItemUseDuration(itemstack) - i;
             float f = (float)j / 20F;
@@ -42,7 +36,7 @@ public class ItemAk74u extends Item
             {
             	world.playSoundAtEntity(entityplayer, "reload", 1.0F, 1.0F);
                 itemstack.setItemDamage(0);
-                entityplayer.inventory.consumeInventoryItem(DayZ.ak74uammo.shiftedIndex);
+                entityplayer.inventory.consumeInventoryItem(DayZ.ak74uammo.itemID);
             }
         }
         else

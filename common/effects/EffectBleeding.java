@@ -1,17 +1,15 @@
-package dayz.common;
+package dayz.common.effects;
 
-import java.awt.List;
 import java.util.Arrays;
 
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.item.ItemStack;
 import dayz.DayZ;
-
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.ItemStack;
+import dayz.common.misc.DayZDamageSource;
 
 public class EffectBleeding extends DayZEffect
 {
 	public static final DayZEffect INSTANCE = new EffectBleeding(21, true, 5149489, "Bleeding");
-	public static java.util.List<ItemStack> curativeItems =  Arrays.asList(new ItemStack(DayZ.bandage));
 
 	public EffectBleeding(int id, boolean isBadEffect, int color, String name)
 	{

@@ -1,11 +1,11 @@
 package dayz.common.items;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import dayz.DayZ;
 import dayz.common.entities.EntityGrenade;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.World;
 
 public class ItemGrenade extends Item
 {
@@ -14,7 +14,7 @@ public class ItemGrenade extends Item
     public ItemGrenade(int itemIndex)
     {
         super(itemIndex);
-        grenadeID = shiftedIndex;
+        grenadeID = itemID;
         maxStackSize = 1;
         if (DayZ.canGenerateExplosives)
         {

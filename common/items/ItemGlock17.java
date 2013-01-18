@@ -1,11 +1,10 @@
 package dayz.common.items;
 
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EnumAction;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.World;
-import cpw.mods.fml.common.FMLLog;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import dayz.DayZ;
 import dayz.common.entities.EntityBullet;
 
@@ -38,7 +37,7 @@ public class ItemGlock17 extends Item
                 world.spawnEntityInWorld(entitybullet);
             }
         }
-        else if (itemstack.getItemDamage() >= 17 && entityplayer.inventory.hasItem(DayZ.glock17ammo.shiftedIndex))
+        else if (itemstack.getItemDamage() >= 17 && entityplayer.inventory.hasItem(DayZ.glock17ammo.itemID))
         {
             int k = getMaxItemUseDuration(itemstack) - i;
             float f1 = (float)k / 20F;
@@ -48,7 +47,7 @@ public class ItemGlock17 extends Item
             {
                 itemstack.setItemDamage(0);
                 world.playSoundAtEntity(entityplayer, "reload", 1.0F, 1.0F);
-                entityplayer.inventory.consumeInventoryItem(DayZ.glock17ammo.shiftedIndex);
+                entityplayer.inventory.consumeInventoryItem(DayZ.glock17ammo.itemID);
             }
         }
         else

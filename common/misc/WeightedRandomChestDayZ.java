@@ -1,15 +1,16 @@
-package dayz.common;
+package dayz.common.misc;
 
 import java.util.Random;
 
-import dayz.common.blocks.EnumChestType;
-
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.TileEntityChest;
-import net.minecraft.src.TileEntityDispenser;
-import net.minecraft.src.WeightedRandom;
-import net.minecraft.src.WeightedRandomItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.tileentity.TileEntityDispenser;
+import net.minecraft.util.WeightedRandom;
+import net.minecraft.util.WeightedRandomItem;
 import net.minecraftforge.common.ChestGenHooks;
+import dayz.DayZ;
+import dayz.common.blocks.EnumChestType;
+import dayz.common.blocks.TileEntityChestDayZ;
 
 public class WeightedRandomChestDayZ extends WeightedRandomItem
 {
@@ -47,20 +48,20 @@ public class WeightedRandomChestDayZ extends WeightedRandomItem
     /**
      * Generates the Chest contents.
      */
-    public static void generateChestContents(Random par0Random, EnumChestType chestType, TileEntityChest par2TileEntityChest, int par3)
+    public static void generateChestContents(Random par0Random, EnumChestType chestType, TileEntityChestDayZ par2TileEntityChest, int par3)
     {
     	WeightedRandomChestDayZ[] par1ArrayOfWeightedRandomChestContent;
     	if (chestType == EnumChestType.ALL)
     	{
-    		par1ArrayOfWeightedRandomChestContent = ChestHookRegistry.chestAllContents;
+    		par1ArrayOfWeightedRandomChestContent = ChestHookRegistry.allLoot;
     	}
     	else if (chestType == EnumChestType.COMMON)
     	{
-    		par1ArrayOfWeightedRandomChestContent = ChestHookRegistry.chestCommonContents;
+    		par1ArrayOfWeightedRandomChestContent = ChestHookRegistry.commonLoot;
     	}
     	else
     	{
-    		par1ArrayOfWeightedRandomChestContent = ChestHookRegistry.chestRareContents;
+    		par1ArrayOfWeightedRandomChestContent = ChestHookRegistry.rareLoot;
     	}
     	
         for (int var4 = 0; var4 < par3; ++var4)
@@ -70,7 +71,7 @@ public class WeightedRandomChestDayZ extends WeightedRandomItem
 
             for (ItemStack item : stacks)
             {
-                par2TileEntityChest.setInventorySlotContents(par0Random.nextInt(par2TileEntityChest.getSizeInventory()), item);
+                par2TileEntityChest.setInventorySlotContents(DayZ.random.nextInt(27), item);
             }
         }
     }

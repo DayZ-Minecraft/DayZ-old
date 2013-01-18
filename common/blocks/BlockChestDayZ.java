@@ -2,21 +2,20 @@ package dayz.common.blocks;
 
 import java.util.Random;
 
-import net.minecraft.src.BlockChest;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.IBlockAccess;
-import net.minecraft.src.IInventory;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Material;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.World;
+import net.minecraft.block.BlockChest;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
-import cpw.mods.fml.common.Side;
-import cpw.mods.fml.common.asm.SideOnly;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import dayz.DayZ;
 
 public class BlockChestDayZ extends BlockChest 
@@ -39,7 +38,7 @@ public class BlockChestDayZ extends BlockChest
 	@Override
 	public TileEntity createNewTileEntity(World world) 
 	{
-		return null;
+		return new TileEntityChestDayZ(chestType);
 	}
 
 	@Override
@@ -177,10 +176,10 @@ public class BlockChestDayZ extends BlockChest
 				entityitem.motionX = (float) random.nextGaussian() * f3;
 				entityitem.motionY = (float) random.nextGaussian() * f3 + 0.2F;
 				entityitem.motionZ = (float) random.nextGaussian() * f3;
-				if (itemstack.hasTagCompound())
-				{
-					entityitem.item.setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
-				}
+                if (itemstack.hasTagCompound())
+                {
+                	entityitem.func_92014_d().setTagCompound((NBTTagCompound)itemstack.getTagCompound().copy());
+                }
 				world.spawnEntityInWorld(entityitem);
 			}
 		}
