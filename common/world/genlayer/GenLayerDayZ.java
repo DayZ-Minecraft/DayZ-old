@@ -1,11 +1,11 @@
 package dayz.common.world.genlayer;
 
-import net.minecraft.src.GenLayer;
-import net.minecraft.src.GenLayerFuzzyZoom;
-import net.minecraft.src.GenLayerIsland;
-import net.minecraft.src.GenLayerSmooth;
-import net.minecraft.src.GenLayerVoronoiZoom;
-import net.minecraft.src.GenLayerZoom;
+import net.minecraft.world.gen.layer.GenLayer;
+import net.minecraft.world.gen.layer.GenLayerFuzzyZoom;
+import net.minecraft.world.gen.layer.GenLayerIsland;
+import net.minecraft.world.gen.layer.GenLayerSmooth;
+import net.minecraft.world.gen.layer.GenLayerVoronoiZoom;
+import net.minecraft.world.gen.layer.GenLayerZoom;
 import dayz.common.world.WorldTypeBase;
 
 public abstract class GenLayerDayZ extends GenLayer

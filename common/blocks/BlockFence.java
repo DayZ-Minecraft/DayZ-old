@@ -1,8 +1,8 @@
 package dayz.common.blocks;
 
-import net.minecraft.src.BlockPane;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.Material;
+import net.minecraft.block.BlockPane;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 
 public class BlockFence extends BlockPane
 {

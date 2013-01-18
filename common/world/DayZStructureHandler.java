@@ -2,8 +2,7 @@ package dayz.common.world;
 
 import java.util.Random;
 
-import net.minecraft.src.World;
-import net.minecraft.src.WorldGenerator;
+import net.minecraft.world.World;
 
 public class DayZStructureHandler 
 {

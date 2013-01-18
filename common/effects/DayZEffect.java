@@ -1,6 +1,10 @@
-package dayz.common;
+package dayz.common.effects;
 
-import net.minecraft.src.Potion;
+import java.util.List;
+
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public abstract class DayZEffect extends Potion

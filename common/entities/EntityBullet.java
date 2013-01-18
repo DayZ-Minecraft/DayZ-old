@@ -1,19 +1,17 @@
 package dayz.common.entities;
 
-import dayz.common.DayZEnactEffect;
-import dayz.common.EffectBleeding;
-import net.minecraft.client.Minecraft;
-import net.minecraft.src.Block;
-import net.minecraft.src.DamageSource;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityDiggingFX;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityThrowable;
-import net.minecraft.src.EnumMovingObjectType;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.MovingObjectPosition;
-import net.minecraft.src.World;
+import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumMovingObjectType;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.world.World;
+import dayz.common.effects.DayZEnactEffect;
+import dayz.common.effects.EffectBleeding;
 
 public class EntityBullet extends EntityThrowable
 {
@@ -102,9 +100,9 @@ public class EntityBullet extends EntityThrowable
         {
             int var2 = bulletdamage;
 
-            if (par1MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.shootingEntity), var2))
+            if(par1MovingObjectPosition.entityHit instanceof EntityLiving)
             {
-                ;
+            	((EntityLiving)par1MovingObjectPosition.entityHit).attackEntityFrom(DamageSource.causeThrownDamage(this, this.shootingEntity), var2);
             }
             
             if (par1MovingObjectPosition.entityHit instanceof EntityPlayer)

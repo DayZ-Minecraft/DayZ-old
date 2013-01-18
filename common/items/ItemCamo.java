@@ -1,11 +1,10 @@
 package dayz.common.items;
 
-import dayz.DayZ;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EnumArmorMaterial;
-import net.minecraft.src.ItemArmor;
-import net.minecraft.src.ItemStack;
+import net.minecraft.item.EnumArmorMaterial;
+import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.IArmorTextureProvider;
+import dayz.DayZ;
 
 public class ItemCamo extends ItemArmor implements IArmorTextureProvider
 {
@@ -50,12 +49,12 @@ public class ItemCamo extends ItemArmor implements IArmorTextureProvider
     @Override
     public String getArmorTextureFile(ItemStack itemstack)
     {
-        if (itemstack.itemID == DayZ.camohelmet.shiftedIndex || itemstack.itemID == DayZ.camochest.shiftedIndex || itemstack.itemID == DayZ.camoboots.shiftedIndex)
+        if (itemstack.itemID == DayZ.camohelmet.itemID || itemstack.itemID == DayZ.camochest.itemID || itemstack.itemID == DayZ.camoboots.itemID)
         {
             return "/dayz/images/armor/camo_1.png";
         }
 
-        if (itemstack.itemID == DayZ.camolegs.shiftedIndex)
+        if (itemstack.itemID == DayZ.camolegs.itemID)
         {
             return "/dayz/images/armor/camo_2.png";
         }
