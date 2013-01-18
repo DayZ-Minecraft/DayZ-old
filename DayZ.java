@@ -126,12 +126,22 @@ public class DayZ
     public static final Item chocolate = new ItemDayzFood(3006, 4, 0.5F, false).setIconCoord(3, 0).setItemName("chocolate").setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item cannedpasta = new ItemDayzFood(3035, 6, 1, false).setIconCoord(12, 0).setItemName("cannedpasta").setCreativeTab(DayZ.creativeTabDayZ);
 
-    public static final Item waterbottlefull = new ItemWaterbottleFull(3007, 8, 1.0F).setIconCoord(5, 0).setItemName("waterbottlefull").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item waterbottlefull = new ItemWaterbottleFull(3007, 6000).setIconCoord(5, 0).setItemName("waterbottlefull").setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item waterbottleempty = new ItemEmptyBottle(3008, Block.waterMoving.blockID, true).setIconCoord(8, 0).setItemName("waterbottleempty").setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item whiskeybottleempty = new ItemEmptyBottle(3009, Block.waterMoving.blockID, false).setIconCoord(6, 0).setItemName("whiskeybottleempty").setCreativeTab(DayZ.creativeTabDayZ);
-    public static final Item whiskeybottlefull = new ItemWhiskeybottleFull(3010, 4, 1.0F).setIconCoord(7, 0).setItemName("whiskeybottlefull").setCreativeTab(DayZ.creativeTabDayZ);
-    public static final Item lemonade = new ItemDayzDrink(3011, 4, 1.0F).setIconCoord(4, 0).setItemName("lemonade").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item whiskeybottlefull = new ItemWhiskeybottleFull(3010, 3000, whiskeybottleempty).setIconCoord(7, 0).setItemName("whiskeybottlefull").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item lemonade = new ItemDayzDrink(3011, 3000).setIconCoord(4, 0).setItemName("lemonade").setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item waterbottledirty = new ItemWaterbottleDirty(3012, 0, 2, false).setIconCoord(9, 0).setItemName("waterbottledirty").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item colaDrink = new ItemDayzDrink(3044, 3000).setIconCoord(15, 0).setItemName("colaDrink").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item colaDrink2 = new ItemDayzDrink(3045, 3000).setIconCoord(0, 1).setItemName("colaDrink2").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item energyDrink = new ItemDayzDrink(3046, 3000).setIconCoord(1, 1).setItemName("energyDrink").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item colaDrink3 = new ItemDayzDrink(3047, 3000).setIconCoord(2, 1).setItemName("colaDrink3").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item appleDrink = new ItemDayzDrink(3048, 3000).setIconCoord(3, 1).setItemName("appleDrink").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item vodkabottleempty = new ItemEmptyBottle(3049, Block.waterMoving.blockID, false).setIconCoord(5, 1).setItemName("vodkabottleempty").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item vodkabottlefull = new ItemWhiskeybottleFull(3050, 3000, vodkabottleempty).setIconCoord(6, 1).setItemName("vodkabottlefull").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item ciderbottleempty = new ItemEmptyBottle(3051, Block.waterMoving.blockID, false).setIconCoord(7, 1).setItemName("ciderbottleempty").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item ciderbottlefull = new ItemWhiskeybottleFull(3052, 3000, ciderbottleempty).setIconCoord(8, 1).setItemName("ciderbottlefull").setCreativeTab(DayZ.creativeTabDayZ);
+    public static final Item orangeDrink = new ItemDayzDrink(3053, 3000).setIconCoord(14, 0).setItemName("orangeDrink").setCreativeTab(DayZ.creativeTabDayZ);
 
     public static final Item bandage = new ItemDayzHeal(3013, 0, true, false).setIconCoord(1, 0).setItemName("bandage").setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item antibiotics = new ItemDayzHeal(3014, 0, false, true).setIconCoord(0, 0).setItemName("antibiotics").setCreativeTab(DayZ.creativeTabDayZ);
