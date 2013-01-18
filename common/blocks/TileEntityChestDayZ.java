@@ -2,19 +2,20 @@ package dayz.common.blocks;
 
 import java.util.Iterator;
 import java.util.List;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.Block;
-import net.minecraft.src.ContainerChest;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.IInventory;
-import net.minecraft.src.InventoryLargeChest;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.NBTTagList;
-import net.minecraft.src.TileEntityChest;
+
+import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ContainerChest;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryLargeChest;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.util.AxisAlignedBB;
 import dayz.DayZ;
-import dayz.DayZLog;
-import dayz.common.WeightedRandomChestDayZ;
+import dayz.common.misc.DayZLog;
+import dayz.common.misc.WeightedRandomChestDayZ;
 
 public class TileEntityChestDayZ extends TileEntityChest implements IInventory
 {
@@ -203,9 +204,9 @@ public class TileEntityChestDayZ extends TileEntityChest implements IInventory
 
                 if (var4.openContainer instanceof ContainerChest)
                 {
-                    IInventory var5 = ((ContainerChest)var4.openContainer).func_85151_d();
+                    IInventory var5 = ((ContainerChest)var4.openContainer).getLowerChestInventory();
 
-                    if (var5 == this || var5 instanceof InventoryLargeChest && ((InventoryLargeChest)var5).func_90010_a(this))
+                    if (var5 == this || var5 instanceof InventoryLargeChest && ((InventoryLargeChest)var5).isPartOfLargeChest(this))
                     {
                         ++this.numUsingPlayers;
                     }
@@ -285,7 +286,9 @@ public class TileEntityChestDayZ extends TileEntityChest implements IInventory
         
     }
     
-    @Override
+    /**
+     * Reads a tile entity from NBT.
+     */
     public void readFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readFromNBT(par1NBTTagCompound);
@@ -304,7 +307,9 @@ public class TileEntityChestDayZ extends TileEntityChest implements IInventory
         }
     }
 
-    @Override
+    /**
+     * Writes a tile entity to NBT.
+     */
     public void writeToNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.writeToNBT(par1NBTTagCompound);

@@ -1,12 +1,7 @@
 package dayz.common.world;
 
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.GenLayer;
-import net.minecraft.src.GenLayerHills;
-import net.minecraft.src.IChunkProvider;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldChunkManager;
-import net.minecraft.src.WorldType;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.gen.layer.GenLayer;
 import dayz.DayZ;
 
 public class WorldTypeTaiga extends WorldTypeBase

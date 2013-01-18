@@ -2,17 +2,16 @@ package dayz.common.world;
 
 import java.util.Random;
 
-import net.minecraft.src.BiomeDecorator;
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.EntityChicken;
-import net.minecraft.src.EntityCow;
-import net.minecraft.src.EntityPig;
-import net.minecraft.src.EntitySheep;
-import net.minecraft.src.EntityWolf;
-import net.minecraft.src.SpawnListEntry;
-import net.minecraft.src.WorldGenTaiga1;
-import net.minecraft.src.WorldGenTaiga2;
-import net.minecraft.src.WorldGenerator;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntityWolf;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.SpawnListEntry;
+import net.minecraft.world.gen.feature.WorldGenTaiga1;
+import net.minecraft.world.gen.feature.WorldGenTaiga2;
+import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class BiomeGenSnowDayZ extends BiomeGenBase 
 {
@@ -30,6 +29,11 @@ public class BiomeGenSnowDayZ extends BiomeGenBase
         spawnableCreatureList.add(new SpawnListEntry(EntityCow.class, 4, 4, 4));
         spawnableCreatureList.add(new SpawnListEntry(EntityChicken.class, 4, 4, 4));
         spawnableCreatureList.add(new SpawnListEntry(EntityWolf.class, 4, 4, 4));
+        theBiomeDecorator.treesPerChunk = 2;
+        theBiomeDecorator.biome.color = 1456435;
+        theBiomeDecorator.flowersPerChunk = 0;
+        theBiomeDecorator.grassPerChunk = 4;
+        theBiomeDecorator.deadBushPerChunk = 0;
     }
 
     @Override
@@ -37,10 +41,4 @@ public class BiomeGenSnowDayZ extends BiomeGenBase
     {
         return (WorldGenerator)(par1Random.nextInt(3) == 0 ? new WorldGenTaiga1() : new WorldGenTaiga2(false));
     }
-	
-	@Override
-	public BiomeDecorator createBiomeDecorator() 
-	{
-		return new BiomeDecoratorOverride.Builder(this).biomeColour(1456435).flowersPerChunk(0).deadBushPerChunk(0).treesPerChunk(2).grassPerChunk(4).build();
-	}
 }

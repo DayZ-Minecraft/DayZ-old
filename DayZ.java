@@ -3,27 +3,38 @@ package dayz;
 import java.util.Random;
 import java.util.logging.Logger;
 
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.Block;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EnumArmorMaterial;
-import net.minecraft.src.EnumToolMaterial;
-import net.minecraft.src.Item;
+import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.EnumArmorMaterial;
+import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.item.Item;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.Mod.Metadata;
 import cpw.mods.fml.common.Mod.PostInit;
 import cpw.mods.fml.common.Mod.PreInit;
+import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
+import dayz.client.ClientEvents;
+import dayz.client.ClientPlayerHandler;
 import dayz.client.ClientProxy;
+import dayz.client.ClientTickHandler;
+import dayz.common.CommonEvents;
+import dayz.common.CommonPlayerHandler;
 import dayz.common.CommonProxy;
-import dayz.common.CreativeTabDayZ;
+import dayz.common.CommonTickHandler;
+import dayz.common.blocks.TileEntityChestDayZ;
 import dayz.common.items.ItemAk74u;
 import dayz.common.items.ItemAmmo;
 import dayz.common.items.ItemBloodBag;
@@ -44,6 +55,10 @@ import dayz.common.items.ItemWaterbottleDirty;
 import dayz.common.items.ItemWaterbottleFull;
 import dayz.common.items.ItemWeaponMelee;
 import dayz.common.items.ItemWhiskeybottleFull;
+import dayz.common.misc.CreativeTabDayZ;
+import dayz.common.misc.DayZLog;
+import dayz.common.misc.Updater;
+import dayz.common.misc.Util;
 import dayz.common.world.BiomeGenForest;
 import dayz.common.world.BiomeGenPlainsDayZ;
 import dayz.common.world.BiomeGenRiverDayZ;
@@ -67,7 +82,6 @@ public class DayZ
 	public static WorldTypeBase worldTypeSnow = new WorldTypeSnow();
 	public static CreativeTabs creativeTabDayZ = new CreativeTabDayZ();
 	public static Random random = new Random();
-	public static dayz.common.Properties properties;
 	
 	/**
 	 * Check this instead of using the internet to check status.
@@ -80,7 +94,13 @@ public class DayZ
      */
     @Instance(Util.ID)
 	public static DayZ INSTANCE;   
-    	
+    
+    /**
+     * The metadata - contents of the mcmod.info
+     */
+    @Metadata(Util.ID)
+    public static ModMetadata meta;
+    
 	public static int barbedwireID;
 	public static int dayzchestallID;
 	public static int dayzchestrareID;
@@ -116,7 +136,7 @@ public class DayZ
     public static final Item bandage = new ItemDayzHeal(3013, 0, true, false).setIconCoord(1, 0).setItemName("bandage").setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item antibiotics = new ItemDayzHeal(3014, 0, false, true).setIconCoord(0, 0).setItemName("antibiotics").setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item bloodbag = new ItemBloodBag(3015).setIconCoord(2, 0).setItemName("bloodbag").setCreativeTab(DayZ.creativeTabDayZ);
-
+    
     public static final Item ak74u = new ItemAk74u(3016).setIconCoord(0, 0).setItemName("ak74u").setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item makarov = new ItemMakarov(3017).setIconCoord(2, 0).setItemName("markov").setCreativeTab(DayZ.creativeTabDayZ);
     public static final Item remington = new ItemRemington(3018).setIconCoord(4, 0).setItemName("remington").setCreativeTab(DayZ.creativeTabDayZ);
@@ -151,12 +171,14 @@ public class DayZ
      */
     @PreInit
     public void DayZpreload(FMLPreInitializationEvent event)
-    { 
-		MinecraftForge.EVENT_BUS.register(new CommonProxy());
+    { 		
+		MinecraftForge.EVENT_BUS.register(new CommonEvents());
 		CommonProxy.DayZpreload(event);
     	if (FMLCommonHandler.instance().getSide().isClient())
     	{
-    		MinecraftForge.EVENT_BUS.register(new ClientProxy());
+    		MinecraftForge.EVENT_BUS.register(new ClientEvents());
+            TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
+            GameRegistry.registerPlayerTracker(new ClientPlayerHandler());
     		ClientProxy.DayZpreload(event);
     	}
         DayZLog.info("Day Z " + Util.VERSION + Updater.preRelease() + " Preload Complete");
@@ -169,7 +191,10 @@ public class DayZ
     @Init
     public void DayZload(FMLInitializationEvent event)
     {
-		CommonProxy.DayZload(event);
+		CommonProxy.DayZload(event);        
+		GameRegistry.registerPlayerTracker(new CommonPlayerHandler());
+        TickRegistry.registerTickHandler(new CommonTickHandler(), Side.SERVER);
+        GameRegistry.registerTileEntity(TileEntityChestDayZ.class, "chestDayZ");
     	if (FMLCommonHandler.instance().getSide().isClient())
     	{
     		ClientProxy.DayZload(event);

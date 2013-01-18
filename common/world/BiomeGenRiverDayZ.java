@@ -1,11 +1,7 @@
 package dayz.common.world;
 
-import dayz.common.entities.EntityBandit;
-import dayz.common.entities.EntityCrawler;
-import dayz.common.entities.EntityZombieDayZ;
-import net.minecraft.src.BiomeDecorator;
-import net.minecraft.src.BiomeGenRiver;
-import net.minecraft.src.SpawnListEntry;
+import net.minecraft.world.biome.BiomeDecorator;
+import net.minecraft.world.biome.BiomeGenRiver;
 
 public class BiomeGenRiverDayZ extends BiomeGenRiver 
 {
@@ -18,11 +14,10 @@ public class BiomeGenRiverDayZ extends BiomeGenRiver
         spawnableCreatureList.clear();
 		minHeight = -0.5F;
 		maxHeight = 0.0F;
+        theBiomeDecorator.treesPerChunk = -999;
+        theBiomeDecorator.biome.color = 1456435;
+        theBiomeDecorator.flowersPerChunk = 0;
+        theBiomeDecorator.grassPerChunk = 15;
+        theBiomeDecorator.deadBushPerChunk = 0;
     }
-
-	@Override
-	public BiomeDecorator createBiomeDecorator() 
-	{
-		return new BiomeDecoratorOverride.Builder(this).biomeColour(1456435).flowersPerChunk(0).deadBushPerChunk(0).treesPerChunk(-999).grassPerChunk(15).build();
-	}
 }

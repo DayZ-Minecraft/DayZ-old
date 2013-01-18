@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.MapGenStructure;
-import net.minecraft.src.StructureStart;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.gen.structure.MapGenStructure;
+import net.minecraft.world.gen.structure.StructureStart;
 import dayz.DayZ;
 
 public class MapGenTown extends MapGenStructure

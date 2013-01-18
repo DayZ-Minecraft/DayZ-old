@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
-import net.minecraft.src.ComponentVillageRoadPiece;
-import net.minecraft.src.ComponentVillageStartPiece;
-import net.minecraft.src.StructureComponent;
-import net.minecraft.src.StructureStart;
-import net.minecraft.src.StructureVillagePieces;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.structure.ComponentVillageRoadPiece;
+import net.minecraft.world.gen.structure.ComponentVillageStartPiece;
+import net.minecraft.world.gen.structure.StructureComponent;
+import net.minecraft.world.gen.structure.StructureStart;
+import net.minecraft.world.gen.structure.StructureVillagePieces;
 
 class StructureVillageStartDayZ extends StructureStart
 {

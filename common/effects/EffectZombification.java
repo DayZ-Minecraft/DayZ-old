@@ -1,8 +1,8 @@
-package dayz.common;
+package dayz.common.effects;
 
+import net.minecraft.entity.EntityLiving;
 import dayz.common.entities.EntityZombieDayZ;
-import net.minecraft.src.DamageSource;
-import net.minecraft.src.EntityLiving;
+import dayz.common.misc.DayZDamageSource;
 
 public class EffectZombification extends DayZEffect
 {
