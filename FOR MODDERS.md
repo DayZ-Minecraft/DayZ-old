@@ -1,1 +1,1 @@
-Clone into the src/common directory, make sure to call the folder 'dayz'.
+Clone into the mcp\src\ directory, make sure to call the folder 'minecraft'.
