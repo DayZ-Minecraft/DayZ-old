@@ -1,1 +1,0 @@
-Clone into the mcp\src\ directory, make sure to call the folder 'minecraft'.
