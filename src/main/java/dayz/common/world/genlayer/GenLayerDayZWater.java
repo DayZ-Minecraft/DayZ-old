@@ -3,12 +3,12 @@ package dayz.common.world.genlayer;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
-import dayz.common.world.WorldTypeBase;
+import dayz.common.world.WorldTypes;
 
 public class GenLayerDayZWater extends GenLayer
 {
 
-    public GenLayerDayZWater(long l, GenLayer genlayer, GenLayer genlayer1, WorldTypeBase worldtype)
+    public GenLayerDayZWater(long l, GenLayer genlayer, GenLayer genlayer1, WorldTypes worldtype)
     {
         super(l);
         field_35512_b = genlayer;
@@ -63,5 +63,5 @@ public class GenLayerDayZWater extends GenLayer
 
     private GenLayer field_35512_b;
     private GenLayer field_35513_c;
-    private WorldTypeBase worldType;
+    private WorldTypes worldType;
 }

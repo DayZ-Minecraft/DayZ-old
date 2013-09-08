@@ -3,25 +3,23 @@ package dayz.common.blocks;
 import java.util.Random;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import dayz.DayZ;
 
-public class BlockBarbedWire extends BlockBase
+public class BlockBarbedWire extends BlockMod
 {
-    public BlockBarbedWire(int i)
+    public BlockBarbedWire(int blockId)
     {
-        super(i, Material.iron);
+        super(blockId, Material.iron);
     }
 
     @Override
-    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
+    public void onEntityCollidedWithBlock(World world, int xCoord, int yCoord, int zCoord, Entity entity)
     {
-        par5Entity.attackEntityFrom(DamageSource.generic, 1);
-        par5Entity.setInWeb();
+        entity.attackEntityFrom(DamageSource.generic, 1);
+        entity.setInWeb();
     }
 
     @Override
@@ -31,7 +29,7 @@ public class BlockBarbedWire extends BlockBase
     }
 
     @Override
-    public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int i)
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int xCoord, int yCoord, int zCoord)
     {
         return null;
     }
@@ -49,14 +47,8 @@ public class BlockBarbedWire extends BlockBase
     }
 
     @Override
-    public int idDropped(int par1, Random par2Random, int par3)
+    public int idDropped(int metadata, Random rand, int fortune)
     {
-        return DayZ.barbedwire.blockID;
-    }
-
-    @Override
-    public void registerIcons(IconRegister par1IconRegister)
-    {
-        blockIcon = par1IconRegister.registerIcon("dayz:barbedwire");
+        return Blocks.barbedWire.blockID;
     }
 }

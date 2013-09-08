@@ -3,33 +3,26 @@ package dayz.client.entities;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 import dayz.common.entities.EntityZombieDayZ;
 import dayz.common.misc.Util;
 
 public class RenderZombieDayZ extends RenderLiving
 {
-    public RenderZombieDayZ(ModelBase par1ModelBase, float par2)
+    public RenderZombieDayZ(ModelBase par1ModelBase, float shadowSize)
     {
-        super(par1ModelBase, par2);
+        super(par1ModelBase, shadowSize);
     }
 
-    public void renderZombie(EntityZombieDayZ entityZombie, double par2, double par4, double par6, float par8, float par9)
+    public void renderZombie(EntityZombieDayZ entityZombie, double x, double y, double z, float yaw, float partialTickTime)
     {
-        super.doRenderLiving(entityZombie, par2, par4, par6, par8, par9);
-    }
-
-    @Override
-    public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
-    {
-        renderZombie((EntityZombieDayZ) par1EntityLiving, par2, par4, par6, par8, par9);
+        super.doRenderLiving(entityZombie, x, y, z, yaw, partialTickTime);
     }
 
     @Override
-    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+    public void doRender(Entity entity, double x, double y, double z, float yaw, float partialTickTime)
     {
-        renderZombie((EntityZombieDayZ) par1Entity, par2, par4, par6, par8, par9);
+        renderZombie((EntityZombieDayZ) entity, x, y, z, yaw, partialTickTime);
     }
 
     @Override

@@ -9,9 +9,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ModelZombieDayZ extends ModelBiped
 {
-    /**
-     * Sets the models various rotation angles.
-     */
     @Override
     public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
     {

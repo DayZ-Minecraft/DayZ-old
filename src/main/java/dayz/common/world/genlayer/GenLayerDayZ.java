@@ -6,16 +6,16 @@ import net.minecraft.world.gen.layer.GenLayerIsland;
 import net.minecraft.world.gen.layer.GenLayerSmooth;
 import net.minecraft.world.gen.layer.GenLayerVoronoiZoom;
 import net.minecraft.world.gen.layer.GenLayerZoom;
-import dayz.common.world.WorldTypeBase;
+import dayz.common.world.WorldTypes;
 
 public abstract class GenLayerDayZ extends GenLayer
 {
-    public GenLayerDayZ(long l)
+    public GenLayerDayZ(long seed)
     {
-        super(l);
+        super(seed);
     }
 
-    public static GenLayer[] getGenLayers(long l, WorldTypeBase worldtype)
+    public static GenLayer[] getGenLayers(long l, WorldTypes worldtype)
     {
         GenLayer genlayer = new GenLayerIsland(1L);
         genlayer = new GenLayerFuzzyZoom(2000L, genlayer);
@@ -61,5 +61,4 @@ public abstract class GenLayerDayZ extends GenLayer
         return (new GenLayer[]
         { genlayer3, genlayervoronoizoom, genlayerdimensionwater });
     }
-
 }

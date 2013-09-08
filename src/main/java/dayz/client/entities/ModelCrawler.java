@@ -84,9 +84,6 @@ public class ModelCrawler extends ModelBase
         setRotation(Right_arm, -1.487144F, 0.0F, 0.0F);
     }
 
-    /**
-     * Sets the models various rotation angles then renders the model.
-     */
     @Override
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
     {
@@ -111,9 +108,6 @@ public class ModelCrawler extends ModelBase
         modelrenderer.rotateAngleZ = f2;
     }
 
-    /**
-     * Sets the models various rotation angles.
-     */
     @Override
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {

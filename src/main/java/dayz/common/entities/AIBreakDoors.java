@@ -8,14 +8,11 @@ public class AIBreakDoors extends EntityAIBreakDoor
     private int breakingTime;
     private int field_75358_j = -1;
 
-    public AIBreakDoors(EntityLiving par1EntityLiving)
+    public AIBreakDoors(EntityLiving entityLiving)
     {
-        super(par1EntityLiving);
+        super(entityLiving);
     }
 
-    /**
-     * Updates the task
-     */
     @Override
     public void updateTask()
     {

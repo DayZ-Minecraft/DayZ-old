@@ -8,33 +8,33 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
-public class BlockMine extends BlockBase
+public class BlockMine extends BlockMod
 {
-    public BlockMine(int par1, Material par3Material)
+    public BlockMine(int blockId, Material material)
     {
-        super(par1, par3Material);
+        super(blockId, material);
     }
 
     @Override
-    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
+    public void onEntityCollidedWithBlock(World world, int xCoord, int yCoord, int zCoord, Entity entity)
     {
-        par1World.playSoundEffect(par2 + 0.5D, par3 + 0.5D, par4 + 0.5D, "random.click", 0.3F, 0.6F);
-        par1World.createExplosion(par5Entity, par2, par3, par4, 4.0F, false);
+        world.playSoundEffect(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D, "random.click", 0.3F, 0.6F);
+        world.createExplosion(entity, xCoord, yCoord, zCoord, 4.0F, false);
     }
 
     @Override
-    public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4)
+    public boolean canPlaceBlockAt(World world, int xCoord, int yCoord, int zCoord)
     {
-        return super.canPlaceBlockAt(par1World, par2, par3, par4) && canThisPlantGrowOnThisBlockID(par1World.getBlockId(par2, par3 - 1, par4));
+        return super.canPlaceBlockAt(world, xCoord, yCoord, zCoord) && canThisPlantGrowOnThisBlockID(world.getBlockId(xCoord, yCoord - 1, zCoord));
     }
 
-    protected boolean canThisPlantGrowOnThisBlockID(int par1)
+    protected boolean canThisPlantGrowOnThisBlockID(int blockId)
     {
-        return par1 == Block.grass.blockID || par1 == Block.dirt.blockID || par1 == Block.tilledField.blockID || par1 == Block.sand.blockID;
+        return blockId == Block.grass.blockID || blockId == Block.dirt.blockID || blockId == Block.tilledField.blockID || blockId == Block.sand.blockID;
     }
 
     @Override
-    public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int xCoord, int yCoord, int zCoord)
     {
         return null;
     }
@@ -58,7 +58,7 @@ public class BlockMine extends BlockBase
     }
 
     @Override
-    public int idDropped(int par1, Random par2Random, int par3)
+    public int idDropped(int metadata, Random rand, int fortune)
     {
         return 0;
     }

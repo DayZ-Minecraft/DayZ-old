@@ -17,15 +17,14 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import dayz.common.effects.DayZEnactEffect;
-import dayz.common.effects.EffectBleeding;
-import dayz.common.effects.EffectZombification;
+import dayz.common.effects.Effect;
+import dayz.common.effects.EnactEffect;
 
 public class EntityCrawler extends EntityMob
 {
-    public EntityCrawler(World par1World)
+    public EntityCrawler(World world)
     {
-        super(par1World);
+        super(world);
         setEntityHealth(12F);
         float moveSpeed = 0.3F;
         getNavigator().setBreakDoors(true);
@@ -51,57 +50,24 @@ public class EntityCrawler extends EntityMob
         return false;
     }
 
-    /**
-     * Returns the current armor value as determined by a call to
-     * InventoryPlayer.getTotalArmorValue
-     */
-    @Override
-    public int getTotalArmorValue()
-    {
-        return 2;
-    }
-
-    /**
-     * Returns true if the newer Entity AI code should be run
-     */
     @Override
     protected boolean isAIEnabled()
     {
         return true;
     }
 
-    /**
-     * Called frequently so the entity can update its state every tick as
-     * required. For example, zombies and skeletons
-     * use this to react to sunlight and start to burn.
-     */
-    @Override
-    public void onLivingUpdate()
-    {
-        super.onLivingUpdate();
-    }
-
-    /**
-     * Returns the sound this mob makes while it's alive.
-     */
     @Override
     protected String getLivingSound()
     {
         return "mob.zombie.say";
     }
 
-    /**
-     * Returns the sound this mob makes when it is hurt.
-     */
     @Override
     protected String getHurtSound()
     {
         return "mob.zombie.hurt";
     }
 
-    /**
-     * Returns the sound this mob makes on death.
-     */
     @Override
     protected String getDeathSound()
     {
@@ -123,15 +89,12 @@ public class EntityCrawler extends EntityMob
         }
     }
 
-    /**
-     * Called when the entity is attacked.
-     */
     @Override
-    public boolean attackEntityFrom(DamageSource par1DamageSource, float par2)
+    public boolean attackEntityFrom(DamageSource damageSource, float damage)
     {
-        if (super.attackEntityFrom(par1DamageSource, par2))
+        if (super.attackEntityFrom(damageSource, damage))
         {
-            Entity entity = par1DamageSource.getEntity();
+            Entity entity = damageSource.getEntity();
 
             if (riddenByEntity == entity || ridingEntity == entity)
             {
@@ -152,7 +115,7 @@ public class EntityCrawler extends EntityMob
     }
 
     @Override
-    public boolean attackEntityAsMob(Entity par1Entity)
+    public boolean attackEntityAsMob(Entity entity)
     {
         if (worldObj.difficultySetting == 1)
         {
@@ -160,13 +123,13 @@ public class EntityCrawler extends EntityMob
             int k = rand.nextInt(20);
             if (j == 0)
             {
-                ((EntityLivingBase) par1Entity).addPotionEffect(new DayZEnactEffect(EffectBleeding.INSTANCE.getId(), 20 * 120, 1));
+                ((EntityLivingBase) entity).addPotionEffect(new EnactEffect(Effect.bleeding.getId(), 20 * 120, 1));
             }
             if (k == 0)
             {
-                ((EntityLivingBase) par1Entity).addPotionEffect(new DayZEnactEffect(EffectZombification.INSTANCE.getId(), 20 * 120, 1));
+                ((EntityLivingBase) entity).addPotionEffect(new EnactEffect(Effect.zombification.getId(), 20 * 120, 1));
             }
-            return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), 2);
+            return entity.attackEntityFrom(DamageSource.causeMobDamage(this), 2);
         }
         else if (worldObj.difficultySetting == 2)
         {
@@ -174,13 +137,13 @@ public class EntityCrawler extends EntityMob
             int k = rand.nextInt(10);
             if (j == 0)
             {
-                ((EntityLivingBase) par1Entity).addPotionEffect(new DayZEnactEffect(EffectBleeding.INSTANCE.getId(), 20 * 120, 1));
+                ((EntityLivingBase) entity).addPotionEffect(new EnactEffect(Effect.bleeding.getId(), 20 * 120, 1));
             }
             if (k == 0)
             {
-                ((EntityLivingBase) par1Entity).addPotionEffect(new DayZEnactEffect(EffectZombification.INSTANCE.getId(), 20 * 120, 1));
+                ((EntityLivingBase) entity).addPotionEffect(new EnactEffect(Effect.zombification.getId(), 20 * 120, 1));
             }
-            return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), 3);
+            return entity.attackEntityFrom(DamageSource.causeMobDamage(this), 3);
         }
         else if (worldObj.difficultySetting == 3)
         {
@@ -188,13 +151,13 @@ public class EntityCrawler extends EntityMob
             int k = rand.nextInt(6);
             if (j == 0)
             {
-                ((EntityLivingBase) par1Entity).addPotionEffect(new DayZEnactEffect(EffectBleeding.INSTANCE.getId(), 20 * 120, 1));
+                ((EntityLivingBase) entity).addPotionEffect(new EnactEffect(Effect.bleeding.getId(), 20 * 120, 1));
             }
             if (k == 0)
             {
-                ((EntityLivingBase) par1Entity).addPotionEffect(new DayZEnactEffect(EffectZombification.INSTANCE.getId(), 20 * 120, 1));
+                ((EntityLivingBase) entity).addPotionEffect(new EnactEffect(Effect.zombification.getId(), 20 * 120, 1));
             }
-            return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), 6);
+            return entity.attackEntityFrom(DamageSource.causeMobDamage(this), 6);
         }
         else
         {
@@ -202,37 +165,25 @@ public class EntityCrawler extends EntityMob
         }
     }
 
-    /**
-     * Basic mob attack. Default to touch of death in EntityCreature. Overridden
-     * by each mob to define their attack.
-     */
     @Override
-    protected void attackEntity(Entity par1Entity, float par2)
+    protected void attackEntity(Entity entity, float distanceToEntity)
     {
-        if (attackTime <= 0 && par2 < 2.0F && par1Entity.boundingBox.maxY > boundingBox.minY && par1Entity.boundingBox.minY < boundingBox.maxY)
+        if (attackTime <= 0 && distanceToEntity < 2.0F && entity.boundingBox.maxY > boundingBox.minY && entity.boundingBox.minY < boundingBox.maxY)
         {
             attackTime = 20;
-            attackEntityAsMob(par1Entity);
+            attackEntityAsMob(entity);
         }
     }
 
-    /**
-     * Takes a coordinate in and returns a weight to determine how likely this
-     * creature will try to path to the block.
-     * Args: x, y, z
-     */
     @Override
-    public float getBlockPathWeight(int par1, int par2, int par3)
+    public float getBlockPathWeight(int xCoord, int yCoord, int zCoord)
     {
-        return 0.5F;
+        return 0.5F - worldObj.getLightBrightness(xCoord, yCoord, zCoord);
     }
 
-    /**
-     * (abstract) Protected helper method to write subclass entity data to NBT.
-     */
     @Override
-    public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
+    public void writeEntityToNBT(NBTTagCompound tagCompound)
     {
-        super.writeEntityToNBT(par1NBTTagCompound);
+        super.writeEntityToNBT(tagCompound);
     }
 }

@@ -5,6 +5,7 @@ import java.util.EnumSet;
 import net.minecraft.entity.player.EntityPlayer;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
+import dayz.DayZ;
 
 public class CommonTickHandler implements ITickHandler
 {
@@ -17,17 +18,16 @@ public class CommonTickHandler implements ITickHandler
     @Override
     public void tickEnd(EnumSet<TickType> type, Object... tickData)
     {
-        onGameTick();
-        if (type.equals(EnumSet.of(TickType.PLAYER)))
+        if (type.equals(EnumSet.of(TickType.SERVER)))
         {
-            onPlayerTick((EntityPlayer) tickData[0]);
+            onServerTick();
         }
     }
 
     @Override
     public EnumSet<TickType> ticks()
     {
-        return EnumSet.of(TickType.PLAYER);
+        return EnumSet.of(TickType.SERVER);
     }
 
     @Override
@@ -36,13 +36,13 @@ public class CommonTickHandler implements ITickHandler
         return "DayZ Thirst";
     }
 
-    private void onPlayerTick(EntityPlayer player)
+    private void onPlayerTick(EntityPlayer entityPlayer)
     {
 
     }
 
-    private void onGameTick()
+    private void onServerTick()
     {
-
+        DayZ.thirst().handleThirst();
     }
 }
