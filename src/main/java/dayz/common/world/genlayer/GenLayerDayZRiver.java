@@ -3,11 +3,11 @@ package dayz.common.world.genlayer;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
-import dayz.common.world.WorldTypeBase;
+import dayz.common.world.WorldTypes;
 
 public class GenLayerDayZRiver extends GenLayer
 {
-    public GenLayerDayZRiver(long l, GenLayer genlayer, WorldTypeBase worldtype)
+    public GenLayerDayZRiver(long l, GenLayer genlayer, WorldTypes worldtype)
     {
         super(l);
         super.parent = genlayer;
@@ -55,5 +55,5 @@ public class GenLayerDayZRiver extends GenLayer
         return ai1;
     }
 
-    private WorldTypeBase worldType;
+    private WorldTypes worldType;
 }

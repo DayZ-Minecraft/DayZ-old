@@ -79,7 +79,7 @@ public final class ChatHandler
      * @param message
      * @param error
      */
-    public static void logEception(Level level, String message, Throwable error)
+    public static void logException(Level level, String message, Throwable error)
     {
         log.log(level, message, error);
     }
@@ -101,9 +101,9 @@ public final class ChatHandler
      * @param msg
      *            message to be outputted
      */
-    public static void logInfo(String msg)
+    public static void logInfo(String message)
     {
-        log.info(msg);
+        log.info(message);
     }
 
     public static String msg(String message)
@@ -120,8 +120,11 @@ public final class ChatHandler
         return new String(b);
     }
 
-    public static void logDebug(String string)
+    public static void logDebug(String message)
     {
-        
+        if (Config.debug == true)
+        {
+            log.info("[DEBUG]" + message);
+        }
     }
 }

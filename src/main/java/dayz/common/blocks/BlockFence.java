@@ -2,16 +2,14 @@ package dayz.common.blocks;
 
 import net.minecraft.block.BlockPane;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
+import dayz.DayZ;
+import dayz.common.misc.Util;
 
 public class BlockFence extends BlockPane
 {
-    private boolean canDropItself;
-
-    public BlockFence(int par1, String par2, String par3, Material par4Material, boolean par5)
+    public BlockFence(int blockId, String texture, Material material)
     {
-        super(par1, ("dayz:chainfence"), ("dayz:chainfence"), par4Material, par5);
-        canDropItself = par5;
-        setCreativeTab(CreativeTabs.tabDecorations);
+        super(blockId, Util.ID + ":" + texture.substring(texture.indexOf(".") + 1), Util.ID + ":" + texture.substring(texture.indexOf(".") + 1), material, false);
+        setCreativeTab(DayZ.creativeTab);
     }
 }

@@ -25,7 +25,7 @@ public class Updater
 
     private static String getUpdateURL()
     {
-        return "https://dl.dropbox.com/u/45513981/Day%20Z/LatestVersion.txt";
+        return "https://github.com/DayZ-Minecraft/DayZ/master/version.txt";
     }
 
     public static void getWebVersion()
@@ -41,19 +41,7 @@ public class Updater
         }
         catch (IOException e)
         {
-            e.printStackTrace();
-        }
-    }
-
-    public static String preRelease()
-    {
-        if (Util.ISPRERELEASE)
-        {
-            return "pre";
-        }
-        else
-        {
-            return "";
+            ChatHandler.logInfo("Could not get update!");
         }
     }
 }

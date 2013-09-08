@@ -1,30 +1,28 @@
 package dayz.common.blocks;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class BlockNails extends Block
+public class BlockNails extends BlockMod
 {
-    public BlockNails(int par1, Material par3Material)
+    public BlockNails(int blockId, Material material)
     {
-        super(par1, par3Material);
+        super(blockId, material);
     }
 
     @Override
-    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
+    public void onEntityCollidedWithBlock(World world, int xCoord, int yCoord, int zCoord, Entity entity)
     {
-        par5Entity.attackEntityFrom(DamageSource.generic, 6);
-        par1World.playSoundEffect(par2 + 0.5D, par3 + 0.5D, par4 + 0.5D, "random.break", 0.3F, 0.6F);
-        par1World.setBlock(par2, par3, par4, 0);
+        entity.attackEntityFrom(DamageSource.generic, 6);
+        world.playSoundEffect(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D, "random.break", 0.3F, 0.6F);
+        world.setBlock(xCoord, yCoord, zCoord, 0);
     }
 
     @Override
-    public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int xCoord, int yCoord, int zCoord)
     {
         return null;
     }
@@ -45,11 +43,5 @@ public class BlockNails extends Block
     public int getRenderType()
     {
         return 6;
-    }
-
-    @Override
-    public void registerIcons(IconRegister par1IconRegister)
-    {
-        blockIcon = par1IconRegister.registerIcon("dayz:nails");
     }
 }

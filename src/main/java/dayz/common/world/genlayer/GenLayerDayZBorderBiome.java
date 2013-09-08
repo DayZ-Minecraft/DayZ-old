@@ -3,11 +3,11 @@ package dayz.common.world.genlayer;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
-import dayz.common.world.WorldTypeBase;
+import dayz.common.world.WorldTypes;
 
 public class GenLayerDayZBorderBiome extends GenLayer
 {
-    public GenLayerDayZBorderBiome(long l, GenLayer genlayer, WorldTypeBase worldproviderbase)
+    public GenLayerDayZBorderBiome(long l, GenLayer genlayer, WorldTypes worldproviderbase)
     {
         super(l);
         parent = genlayer;
@@ -62,5 +62,5 @@ public class GenLayerDayZBorderBiome extends GenLayer
         return ai1;
     }
 
-    private WorldTypeBase worldType;
+    private WorldTypes worldType;
 }
