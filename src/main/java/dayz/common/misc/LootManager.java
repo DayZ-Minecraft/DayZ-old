@@ -1,6 +1,7 @@
 package dayz.common.misc;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Set;
 
 import net.minecraft.block.Block;
@@ -46,6 +47,8 @@ public class LootManager
 
     public static void registerAllItems()
     {
+        Random rand = new Random();
+
         addLoot(new ItemStack(DayZ.item().gunLeeEnfield), 1);
         addLoot(new ItemStack(DayZ.item().gunDoubleBarreledShotgun), 1);
         addLoot(new ItemStack(DayZ.item().gunAk74u), 1);
@@ -99,10 +102,14 @@ public class LootManager
         addLoot(new ItemStack(Item.melon), 9);
         addLoot(new ItemStack(Item.cookie), 9);
         addLoot(new ItemStack(Item.bakedPotato), 9);
-        addLoot(new ItemStack(DayZ.item().foodCanned, 1, DayZ.random.nextInt(6)), 9);
-        addLoot(new ItemStack(DayZ.item().drinkCanned, 1, DayZ.random.nextInt(6)), 9);
         addLoot(new ItemStack(DayZ.item().healAntibiotics), 9);
-        addLoot(new ItemStack(DayZ.item().drinkCanEmpty, 1, DayZ.random.nextInt(6)), 11);
-        addLoot(new ItemStack(DayZ.item().foodCanEmpty, 1, DayZ.random.nextInt(6)), 11);
+
+        for (int i = 0; i < 7; i++)
+        {
+            addLoot(new ItemStack(DayZ.item().foodCanned, 1, i), 9);
+            addLoot(new ItemStack(DayZ.item().drinkCanned, 1, i), 9);
+            addLoot(new ItemStack(DayZ.item().drinkCanEmpty, 1, i), 11);
+            addLoot(new ItemStack(DayZ.item().foodCanEmpty, 1, i), 11);
+        }
     }
 }

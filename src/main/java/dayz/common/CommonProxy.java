@@ -5,13 +5,17 @@ import java.util.logging.Logger;
 
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.WorldType;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 import dayz.DayZ;
 import dayz.common.blocks.Blocks;
 import dayz.common.effects.Effect;
@@ -30,15 +34,21 @@ import dayz.common.world.generation.StructureHandler;
 
 public class CommonProxy
 {
-    public static void preload(FMLPreInitializationEvent event)
+    public void preload(FMLPreInitializationEvent event)
     {
+        ChatHandler.log = Logger.getLogger(Util.ID);
+        MinecraftForge.EVENT_BUS.register(new CommonEvents());
+        MinecraftForge.TERRAIN_GEN_BUS.register(new CommonEventsTerrain());
         Updater.getWebVersion();
         Config.init(event);
         ChatHandler.logInfo("Config loaded.");
     }
 
-    public static void load(FMLInitializationEvent event)
+    public void load(FMLInitializationEvent event)
     {
+        GameRegistry.registerPlayerTracker(new CommonPlayerHandler());
+        TickRegistry.registerTickHandler(new CommonTickHandler(), Side.SERVER);
+
         Blocks.loadBlocks();
         Items.loadItems();
         Biomes.loadBiomes();
@@ -73,7 +83,7 @@ public class CommonProxy
         LanguageRegistry.instance().addStringLocalization("death.attack.thirstDeath", "%1$s ran out of water");
     }
 
-    public static void postload(FMLPostInitializationEvent event)
+    public void postload(FMLPostInitializationEvent event)
     {
         boolean isServer = FMLCommonHandler.instance().getSide().isServer();
 
