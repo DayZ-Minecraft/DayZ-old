@@ -9,6 +9,12 @@ public class Updater
 {
     public static double webVersion;
 
+    /**
+     * Check this instead of using the internet to check status.
+     * Set by CommonProxy.DayZpreload().
+     */
+    public static boolean isUpToDate = true;
+
     public static boolean isUpdated()
     {
         double i = Double.parseDouble(Util.WEBVERSION);

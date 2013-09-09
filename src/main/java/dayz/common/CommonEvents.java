@@ -36,7 +36,7 @@ public class CommonEvents
                         {
                             if (slotNumber == 26)
                             {
-                                WeightedRandomChestContent.generateChestContents(DayZ.random, LootManager.loot, chest, DayZ.random.nextInt(5) + 1);
+                                WeightedRandomChestContent.generateChestContents(event.world.rand, LootManager.loot, chest, event.world.rand.nextInt(5) + 1);
                                 ChatHandler.logDebug("Refilled chest at " + chest.xCoord + ", " + chest.yCoord + ", " + chest.zCoord + ".");
                                 continueChecking = false;
                             }
