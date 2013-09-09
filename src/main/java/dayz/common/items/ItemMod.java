@@ -34,7 +34,8 @@ public class ItemMod extends Item
         return itemIcon;
     }
 
-    @Override
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
     public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List informationList, boolean advancedItemTooltips)
     {
         if (subNames == null)
@@ -51,7 +52,7 @@ public class ItemMod extends Item
     {
         if (subNames == null)
         {
-            subNames = new ArrayList();
+            subNames = new ArrayList<String>();
         }
         for (String string : strings)
         {

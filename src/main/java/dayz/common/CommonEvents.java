@@ -8,10 +8,10 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.world.WorldEvent;
-import dayz.DayZ;
 import dayz.common.blocks.Blocks;
 import dayz.common.effects.Effect;
 import dayz.common.entities.EntityZombieDayZ;
+import dayz.common.items.Items;
 import dayz.common.misc.ChatHandler;
 import dayz.common.misc.DamageType;
 import dayz.common.misc.LootManager;
@@ -58,7 +58,7 @@ public class CommonEvents
     @ForgeSubscribe
     public void playerInteract(EntityInteractEvent event)
     {
-        if (event.target instanceof EntityPlayer && event.entityPlayer.getCurrentEquippedItem().isItemEqual(new ItemStack(DayZ.item().healBloodbag)))
+		if (event.target instanceof EntityPlayer && event.entityPlayer.getCurrentEquippedItem().isItemEqual(new ItemStack(Items.healBloodbag)))
         {
             ((EntityPlayer) event.target).heal(20F);
             event.entityPlayer.getCurrentEquippedItem().stackSize--;
@@ -89,7 +89,7 @@ public class CommonEvents
             }
             if (event.entityLiving.worldObj.rand.nextInt(20) == 0)
             {
-                if (event.entityLiving.func_110143_aJ() > 1.0F)
+                if (event.entityLiving.getHealth() > 1.0F)
                 {
                     event.entityLiving.attackEntityFrom(DamageType.zombieInfection, 1.0F);
                 }

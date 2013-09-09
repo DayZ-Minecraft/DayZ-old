@@ -15,7 +15,8 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class BiomeForest extends BiomeGenBase
 {
-    public BiomeForest(int id)
+    @SuppressWarnings("unchecked")
+	public BiomeForest(int id)
     {
         super(id);
         setColor(747097);

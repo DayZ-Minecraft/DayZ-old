@@ -174,10 +174,6 @@ public class StructureHouse implements IStructure
         world.setBlock(xCoord + 8, yCoord + 1, zCoord + 6, Block.furnaceIdle.blockID);
 
         int chest = Blocks.chestLoot.blockID;
-        int lootType = rand.nextInt(Block.cobblestone.blockID);
-        int itemlocation = rand.nextInt(27);
-        int numofcontents = rand.nextInt(10);
-
         world.setBlock(xCoord + 8, yCoord + 1, zCoord + 5, chest);
         TileEntity tileentitychest = world.getBlockTileEntity(xCoord + 8, yCoord + 1, zCoord + Block.planks.blockID);
         if (tileentitychest != null)

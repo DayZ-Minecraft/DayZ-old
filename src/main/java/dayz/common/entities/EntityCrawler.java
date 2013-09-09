@@ -25,7 +25,7 @@ public class EntityCrawler extends EntityMob
     public EntityCrawler(World world)
     {
         super(world);
-        setEntityHealth(12F);
+        setHealth(12F);
         float moveSpeed = 0.3F;
         getNavigator().setBreakDoors(true);
         tasks.addTask(0, new EntityAISwimming(this));

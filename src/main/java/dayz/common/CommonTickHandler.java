@@ -2,7 +2,6 @@ package dayz.common;
 
 import java.util.EnumSet;
 
-import net.minecraft.entity.player.EntityPlayer;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 import dayz.DayZ;
@@ -34,11 +33,6 @@ public class CommonTickHandler implements ITickHandler
     public String getLabel()
     {
         return "DayZ Thirst";
-    }
-
-    private void onPlayerTick(EntityPlayer entityPlayer)
-    {
-
     }
 
     private void onServerTick()

@@ -28,10 +28,6 @@ public class GenLayerDayZMiscBiome extends GenLayer
         {
             for (int j1 = 0; j1 < par3; j1++)
             {
-                int k1 = ai[j1 + 0 + (i1 + 0) * k];
-                int l1 = ai[j1 + 2 + (i1 + 0) * k];
-                int i2 = ai[j1 + 0 + (i1 + 2) * k];
-                int j2 = ai[j1 + 2 + (i1 + 2) * k];
                 int k2 = ai[j1 + 1 + (i1 + 1) * k];
                 initChunkSeed(j1 + par1, i1 + par2);
 
