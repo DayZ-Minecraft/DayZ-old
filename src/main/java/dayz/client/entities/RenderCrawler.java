@@ -26,7 +26,7 @@ public class RenderCrawler extends RenderLiving
     }
 
     @Override
-    protected ResourceLocation func_110775_a(Entity entity)
+    protected ResourceLocation getEntityTexture(Entity entity)
     {
         return new ResourceLocation(Util.ID + ":textures/entities/crawler.png");
     }

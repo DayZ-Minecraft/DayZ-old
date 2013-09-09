@@ -19,11 +19,11 @@ public class Biomes
 
     public static void loadBiomes()
     {
-        biomeForest = (new BiomeForest(25));
-        biomePlains = (new BiomePlains(26));
-        biomeRiver = (new BiomeRiver(27));
-        biomeSnowPlains = (new BiomeSnow(28).setMinMaxHeight(0.0F, 0.0F).setBiomeName("Snow Plains").setEnableSnow());
-        biomeSnowMountains = (new BiomeSnow(29).setMinMaxHeight(0.0F, 0.5F).setBiomeName("Snow Mountains").setEnableSnow());
+        biomeForest = (new BiomeForest(biomeForestId));
+        biomePlains = (new BiomePlains(biomePlainsId));
+        biomeRiver = (new BiomeRiver(biomeRiverId));
+        biomeSnowPlains = (new BiomeSnow(biomeSnowPlainsId).setMinMaxHeight(0.0F, 0.0F).setBiomeName("Snow Plains").setEnableSnow());
+        biomeSnowMountains = (new BiomeSnow(biomeSnowMountainsId).setMinMaxHeight(0.0F, 0.5F).setBiomeName("Snow Mountains").setEnableSnow());
     }
 
     public void biomeConfig(Configuration config)

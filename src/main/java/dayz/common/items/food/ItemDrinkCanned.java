@@ -14,12 +14,12 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import dayz.DayZ;
 import dayz.common.items.ItemMod;
+import dayz.common.items.Items;
 import dayz.common.misc.Util;
 
 public class ItemDrinkCanned extends ItemMod
 {
     private final int healAmount;
-    private boolean alwaysEdible;
     private int potionId;
     private int potionDuration;
     private int potionAmplifier;
@@ -37,7 +37,7 @@ public class ItemDrinkCanned extends ItemMod
     @Override
     public ItemStack onEaten(ItemStack itemStack, World world, EntityPlayer entityPlayer)
     {
-        entityPlayer.inventory.addItemStackToInventory(new ItemStack(DayZ.item().drinkCanEmpty, 1, itemStack.getItemDamage()));
+		entityPlayer.inventory.addItemStackToInventory(new ItemStack(Items.drinkCanEmpty, 1, itemStack.getItemDamage()));
         --itemStack.stackSize;
         DayZ.thirst().subtractThirst(entityPlayer, healAmount);
         onFoodEaten(itemStack, world, entityPlayer);
@@ -49,7 +49,7 @@ public class ItemDrinkCanned extends ItemMod
         if (!world.isRemote && potionId > 0 && world.rand.nextFloat() < potionEffectProbability)
         {
             entityPlayer.addPotionEffect(new PotionEffect(potionId, potionDuration * 20, potionAmplifier));
-            entityPlayer.inventory.addItemStackToInventory(new ItemStack(DayZ.item().drinkCanEmpty, getDamage(itemStack)));
+			entityPlayer.inventory.addItemStackToInventory(new ItemStack(Items.drinkCanEmpty, getDamage(itemStack)));
         }
     }
 
@@ -88,6 +88,7 @@ public class ItemDrinkCanned extends ItemMod
         return itemIcon = icons[damage];
     }
 
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(int itemId, CreativeTabs creativeTab, List containerList)

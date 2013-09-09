@@ -28,7 +28,7 @@ public class EntityZombieDayZ extends EntityMob
     {
         super(par1World);
         texture = getRandomZombieTexture();
-        setEntityHealth(16F);
+        setHealth(16F);
         float moveSpeed = 0.4F;
         getNavigator().setBreakDoors(true);
         tasks.addTask(0, new EntityAISwimming(this));

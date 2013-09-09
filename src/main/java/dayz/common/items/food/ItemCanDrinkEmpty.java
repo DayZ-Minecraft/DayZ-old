@@ -28,7 +28,8 @@ public class ItemCanDrinkEmpty extends ItemMod
         return itemIcon = icons[damage];
     }
 
-    @Override
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(int itemId, CreativeTabs creativeTab, List containerList)
     {

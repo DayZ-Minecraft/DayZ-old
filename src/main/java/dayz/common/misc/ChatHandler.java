@@ -24,11 +24,11 @@ public final class ChatHandler
     {
         if (sender instanceof EntityPlayer)
         {
-            sender.sendChatToPlayer(ChatMessageComponent.func_111066_d(EnumChatFormatting.RED + msg(msg)));
+            sender.sendChatToPlayer(ChatMessageComponent.createFromText(EnumChatFormatting.RED + msg(msg)));
         }
         else
         {
-            sender.sendChatToPlayer(ChatMessageComponent.func_111066_d(msg(msg)));
+            sender.sendChatToPlayer(ChatMessageComponent.createFromText(msg(msg)));
         }
     }
 
@@ -44,11 +44,11 @@ public final class ChatHandler
     {
         if (sender instanceof EntityPlayer)
         {
-            sender.sendChatToPlayer(ChatMessageComponent.func_111066_d(EnumChatFormatting.GREEN + msg(msg)));
+            sender.sendChatToPlayer(ChatMessageComponent.createFromText(EnumChatFormatting.GREEN + msg(msg)));
         }
         else
         {
-            sender.sendChatToPlayer(ChatMessageComponent.func_111066_d(msg(msg)));
+            sender.sendChatToPlayer(ChatMessageComponent.createFromText(msg(msg)));
         }
     }
 
@@ -64,11 +64,11 @@ public final class ChatHandler
     {
         if (sender instanceof EntityPlayer)
         {
-            sender.sendChatToPlayer(ChatMessageComponent.func_111066_d(EnumChatFormatting.YELLOW + msg(msg)));
+            sender.sendChatToPlayer(ChatMessageComponent.createFromText(EnumChatFormatting.YELLOW + msg(msg)));
         }
         else
         {
-            sender.sendChatToPlayer(ChatMessageComponent.func_111066_d(msg(msg)));
+            sender.sendChatToPlayer(ChatMessageComponent.createFromText(msg(msg)));
         }
     }
 

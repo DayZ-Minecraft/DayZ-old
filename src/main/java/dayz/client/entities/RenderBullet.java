@@ -31,13 +31,13 @@ public class RenderBullet extends Render
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         GL11.glScalef(-1.0F, -1.0F, 1.0F);
         GL11.glEnable(GL11.GL_ALPHA_TEST);
-        func_110777_b(entityBullet);
+        bindEntityTexture(entityBullet);
         modelBullet.render(entityBullet, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, f2);
         GL11.glPopMatrix();
     }
 
     @Override
-    protected ResourceLocation func_110775_a(Entity par1Entity)
+    protected ResourceLocation getEntityTexture(Entity par1Entity)
     {
         return new ResourceLocation(Util.ID + ":textures/entities/bullet.png");
     }
@@ -47,4 +47,6 @@ public class RenderBullet extends Render
     {
         renderBullet((EntityBullet) entity, x, y, z, yaw, partialTickTime);
     }
+
+
 }

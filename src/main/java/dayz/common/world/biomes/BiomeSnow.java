@@ -15,7 +15,8 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class BiomeSnow extends BiomeGenBase
 {
-    public BiomeSnow(int id)
+    @SuppressWarnings("unchecked")
+	public BiomeSnow(int id)
     {
         super(id);
         setColor(747097);

@@ -25,8 +25,6 @@ public class ItemGunSemi extends ItemMod
     {
         if (itemstack.getItemDamage() < gun.getRounds())
         {
-            int j = getMaxItemUseDuration(itemstack) - i;
-            float f = 1.0F;
             EntityBullet entitybullet = new EntityBullet(world, entityplayer, gun.getDamage());
             world.playSoundAtEntity(entityplayer, Util.ID + ":" + gun.getShootSound(), 1.0F, 1.0F);
             itemstack.damageItem(1, entityplayer);

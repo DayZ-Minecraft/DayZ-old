@@ -11,8 +11,8 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import dayz.DayZ;
 import dayz.common.items.ItemMod;
+import dayz.common.items.Items;
 import dayz.common.misc.Util;
 
 public class ItemFoodCanned extends ItemMod
@@ -35,7 +35,7 @@ public class ItemFoodCanned extends ItemMod
     @Override
     public ItemStack onEaten(ItemStack itemStack, World world, EntityPlayer entityPlayer)
     {
-        entityPlayer.inventory.addItemStackToInventory(new ItemStack(DayZ.item().foodCanEmpty, 1, itemStack.getItemDamage()));
+		entityPlayer.inventory.addItemStackToInventory(new ItemStack(Items.foodCanEmpty, 1, itemStack.getItemDamage()));
         --itemStack.stackSize;
         entityPlayer.getFoodStats().addStats(healAmount, saturationModifier);
         world.playSoundAtEntity(entityPlayer, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
@@ -45,7 +45,7 @@ public class ItemFoodCanned extends ItemMod
 
     protected void onFoodEaten(ItemStack itemStack, World world, EntityPlayer entityPlayer)
     {
-        entityPlayer.inventory.addItemStackToInventory(new ItemStack(DayZ.item().foodCanEmpty, getDamage(itemStack)));
+		entityPlayer.inventory.addItemStackToInventory(new ItemStack(Items.foodCanEmpty, getDamage(itemStack)));
     }
 
     @Override
@@ -78,6 +78,7 @@ public class ItemFoodCanned extends ItemMod
         return itemIcon = icons[damage];
     }
 
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(int itemId, CreativeTabs creativeTab, List containerList)

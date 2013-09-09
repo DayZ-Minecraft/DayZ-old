@@ -10,7 +10,8 @@ import net.minecraft.world.biome.SpawnListEntry;
 
 public class BiomePlains extends BiomeGenBase
 {
-    public BiomePlains(int id)
+    @SuppressWarnings("unchecked")
+	public BiomePlains(int id)
     {
         super(id);
         setColor(747097);
