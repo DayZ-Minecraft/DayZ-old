@@ -5,7 +5,6 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
 import dayz.client.entities.ModelBullet;
 import dayz.client.entities.ModelCrawler;
 import dayz.client.entities.ModelZombieDayZ;
@@ -24,7 +23,6 @@ public class ClientProxy extends CommonProxy
     {
         super.preload(event);
         MinecraftForge.EVENT_BUS.register(new ClientEvents());
-        GameRegistry.registerPlayerTracker(new ClientPlayerHandler());
     }
 
     @Override

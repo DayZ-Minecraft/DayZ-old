@@ -9,7 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import dayz.DayZ;
-import dayz.common.misc.Util;
+import dayz.common.misc.Constants;
 
 public class ItemMod extends Item
 {
@@ -25,7 +25,7 @@ public class ItemMod extends Item
     @Override
     public void registerIcons(IconRegister register)
     {
-        itemIcon = register.registerIcon(Util.ID + ":" + getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1));
+        itemIcon = register.registerIcon(Constants.ID + ":" + getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1));
     }
 
     @Override

@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import dayz.common.entities.EntityZombieDayZ;
-import dayz.common.misc.Util;
+import dayz.common.misc.Constants;
 
 public class RenderZombieDayZ extends RenderLiving
 {
@@ -31,7 +31,7 @@ public class RenderZombieDayZ extends RenderLiving
         if (entity instanceof EntityZombieDayZ)
         {
             EntityZombieDayZ zombie = (EntityZombieDayZ) entity;
-            return new ResourceLocation(Util.ID + ":textures/entities/" + zombie.texture);
+            return new ResourceLocation(Constants.ID + ":textures/entities/" + zombie.texture);
         }
         return null;
     }
