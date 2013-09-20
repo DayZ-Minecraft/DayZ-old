@@ -2,7 +2,7 @@ package dayz.client;
 
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.event.ForgeSubscribe;
-import dayz.common.misc.Util;
+import dayz.common.misc.Constants;
 
 public class ClientEvents
 {
@@ -13,7 +13,7 @@ public class ClientEvents
         { "ak74u", "makarov", "remington", "reload", "leeenfield", "glock", "dbshotgun" };
         for (String soundFile : soundFiles)
         {
-            event.manager.addSound(Util.ID + ":" + soundFile + ".ogg");
+            event.manager.addSound(Constants.ID + ":" + soundFile + ".ogg");
         }
     }
 }

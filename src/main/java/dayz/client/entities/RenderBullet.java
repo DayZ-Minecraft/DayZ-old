@@ -10,7 +10,7 @@ import org.lwjgl.opengl.GL12;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import dayz.common.entities.EntityBullet;
-import dayz.common.misc.Util;
+import dayz.common.misc.Constants;
 
 @SideOnly(Side.CLIENT)
 public class RenderBullet extends Render
@@ -39,7 +39,7 @@ public class RenderBullet extends Render
     @Override
     protected ResourceLocation getEntityTexture(Entity par1Entity)
     {
-        return new ResourceLocation(Util.ID + ":textures/entities/bullet.png");
+        return new ResourceLocation(Constants.ID + ":textures/entities/bullet.png");
     }
 
     @Override

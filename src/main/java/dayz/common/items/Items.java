@@ -196,7 +196,7 @@ public class Items
         { "##!", Character.valueOf('#'), Block.planks, Character.valueOf('!'), Item.stick });
     }
 
-    public void itemConfig(Configuration config)
+    public static void itemConfig(Configuration config)
     {
         itemMatchesId = config.get(Configuration.CATEGORY_ITEM, "itemMatchesId", 7100).getInt();
         healBandageId = config.get(Configuration.CATEGORY_ITEM, "healBandageId", 7101).getInt();
