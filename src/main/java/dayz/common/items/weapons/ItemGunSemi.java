@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import dayz.common.entities.EntityBullet;
 import dayz.common.items.ItemMod;
-import dayz.common.misc.Util;
+import dayz.common.misc.Constants;
 
 public class ItemGunSemi extends ItemMod
 {
@@ -26,7 +26,7 @@ public class ItemGunSemi extends ItemMod
         if (itemstack.getItemDamage() < gun.getRounds())
         {
             EntityBullet entitybullet = new EntityBullet(world, entityplayer, gun.getDamage());
-            world.playSoundAtEntity(entityplayer, Util.ID + ":" + gun.getShootSound(), 1.0F, 1.0F);
+            world.playSoundAtEntity(entityplayer, Constants.ID + ":" + gun.getShootSound(), 1.0F, 1.0F);
             itemstack.damageItem(1, entityplayer);
 
             if (!world.isRemote)
@@ -43,7 +43,7 @@ public class ItemGunSemi extends ItemMod
             if (f1 >= 1.0F)
             {
                 itemstack.setItemDamage(0);
-                world.playSoundAtEntity(entityplayer, Util.ID + ":" + gun.getReloadSound(), 1.0F, 1.0F);
+                world.playSoundAtEntity(entityplayer, Constants.ID + ":" + gun.getReloadSound(), 1.0F, 1.0F);
                 entityplayer.inventory.consumeInventoryItem(gun.getAmmo().itemID);
             }
         }

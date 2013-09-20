@@ -19,7 +19,7 @@ public class CommonTickHandler implements ITickHandler
     {
         if (type.equals(EnumSet.of(TickType.SERVER)))
         {
-            onServerTick();
+            DayZ.thirst().handleThirst();
         }
     }
 
@@ -33,10 +33,5 @@ public class CommonTickHandler implements ITickHandler
     public String getLabel()
     {
         return "DayZ Thirst";
-    }
-
-    private void onServerTick()
-    {
-        DayZ.thirst().handleThirst();
     }
 }

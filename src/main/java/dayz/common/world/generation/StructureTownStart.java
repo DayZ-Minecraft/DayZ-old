@@ -50,7 +50,7 @@ class StructureTownStart extends StructureStart
 
         while (iterator.hasNext())
         {
-            StructureComponent structurecomponent1 = (StructureComponent) iterator.next();
+            StructureComponent structurecomponent1 = iterator.next();
 
             if (!(structurecomponent1 instanceof ComponentVillageRoadPiece))
             {

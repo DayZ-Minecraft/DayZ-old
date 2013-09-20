@@ -26,7 +26,7 @@ public class Biomes
         biomeSnowMountains = (new BiomeSnow(biomeSnowMountainsId).setMinMaxHeight(0.0F, 0.5F).setBiomeName("Snow Mountains").setEnableSnow());
     }
 
-    public void biomeConfig(Configuration config)
+    public static void biomeConfig(Configuration config)
     {
         biomeForestId = config.get("biome", "biomeForestId", 25).getInt();
         biomePlainsId = config.get("biome", "biomePlainsId", 26).getInt();

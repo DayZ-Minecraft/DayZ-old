@@ -1,14 +1,11 @@
 package dayz.common;
 
-import net.minecraft.block.Block;
 import net.minecraftforge.event.Event.Result;
 import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.event.terraingen.BiomeEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.WorldTypeEvent;
 import dayz.common.misc.Config;
 import dayz.common.world.WorldTypes;
-import dayz.common.world.biomes.Biomes;
 import dayz.common.world.generation.StructureHandler;
 import dayz.common.world.genlayer.GenLayerDayZ;
 
@@ -20,16 +17,6 @@ public class CommonEventsTerrain
         if (event.worldType == WorldTypes.DAYZ || event.worldType == WorldTypes.SNOW)
         {
             event.newBiomeGens = GenLayerDayZ.getGenLayers(event.seed, (WorldTypes) event.worldType);
-        }
-    }
-
-    @ForgeSubscribe
-    public void villageBlock(BiomeEvent.GetVillageBlockID event)
-    {
-        if (event.biome == Biomes.biomeSnowMountains || event.biome == Biomes.biomeSnowPlains)
-        {
-            event.replacement = Block.blockSnow.blockID;
-            event.setResult(Result.DENY);
         }
     }
 
