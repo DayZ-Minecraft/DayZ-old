@@ -11,6 +11,7 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -25,9 +26,9 @@ import dayz.common.entities.EntityZombieDayZ;
 import dayz.common.items.Items;
 import dayz.common.misc.ChatHandler;
 import dayz.common.misc.Config;
+import dayz.common.misc.Constants;
 import dayz.common.misc.LootManager;
-import dayz.common.misc.Updater;
-import dayz.common.misc.Util;
+import dayz.common.thirst.Thirst;
 import dayz.common.world.WorldTypes;
 import dayz.common.world.biomes.Biomes;
 import dayz.common.world.generation.StructureHandler;
@@ -36,10 +37,9 @@ public class CommonProxy
 {
     public void preload(FMLPreInitializationEvent event)
     {
-        ChatHandler.log = Logger.getLogger(Util.ID);
+        ChatHandler.log = Logger.getLogger(Constants.ID);
         MinecraftForge.EVENT_BUS.register(new CommonEvents());
         MinecraftForge.TERRAIN_GEN_BUS.register(new CommonEventsTerrain());
-        Updater.getWebVersion();
         Config.init(event);
         ChatHandler.logInfo("Config loaded.");
     }
@@ -85,24 +85,23 @@ public class CommonProxy
 
     public void postload(FMLPostInitializationEvent event)
     {
-        boolean isServer = FMLCommonHandler.instance().getSide().isServer();
-
         if (Loader.isModLoaded("ThirstMod"))
         {
             ChatHandler.logException(Level.SEVERE, "Thirst Mod is not compatible with DayZ, DayZ has it's own thirst system. Remove the Thirst Mod to fix this error.");
         }
 
-        if (isServer)
+        if (FMLCommonHandler.instance().getEffectiveSide().isServer())
         {
-            if (Updater.isUpdated() == false && Config.canCheckUpdate == true)
-            {
-                Logger.getLogger("Minecraft").info("Day Z is not up to date. The latest release is " + Util.WEBVERSION + ". You have " + Util.VERSION);
-            }
-            Logger.getLogger("Minecraft").info("Day Z " + Util.VERSION + " Loaded.");
+            Logger.getLogger("Minecraft").info("Day Z " + Constants.VERSION + " Loaded.");
 
             Logger.getLogger("Minecraft").info("Make sure your server.properties has one of the lines to create a DayZ world.");
-            Logger.getLogger("Minecraft").info("level-type=DAYZBASE            - To create the original DayZ world.");
-            Logger.getLogger("Minecraft").info("level-type=DAYZSNOW            - To create snowy DayZ world.");
+            Logger.getLogger("Minecraft").info("level-type=DAYZBASE            -           To create the original DayZ world.");
+            Logger.getLogger("Minecraft").info("level-type=DAYZSNOW            -                  To create snowy DayZ world.");
         }
+    }
+
+    public void serverStarting(FMLServerStartingEvent event)
+    {
+        DayZ.INSTANCE.thirst = new Thirst();
     }
 }

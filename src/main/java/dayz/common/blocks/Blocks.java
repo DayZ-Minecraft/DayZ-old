@@ -43,7 +43,7 @@ public class Blocks
         { "#", "#", Character.valueOf('#'), Item.ingotIron });
     }
 
-    public void blockConfig(Configuration config)
+    public static void blockConfig(Configuration config)
     {
         barbedWireId = config.get(Configuration.CATEGORY_BLOCK, "barbedwireID", 160, "Barbed Wire Block ID").getInt();
         chestLootId = config.get(Configuration.CATEGORY_BLOCK, "dayzchestallID", 161, "All Item Chest Block ID").getInt();

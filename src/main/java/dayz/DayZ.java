@@ -10,33 +10,28 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import dayz.common.CommonProxy;
-import dayz.common.blocks.Blocks;
-import dayz.common.items.Items;
+import dayz.common.misc.Constants;
 import dayz.common.misc.CreativeTab;
-import dayz.common.misc.Util;
 import dayz.common.thirst.Thirst;
-import dayz.common.world.biomes.Biomes;
 
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, versionBounds = Util.VERSION)
-@Mod(modid = Util.ID, name = Util.NAME, version = Util.VERSION)
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, versionBounds = Constants.VERSION)
+@Mod(modid = Constants.ID, name = Constants.NAME, version = Constants.VERSION)
 public class DayZ
 {
-    private Blocks block = new Blocks();
-    private Biomes biome = new Biomes();
-    private Items item = new Items();
-    private Thirst thirst = new Thirst();
-
+    public Thirst thirst;
+    
     public static EnumArmorMaterial enumArmorMaterialCamo = EnumHelper.addArmorMaterial("camo", 29, new int[]
     { 2, 6, 5, 2 }, 9);
 
     public static CreativeTabs creativeTab = new CreativeTab();
 
-    @Instance(Util.ID)
+    @Instance(Constants.ID)
     public static DayZ INSTANCE;
 
-    @SidedProxy(modId = Util.ID, clientSide = "dayz.client.ClientProxy", serverSide = "dayz.common.CommonProxy")
+    @SidedProxy(modId = Constants.ID, clientSide = "dayz.client.ClientProxy", serverSide = "dayz.common.CommonProxy")
     public static CommonProxy proxy;
 
     @EventHandler
@@ -56,44 +51,15 @@ public class DayZ
     {
         proxy.postload(event);
     }
-
-    /**
-     * Instance of the items class used in DayZ
-     * 
-     * @return
-     */
-    public static Items item()
+    
+    @EventHandler
+    public void serverStarting(FMLServerStartingEvent event)
     {
-        return INSTANCE.item;
+        proxy.serverStarting(event);
     }
 
-    /**
-     * Instance of the blocks class used in DayZ
-     * 
-     * @return
-     */
-    public static Blocks block()
-    {
-        return INSTANCE.block;
-    }
-
-    /**
-     * Instance of the thirst class used in DayZ
-     * 
-     * @return
-     */
     public static Thirst thirst()
     {
         return INSTANCE.thirst;
-    }
-
-    /**
-     * Instance of the biomes class used in DayZ
-     * 
-     * @return
-     */
-    public static Biomes biomes()
-    {
-        return INSTANCE.biome;
     }
 }
