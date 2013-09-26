@@ -8,8 +8,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import dayz.DayZ;
 import dayz.common.items.ItemMod;
-import dayz.common.misc.Constants;
 
 public class ItemCanEmpty extends ItemMod
 {
@@ -46,7 +46,7 @@ public class ItemCanEmpty extends ItemMod
 
         for (int damage = 0; damage < 6; ++damage)
         {
-            icons[damage] = par1IconRegister.registerIcon(Constants.ID + ":" + getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1) + damage);
+            icons[damage] = par1IconRegister.registerIcon(DayZ.meta.modId + ":" + getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1) + damage);
         }
     }
 }
