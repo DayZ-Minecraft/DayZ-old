@@ -26,7 +26,6 @@ import dayz.common.entities.EntityZombieDayZ;
 import dayz.common.items.Items;
 import dayz.common.misc.ChatHandler;
 import dayz.common.misc.Config;
-import dayz.common.misc.Constants;
 import dayz.common.misc.LootManager;
 import dayz.common.thirst.Thirst;
 import dayz.common.world.WorldTypes;
@@ -37,7 +36,7 @@ public class CommonProxy
 {
     public void preload(FMLPreInitializationEvent event)
     {
-        ChatHandler.log = Logger.getLogger(Constants.ID);
+        ChatHandler.log = Logger.getLogger(DayZ.meta.modId);
         MinecraftForge.EVENT_BUS.register(new CommonEvents());
         MinecraftForge.TERRAIN_GEN_BUS.register(new CommonEventsTerrain());
         Config.init(event);
@@ -92,7 +91,7 @@ public class CommonProxy
 
         if (FMLCommonHandler.instance().getEffectiveSide().isServer())
         {
-            Logger.getLogger("Minecraft").info("Day Z " + Constants.VERSION + " Loaded.");
+            Logger.getLogger("Minecraft").info("Day Z " + DayZ.meta.version + " Loaded.");
 
             Logger.getLogger("Minecraft").info("Make sure your server.properties has one of the lines to create a DayZ world.");
             Logger.getLogger("Minecraft").info("level-type=DAYZBASE            -           To create the original DayZ world.");

@@ -7,7 +7,6 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import dayz.DayZ;
 import dayz.common.items.Items;
-import dayz.common.misc.Constants;
 
 public class ItemCamo extends ItemArmor
 {
@@ -23,13 +22,13 @@ public class ItemCamo extends ItemArmor
     {
         if (itemStack.itemID == Items.camoHelmet.itemID || itemStack.itemID == Items.camoChest.itemID || itemStack.itemID == Items.camoBoots.itemID)
         {
-            return Constants.ID + ":textures/armor/camo_1.png";
+            return DayZ.meta.modId + ":textures/armor/camo_1.png";
         }
         if (itemStack.itemID == Items.camoLegs.itemID)
         {
-            return Constants.ID + ":textures/armor/camo_2.png";
+            return DayZ.meta.modId + ":textures/armor/camo_2.png";
         }
-        return Constants.ID + ":textures/armor/camo_2.png";
+        return DayZ.meta.modId + ":textures/armor/camo_2.png";
     }
 
     @Override
@@ -37,25 +36,25 @@ public class ItemCamo extends ItemArmor
     {
         if (itemID == Items.camoBoots.itemID)
         {
-            itemIcon = register.registerIcon(Constants.ID + ":camoBoots");
+            itemIcon = register.registerIcon(DayZ.meta.modId + ":camoBoots");
         }
         else
         {
             if (itemID == Items.camoLegs.itemID)
             {
-                itemIcon = register.registerIcon(Constants.ID + ":camoLegs");
+                itemIcon = register.registerIcon(DayZ.meta.modId + ":camoLegs");
             }
             else
             {
                 if (itemID == Items.camoChest.itemID)
                 {
-                    itemIcon = register.registerIcon(Constants.ID + ":camoChest");
+                    itemIcon = register.registerIcon(DayZ.meta.modId + ":camoChest");
                 }
                 else
                 {
                     if (itemID == Items.camoHelmet.itemID)
                     {
-                        itemIcon = register.registerIcon(Constants.ID + ":camoHelmet");
+                        itemIcon = register.registerIcon(DayZ.meta.modId + ":camoHelmet");
                     }
                 }
             }
