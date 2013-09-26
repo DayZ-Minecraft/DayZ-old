@@ -4,8 +4,8 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+import dayz.DayZ;
 import dayz.common.entities.EntityCrawler;
-import dayz.common.misc.Constants;
 
 public class RenderCrawler extends RenderLiving
 {
@@ -28,6 +28,6 @@ public class RenderCrawler extends RenderLiving
     @Override
     protected ResourceLocation getEntityTexture(Entity entity)
     {
-        return new ResourceLocation(Constants.ID + ":textures/entities/crawler.png");
+        return new ResourceLocation(DayZ.meta.modId + ":textures/entities/crawler.png");
     }
 }

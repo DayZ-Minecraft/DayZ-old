@@ -1,7 +1,6 @@
 package dayz.common;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.event.ForgeSubscribe;
@@ -58,7 +57,7 @@ public class CommonEvents
     @ForgeSubscribe
     public void playerInteract(EntityInteractEvent event)
     {
-		if (event.target instanceof EntityPlayer && event.entityPlayer.getCurrentEquippedItem().isItemEqual(new ItemStack(Items.healBloodbag)))
+		if (event.target != null && event.target instanceof EntityPlayer && event.entityPlayer.getCurrentEquippedItem().itemID == Items.healBloodbag.itemID)
         {
             ((EntityPlayer) event.target).heal(20F);
             event.entityPlayer.getCurrentEquippedItem().stackSize--;
