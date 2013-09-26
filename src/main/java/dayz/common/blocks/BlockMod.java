@@ -4,7 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import dayz.DayZ;
-import dayz.common.misc.Constants;
 
 public class BlockMod extends Block
 {
@@ -17,6 +16,6 @@ public class BlockMod extends Block
     @Override
     public void registerIcons(IconRegister register)
     {
-        blockIcon = register.registerIcon(Constants.ID + ":" + getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1));
+        blockIcon = register.registerIcon(DayZ.meta.modId + ":" + getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1));
     }
 }

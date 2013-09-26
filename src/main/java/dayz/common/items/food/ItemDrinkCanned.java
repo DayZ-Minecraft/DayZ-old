@@ -15,7 +15,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import dayz.DayZ;
 import dayz.common.items.ItemMod;
 import dayz.common.items.Items;
-import dayz.common.misc.Constants;
 
 public class ItemDrinkCanned extends ItemMod
 {
@@ -106,7 +105,7 @@ public class ItemDrinkCanned extends ItemMod
 
         for (int damage = 0; damage < 6; ++damage)
         {
-            icons[damage] = register.registerIcon(Constants.ID + ":" + getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1) + damage);
+            icons[damage] = register.registerIcon(DayZ.meta.modId + ":" + getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1) + damage);
         }
     }
 }

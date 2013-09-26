@@ -15,6 +15,7 @@ import dayz.common.items.food.ItemDrinkCanned;
 import dayz.common.items.food.ItemFoodCanned;
 import dayz.common.items.misc.ItemFirestarter;
 import dayz.common.items.misc.ItemHeal;
+import dayz.common.items.weapons.ItemAk74;
 import dayz.common.items.weapons.ItemAk74u;
 import dayz.common.items.weapons.ItemAmmo;
 import dayz.common.items.weapons.ItemCamo;
@@ -26,6 +27,7 @@ import dayz.common.items.weapons.ItemGunSemi;
 import dayz.common.items.weapons.ItemMakarov;
 import dayz.common.items.weapons.ItemMelee;
 import dayz.common.items.weapons.ItemRemington;
+import dayz.common.items.weapons.ItemUsp;
 
 public class Items
 {
@@ -50,6 +52,10 @@ public class Items
     private static int gunGlock17Id;
     public static Item gunDoubleBarreledShotgun;
     private static int gunDoubleBarreledShotgunId;
+    public static Item gunUsp;
+    private static int gunUspId;
+    //public static Item gunAk74;
+    //private static int gunAk74Id;
 
     public static Item ammoAk74u;
     private static int ammoAk74uId;
@@ -63,7 +69,11 @@ public class Items
     private static int ammoGlock17Id;
     public static Item ammoDoubleBarreledShotgun;
     private static int ammoDoubleBarreledShotgunId;
-
+    public static Item ammoUsp;
+    private static int ammoUspId;
+    //public static Item ammoAk74;
+    //private static int ammoAk74Id;
+    
     public static Item camoHelmet;
     private static int camoHelmetId;
     public static Item camoChest;
@@ -107,7 +117,7 @@ public class Items
     public static void loadItems()
     {
         gunAk74u = new ItemGunAuto(gunAk74uId, new ItemAk74u()).setUnlocalizedName("gunAk74u");
-        LanguageRegistry.addName(gunAk74u, "Ak74u");
+        LanguageRegistry.addName(gunAk74u, "Ak-74u");
         gunMakarov = new ItemGunSemi(gunMakarovId, new ItemMakarov()).setUnlocalizedName("gunMakarov");
         LanguageRegistry.addName(gunMakarov, "Makarov");
         gunRemington = new ItemGunSemi(gunRemingtonId, new ItemRemington()).setUnlocalizedName("gunRemington");
@@ -118,9 +128,13 @@ public class Items
         LanguageRegistry.addName(gunGlock17, "Glock 17");
         gunDoubleBarreledShotgun = new ItemGunSemi(gunDoubleBarreledShotgunId, new ItemDbShotgun()).setUnlocalizedName("gunDoubleBarreledShotgun");
         LanguageRegistry.addName(gunDoubleBarreledShotgun, "Double-barreled Shotgun");
+        gunUsp = new ItemGunSemi(gunUspId, new ItemUsp()).setUnlocalizedName("gunUsp");
+        LanguageRegistry.addName(gunUsp, "USP");
+        //gunAk74 = new ItemGunAuto(gunAk74Id, new ItemAk74()).setUnlocalizedName("gunAk74");
+        //LanguageRegistry.addName(gunAk74, "Ak-74");
 
         ammoAk74u = new ItemAmmo(ammoAk74uId).setUnlocalizedName("ammoAk74u");
-        LanguageRegistry.addName(ammoAk74u, "Ak74u Magazine");
+        LanguageRegistry.addName(ammoAk74u, "Ak-74u Magazine");
         ammoMakarov = new ItemAmmo(ammoMakarovId).setUnlocalizedName("ammoMakarov");
         LanguageRegistry.addName(ammoMakarov, "Makarov Magazine");
         ammoRemington = new ItemAmmo(ammoRemingtonId).setUnlocalizedName("ammoRemington");
@@ -131,6 +145,10 @@ public class Items
         LanguageRegistry.addName(ammoGlock17, "Glock 17 Magazine");
         ammoDoubleBarreledShotgun = new ItemAmmo(ammoDoubleBarreledShotgunId).setUnlocalizedName("ammoDoubleBarreledShotgun");
         LanguageRegistry.addName(ammoDoubleBarreledShotgun, "Double-barreled Shotgun Shells");
+        ammoUsp = new ItemAmmo(ammoUspId).setUnlocalizedName("ammoUsp");
+        LanguageRegistry.addName(ammoUsp, "USP Magazine");
+        //ammoAk74 = new ItemAmmo(ammoAk74Id).setUnlocalizedName("ammoAk74");
+        //LanguageRegistry.addName(ammoAk74, "Ak-74 Magazine");
 
         itemMatches = (new ItemFirestarter(itemMatchesId, 8)).setUnlocalizedName("itemMatches");
         LanguageRegistry.addName(itemMatches, "Book of Matches");
@@ -209,7 +227,7 @@ public class Items
         gunLeeEnfieldId = config.get(Configuration.CATEGORY_ITEM, "gunLeeEnfieldId", 7107).getInt();
         gunGlock17Id = config.get(Configuration.CATEGORY_ITEM, "gunGlock17Id", 7108).getInt();
         gunDoubleBarreledShotgunId = config.get(Configuration.CATEGORY_ITEM, "gunDoubleBarreledShotgunId", 7109).getInt();
-
+        
         ammoAk74uId = config.get(Configuration.CATEGORY_ITEM, "ammoAk74uId", 7110).getInt();
         ammoMakarovId = config.get(Configuration.CATEGORY_ITEM, "ammoMakarovId", 7111).getInt();
         ammoRemingtonId = config.get(Configuration.CATEGORY_ITEM, "ammoRemingtonId", 7112).getInt();
@@ -238,5 +256,10 @@ public class Items
         meleePipeId = config.get(Configuration.CATEGORY_ITEM, "meleePipeId", 7131).getInt();
         meleeCrowbarId = config.get(Configuration.CATEGORY_ITEM, "meleeCrowbarId", 7132).getInt();
         meleeMacheteId = config.get(Configuration.CATEGORY_ITEM, "meleeMacheteId", 7133).getInt();
+        
+        gunUspId = config.get(Configuration.CATEGORY_ITEM, "gunUspId", 7134).getInt();
+        //gunAk74Id = config.get(Configuration.CATEGORY_ITEM, "gunAk74Id", 7135).getInt();
+        ammoUspId = config.get(Configuration.CATEGORY_ITEM, "ammoUspId", 7136).getInt();
+        //ammoAk74Id = config.get(Configuration.CATEGORY_ITEM, "ammoAk74Id", 7137).getInt();
     }
 }
