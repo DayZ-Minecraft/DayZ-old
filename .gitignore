@@ -1,2 +1,4 @@
+environment.properties
+/eclipse
+/forge
 *.DS_Store
-eclipse
