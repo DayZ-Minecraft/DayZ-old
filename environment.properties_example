@@ -1,0 +1,4 @@
+base_location=D:/Minecraft/DayZ/
+source_location=${base_location}/
+mcp_location=${base_location}/forge/mcp/
+release_location=D:/DayZ Releases/
