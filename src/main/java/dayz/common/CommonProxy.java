@@ -55,7 +55,6 @@ public class CommonProxy
         WorldTypes.loadWorldTypes();
         Effect.loadEffects();
         StructureHandler.addDefaultStructures();
-        LootManager.init();
         Effect.register();
 
         EntityRegistry.registerGlobalEntityID(EntityZombieDayZ.class, "Zombie", EntityRegistry.findGlobalUniqueEntityId(), 1, 2);
@@ -84,6 +83,8 @@ public class CommonProxy
 
     public void postload(FMLPostInitializationEvent event)
     {
+        LootManager.init();
+
         if (Loader.isModLoaded("ThirstMod"))
         {
             ChatHandler.logException(Level.SEVERE, "Thirst Mod is not compatible with DayZ, DayZ has it's own thirst system. Remove the Thirst Mod to fix this error.");

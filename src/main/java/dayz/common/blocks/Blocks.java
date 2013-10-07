@@ -25,19 +25,14 @@ public class Blocks
     {
         barbedWire = new BlockBarbedWire(barbedWireId).setUnlocalizedName("barbedWire").setHardness(3F).setResistance(2F);
         GameRegistry.registerBlock(barbedWire, "barbedWire");
-        LanguageRegistry.addName(barbedWire, "Barbed Wire");
         chestLoot = new BlockChestDayZ(chestLootId, 0).setUnlocalizedName("chestLoot");
         GameRegistry.registerBlock(chestLoot, "chestLoot");
-        LanguageRegistry.addName(chestLoot, "Loot Chest");
         chainFence = (new BlockFence(chainFenceId, "chainFence", Material.iron)).setHardness(5.0F).setResistance(10.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("chainFence");
         GameRegistry.registerBlock(chainFence, "chainFence");
-        LanguageRegistry.addName(chainFence, "Chain-link fence");
         sandbagBlock = (new BlockMod(sandbagBlockId, Material.clay)).setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundSandFootstep).setUnlocalizedName("sandbagBlock");
         GameRegistry.registerBlock(sandbagBlock, "sandbagBlock");
-        LanguageRegistry.addName(sandbagBlock, "Sandbags");
         nailBlock = new BlockNails(nailBlockId, Material.circuits).setUnlocalizedName("nailBlock").setHardness(1F).setResistance(1F);
         GameRegistry.registerBlock(nailBlock, "nailBlock");
-        LanguageRegistry.addName(nailBlock, "Nails");
 
         GameRegistry.addRecipe(new ItemStack(nailBlock, 8), new Object[]
         { "#", "#", Character.valueOf('#'), Item.ingotIron });

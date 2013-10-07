@@ -2,6 +2,7 @@ package dayz.common.misc;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -10,6 +11,7 @@ import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.gen.structure.ComponentVillageHouse2;
 import net.minecraftforge.common.ChestGenHooks;
+import cpw.mods.fml.common.Loader;
 import dayz.common.blocks.Blocks;
 import dayz.common.items.Items;
 
@@ -30,9 +32,61 @@ public class LootManager
         }
 
         registerAllItems();
+        
+        if (Loader.isModLoaded("FlansMod"))
+        {
+        	loadFlans();
+        }
+        else
+        {
+        	loadDayZ();
+        }
     }
 
-    public static void addLoot(ItemStack itemStack, int itemWorth)
+    private static void loadDayZ() 
+    {
+        addLoot(new ItemStack(Items.gunMakarov), 7);
+        addLoot(new ItemStack(Items.gunGlock17), 7);
+        addLoot(new ItemStack(Items.ammoUsp), 7);	
+        addLoot(new ItemStack(Items.gunMakarov), 5);
+        addLoot(new ItemStack(Items.gunGlock17), 5);
+        addLoot(new ItemStack(Items.gunUsp), 5);
+        addLoot(new ItemStack(Items.ammoAk74u), 5);
+        addLoot(new ItemStack(Items.ammoLeeEnfield), 5);
+        addLoot(new ItemStack(Items.ammoDoubleBarreledShotgun), 5);
+        addLoot(new ItemStack(Items.ammoRemington), 5);
+        addLoot(new ItemStack(Items.gunLeeEnfield), 1);
+        addLoot(new ItemStack(Items.gunDoubleBarreledShotgun), 1);
+        addLoot(new ItemStack(Items.gunAk74u), 1);
+        addLoot(new ItemStack(Items.gunRemington), 1);
+	}
+
+	private static void loadFlans() 
+	{
+		Random rand = new Random();
+		for (Item item : Item.itemsList)
+		{
+			if (item == null) return;
+			if (item.getClass().getSimpleName().equals("ItemGun"))
+			{
+		        addLoot(new ItemStack(item), 1);
+			}
+			if (item.getClass().getSimpleName().equals("ItemGrenade"))
+			{
+		        addLoot(new ItemStack(item), 1);
+			}
+			if (item.getClass().getSimpleName().equals("ItemPart"))
+			{
+		        addLoot(new ItemStack(item), 1);
+			}
+			if (item.getClass().getSimpleName().equals("ItemBullet"))
+			{
+		        addLoot(new ItemStack(item), rand.nextInt(32));
+			}
+		}
+	}
+
+	public static void addLoot(ItemStack itemStack, int itemWorth)
     {
         ArrayList<WeightedRandomChestContent> contents = new ArrayList<WeightedRandomChestContent>(Arrays.asList(loot));
         contents.add(new WeightedRandomChestContent(itemStack, 1, 1, itemWorth));
@@ -44,10 +98,6 @@ public class LootManager
 
     public static void registerAllItems()
     {
-        addLoot(new ItemStack(Items.gunLeeEnfield), 1);
-        addLoot(new ItemStack(Items.gunDoubleBarreledShotgun), 1);
-        addLoot(new ItemStack(Items.gunAk74u), 1);
-        addLoot(new ItemStack(Items.gunRemington), 1);
         addLoot(new ItemStack(Blocks.barbedWire), 3);
         addLoot(new ItemStack(Items.camoHelmet), 3);
         addLoot(new ItemStack(Items.camoChest), 3);
@@ -55,17 +105,11 @@ public class LootManager
         addLoot(new ItemStack(Items.camoBoots), 3);
         addLoot(new ItemStack(Block.cake), 3);
         addLoot(new ItemStack(Item.bow), 5);
-        addLoot(new ItemStack(Items.ammoAk74u), 5);
-        addLoot(new ItemStack(Items.ammoLeeEnfield), 5);
-        addLoot(new ItemStack(Items.ammoDoubleBarreledShotgun), 5);
         addLoot(new ItemStack(Items.meleeBaseballBatNailed), 5);
-        addLoot(new ItemStack(Items.gunMakarov), 5);
-        addLoot(new ItemStack(Items.gunGlock17), 5);
         addLoot(new ItemStack(Items.meleePipe), 5);
         addLoot(new ItemStack(Items.meleePlankNailed), 5);
         addLoot(new ItemStack(Items.meleeCrowbar), 5);
         addLoot(new ItemStack(Items.meleeMachete), 5);
-        addLoot(new ItemStack(Items.gunRemington), 5);
         addLoot(new ItemStack(Item.map), 5);
         addLoot(new ItemStack(Item.coal), 5);
         addLoot(new ItemStack(Item.ingotIron), 5);
@@ -79,8 +123,6 @@ public class LootManager
         addLoot(new ItemStack(Item.emerald), 5);
         addLoot(new ItemStack(Items.healBandage), 7);
         addLoot(new ItemStack(Items.meleeBaseballBat), 7);
-        addLoot(new ItemStack(Items.gunMakarov), 7);
-        addLoot(new ItemStack(Items.gunGlock17), 7);
         addLoot(new ItemStack(Items.meleePlank), 7);
         addLoot(new ItemStack(Items.drinkWhiskeyBottle), 7);
         addLoot(new ItemStack(Items.drinkCiderBottle), 7);

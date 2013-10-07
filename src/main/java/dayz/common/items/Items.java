@@ -15,7 +15,6 @@ import dayz.common.items.food.ItemDrinkCanned;
 import dayz.common.items.food.ItemFoodCanned;
 import dayz.common.items.misc.ItemFirestarter;
 import dayz.common.items.misc.ItemHeal;
-import dayz.common.items.weapons.ItemAk74;
 import dayz.common.items.weapons.ItemAk74u;
 import dayz.common.items.weapons.ItemAmmo;
 import dayz.common.items.weapons.ItemCamo;
@@ -117,89 +116,52 @@ public class Items
     public static void loadItems()
     {
         gunAk74u = new ItemGunAuto(gunAk74uId, new ItemAk74u()).setUnlocalizedName("gunAk74u");
-        LanguageRegistry.addName(gunAk74u, "Ak-74u");
         gunMakarov = new ItemGunSemi(gunMakarovId, new ItemMakarov()).setUnlocalizedName("gunMakarov");
-        LanguageRegistry.addName(gunMakarov, "Makarov");
         gunRemington = new ItemGunSemi(gunRemingtonId, new ItemRemington()).setUnlocalizedName("gunRemington");
-        LanguageRegistry.addName(gunRemington, "Remington");
         gunLeeEnfield = new ItemGunSemi(gunLeeEnfieldId, new ItemEnfield()).setUnlocalizedName("gunLeeEnfield");
-        LanguageRegistry.addName(gunLeeEnfield, "Lee Enfield");
-        gunGlock17 = new ItemGunSemi(gunGlock17Id, new ItemGlock17()).setUnlocalizedName("gunGlock17");
-        LanguageRegistry.addName(gunGlock17, "Glock 17");
+        gunGlock17 = new ItemGunAuto(gunGlock17Id, new ItemGlock17()).setUnlocalizedName("gunGlock17");
         gunDoubleBarreledShotgun = new ItemGunSemi(gunDoubleBarreledShotgunId, new ItemDbShotgun()).setUnlocalizedName("gunDoubleBarreledShotgun");
-        LanguageRegistry.addName(gunDoubleBarreledShotgun, "Double-barreled Shotgun");
         gunUsp = new ItemGunSemi(gunUspId, new ItemUsp()).setUnlocalizedName("gunUsp");
-        LanguageRegistry.addName(gunUsp, "USP");
         //gunAk74 = new ItemGunAuto(gunAk74Id, new ItemAk74()).setUnlocalizedName("gunAk74");
         //LanguageRegistry.addName(gunAk74, "Ak-74");
 
         ammoAk74u = new ItemAmmo(ammoAk74uId).setUnlocalizedName("ammoAk74u");
-        LanguageRegistry.addName(ammoAk74u, "Ak-74u Magazine");
         ammoMakarov = new ItemAmmo(ammoMakarovId).setUnlocalizedName("ammoMakarov");
-        LanguageRegistry.addName(ammoMakarov, "Makarov Magazine");
         ammoRemington = new ItemAmmo(ammoRemingtonId).setUnlocalizedName("ammoRemington");
-        LanguageRegistry.addName(ammoRemington, "Remington Shells");
         ammoLeeEnfield = new ItemAmmo(ammoLeeEnfieldId).setUnlocalizedName("ammoLeeEnfield");
-        LanguageRegistry.addName(ammoLeeEnfield, "Lee Enfield Magazine");
         ammoGlock17 = new ItemAmmo(ammoGlock17Id).setUnlocalizedName("ammoGlock17");
-        LanguageRegistry.addName(ammoGlock17, "Glock 17 Magazine");
         ammoDoubleBarreledShotgun = new ItemAmmo(ammoDoubleBarreledShotgunId).setUnlocalizedName("ammoDoubleBarreledShotgun");
-        LanguageRegistry.addName(ammoDoubleBarreledShotgun, "Double-barreled Shotgun Shells");
         ammoUsp = new ItemAmmo(ammoUspId).setUnlocalizedName("ammoUsp");
-        LanguageRegistry.addName(ammoUsp, "USP Magazine");
         //ammoAk74 = new ItemAmmo(ammoAk74Id).setUnlocalizedName("ammoAk74");
-        //LanguageRegistry.addName(ammoAk74, "Ak-74 Magazine");
 
         itemMatches = (new ItemFirestarter(itemMatchesId, 8)).setUnlocalizedName("itemMatches");
-        LanguageRegistry.addName(itemMatches, "Book of Matches");
 
         healBandage = new ItemHeal(healBandageId, 0, Effect.bleeding).subNames("Stops bleeding").setUnlocalizedName("healBandage");
-        LanguageRegistry.addName(healBandage, "Bandage");
         healAntibiotics = new ItemHeal(healAntibioticsId, 0, Effect.zombification).subNames("Stops infection").setUnlocalizedName("healAntibiotics");
-        LanguageRegistry.addName(healAntibiotics, "Antibiotics");
         healBloodbag = new ItemMod(healBloodbagId).subNames("Cannot be self-applied").setUnlocalizedName("healBloodbag");
-        LanguageRegistry.addName(healBloodbag, "Bloodbag");
 
         camoHelmet = (new ItemCamo(camoHelmetId, DayZ.enumArmorMaterialCamo, 4, 0)).setUnlocalizedName("camoHelmet");
-        LanguageRegistry.addName(camoHelmet, "Camouflage Helmet");
         camoChest = (new ItemCamo(camoChestId, DayZ.enumArmorMaterialCamo, 4, 1)).setUnlocalizedName("camoChest");
-        LanguageRegistry.addName(camoChest, "Camouflage Shirt");
         camoLegs = (new ItemCamo(camoLegsId, DayZ.enumArmorMaterialCamo, 4, 2)).setUnlocalizedName("camoLegs");
-        LanguageRegistry.addName(camoLegs, "Camouflage Pants");
         camoBoots = (new ItemCamo(camoBootsId, DayZ.enumArmorMaterialCamo, 4, 3)).setUnlocalizedName("camoBoots");
-        LanguageRegistry.addName(camoBoots, "Camouflage Boots");
 
-        foodCanEmpty = new ItemCanEmpty(foodCanEmptyId).setUnlocalizedName("foodCanEmpty");
-        LanguageRegistry.addName(foodCanEmpty, "Empty Can");
+        foodCanEmpty = new ItemCanEmpty(foodCanEmptyId, true).setUnlocalizedName("foodCanEmpty");
         foodCanned = new ItemFoodCanned(foodCannedId, 4).setUnlocalizedName("foodCanned");
-        LanguageRegistry.addName(foodCanned, "Canned Food");
 
-        drinkCanEmpty = new ItemCanEmpty(drinkCanEmptyId).setUnlocalizedName("drinkCanEmpty");
-        LanguageRegistry.addName(drinkCanEmpty, "Empty Can");
+        drinkCanEmpty = new ItemCanEmpty(drinkCanEmptyId, false).setUnlocalizedName("drinkCanEmpty");
         drinkCanned = new ItemDrinkCanned(drinkCannedId, 4).setUnlocalizedName("drinkCanned");
-        LanguageRegistry.addName(drinkCanned, "Canned Drink");
 
         drinkWhiskeyBottle = new ItemDrinkBottle(drinkWhiskeyBottleId, 4).isAlcohol(true).setUnlocalizedName("drinkWhiskeyBottle");
-        LanguageRegistry.addName(drinkWhiskeyBottle, "Bottle of Whiskey");
         drinkCiderBottle = new ItemDrinkBottle(drinkCiderBottleId, 4).setUnlocalizedName("drinkCiderBottle");
-        LanguageRegistry.addName(drinkCiderBottle, "Bottle of Cider");
         drinkVodkaBottle = new ItemDrinkBottle(drinkVodkaBottleId, 4).isAlcohol(true).setUnlocalizedName("drinkVodkaBottle");
-        LanguageRegistry.addName(drinkVodkaBottle, "Bottle of Vodka");
 
         meleeBaseballBat = new ItemMelee(meleeBaseballBatId, 6).setUnlocalizedName("meleeBaseballBat");
-        LanguageRegistry.addName(meleeBaseballBat, "Baseball Bat");
         meleeBaseballBatNailed = new ItemMelee(meleeBaseballBatNailedId, 8).setUnlocalizedName("meleeBaseballBatNailed");
-        LanguageRegistry.addName(meleeBaseballBatNailed, "Nailed Baseball Bat");
         meleePlank = new ItemMelee(meleePlankId, 7).setUnlocalizedName("meleePlank");
-        LanguageRegistry.addName(meleePlank, "Plank");
         meleePlankNailed = new ItemMelee(meleePlankNailedId, 8).setUnlocalizedName("meleePlankNailed");
-        LanguageRegistry.addName(meleePlankNailed, "Nailed Plank");
         meleePipe = new ItemMelee(meleePipeId, 8).setUnlocalizedName("meleePipe");
-        LanguageRegistry.addName(meleePipe, "Steel Pipe");
         meleeCrowbar = new ItemMelee(meleeCrowbarId, 8).setUnlocalizedName("meleeCrowbar");
-        LanguageRegistry.addName(meleeCrowbar, "Crowbar");
         meleeMachete = new ItemMelee(meleeMacheteId, 7).setUnlocalizedName("meleeMachete");
-        LanguageRegistry.addName(meleeMachete, "Machete");
 
         GameRegistry.addShapelessRecipe(new ItemStack(meleeBaseballBatNailed, 1), new Object[]
         { new ItemStack(meleeBaseballBat, 1), new ItemStack(Blocks.nailBlock, 1, 0) });

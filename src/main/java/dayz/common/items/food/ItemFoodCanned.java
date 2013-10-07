@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -27,6 +28,7 @@ public class ItemFoodCanned extends ItemMod
 
     @SideOnly(Side.CLIENT)
     private Icon[] icons;
+	private String[] names = new String[] {"Canned_Beans", "Canned_Soup", "Canned_Pasta", "Canned_Fish", "Canned_Pickles", "Canned_Fruit"};
 
     private float saturationModifier;
     private int healAmount;
@@ -59,6 +61,13 @@ public class ItemFoodCanned extends ItemMod
     {
         return EnumAction.eat;
     }
+    
+    @Override
+    public String getUnlocalizedName(ItemStack itemStack)
+    {
+    	int i = MathHelper.clamp_int(itemStack.getItemDamage(), 0, 5);
+        return super.getUnlocalizedName() + "." + names[i].toLowerCase();
+    }
 
     @Override
     public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer entityPlayer)
@@ -75,10 +84,10 @@ public class ItemFoodCanned extends ItemMod
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int damage)
     {
-        return itemIcon = icons[damage];
+    	int j = MathHelper.clamp_int(damage, 0, 5);
+        return icons[j];
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(int itemId, CreativeTabs creativeTab, List containerList)
@@ -96,7 +105,7 @@ public class ItemFoodCanned extends ItemMod
 
         for (int damage = 0; damage < 6; ++damage)
         {
-            icons[damage] = register.registerIcon(DayZ.meta.modId + ":" + getUnlocalizedName().substring(getUnlocalizedName().indexOf(".") + 1) + damage);
+            icons[damage] = register.registerIcon(DayZ.meta.modId + ":" + new String("foodCanned").substring(new String("foodCanned").indexOf(".") + 1) + damage);
         }
     }
 }
