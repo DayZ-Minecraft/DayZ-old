@@ -1,0 +1,69 @@
+#DayZ Language File
+item.drinkCanEmpty.empty_beer.name=Empty Beer
+item.drinkCanEmpty.empty_lemon_soda.name=Empty Lemon Soda
+item.drinkCanEmpty.empty_cola.name=Empty Cola
+item.drinkCanEmpty.empty_energy_drink.name=Empty Energy Drink
+item.drinkCanEmpty.empty_orange_soda.name=Empty Orange Soda
+
+item.drinkCanned.beer.name=Beer
+item.drinkCanned.lemon_soda.name=Lemon Soda
+item.drinkCanned.cola.name=Cola
+item.drinkCanned.energy_drink.name=Energy Drink
+item.drinkCanned.orange_soda.name=Orange Soda
+
+item.foodCanEmpty.empty_canned_beans.name=Canned Beans
+item.foodCanEmpty.empty_canned_soup.name=Canned Soup
+item.foodCanEmpty.empty_canned_pasta.name=Canned Pasta
+item.foodCanEmpty.empty_canned_fish.name=Canned Fish
+item.foodCanEmpty.empty_canned_pickles.name=Canned Pickles
+item.foodCanEmpty.empty_canned_fruit.name=Canned Fruit
+
+item.foodCanned.canned_beans.name=Canned Beans
+item.foodCanned.canned_soup.name=Canned Soup
+item.foodCanned.canned_pasta.name=Canned Pasta
+item.foodCanned.canned_fish.name=Canned Fish
+item.foodCanned.canned_pickles.name=Canned Pickles
+item.foodCanned.canned_fruit.name=Canned Fruit
+
+item.gunAk74u.name=Ak-74u
+item.gunMakarov.name=Makarov
+item.gunRemington.name=Remington
+item.gunLeeEnfield.name=Lee Enfield
+item.gunGlock17.name=Glock 17
+item.gunDoubleBarreledShotgun.name=Double-barreled Shotgun
+item.gunUsp.name=USP
+
+item.ammoAk74u.name=Ak-74u Magazine
+item.ammoMakarov.name=Makarov Magazine
+item.ammoRemington.name=Remington Shells
+item.ammoLeeEnfield.name=Lee Enfield Magazine
+item.ammoGlock17.name=Glock 17 Magazine
+item.ammoDoubleBarreledShotgun.name=Double-barreled Shotgun Shells
+item.ammoUsp.name=USP Magazine
+
+item.itemMatches.name=Book of Matches
+item.healBandage.name=Bandage
+item.healAntibiotics.name=Antibiotics
+item.healBloodbag.name=BloodBag
+item.camoHelmet.name=Camouflage Helmet
+item.camoChest.name=Camouflage Shirt
+item.camoLegs.name=Camouflage Pants
+item.camoBoots.name=Camouflage Boots
+
+item.drinkWhiskeyBottle.name=Bottle of Whiskey
+item.drinkCiderBottle.name=Bottle of Cider
+item.drinkVodkaBottle.name=Bottle of Vodka
+
+item.meleeBaseballBat.name=Baseball Bat
+item.meleeBaseballBatNailed.name=Nailed Baseball Bat
+item.meleePlank.name=Plank
+item.meleePlankNailed.name=Nailed Plank
+item.meleePipe.name=Steel Pipe
+item.meleeCrowbar.name=Crowbar
+item.meleeMachete.name=Machete
+
+tile.barbedWire.name=Barbed Wire
+tile.chestLoot.name=Loot Chest
+tile.chainFence.name=Chain-link Fence
+tile.sandbagBlock.name=Sandbags
+tile.nailBlock.name=Nails
