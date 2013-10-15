@@ -1,4 +1,5 @@
 DayZ-Minecraft-Forge
+Build Status: [![Build Status](https://travis-ci.org/DayZ-Minecraft/DayZ.png)](https://travis-ci.org/DayZ-Minecraft/DayZ)
 
 A zombie mod for Minecraft based off the mod for Arma 2
 
