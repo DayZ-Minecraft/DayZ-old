@@ -1,1 +1,0 @@
-ant -buildfile build.xml forge-clean-install

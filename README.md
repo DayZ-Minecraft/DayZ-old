@@ -1,6 +1,7 @@
 DayZ-Minecraft-Forge
+Build Status: [![Build Status](https://travis-ci.org/DayZ-Minecraft/DayZ.png)](https://travis-ci.org/DayZ-Minecraft/DayZ)
 
-A zombie mod for Minecraft based off the mod for Arma 2
+A zombie mod for Minecraft based off the mod for Arma 2.
 
 'Minecraft DayZ Modding Team', 'our' and 'we' refer to the Minecraft Forums (http://www.minecraftforum.net) users: algernon93, 1Jamster1, dark3304, creater admin, HoBoS_TaCo, Nitrojoe20 and Monstaboy13.
 
