@@ -1,19 +1,14 @@
-buildscript 
-{
-    repositories 
-	{ 
-		mavenCentral() 
-	}
-	dependencies 
-	{ 
-		classpath 'com.github.abrarsyed.gmcp:GMCP:0.8.+' 
-	}
+import com.github.abrarsyed.gmcp.GMCP
+
+buildscript {
+	repositories { mavenCentral() }
+	dependencies { classpath 'com.github.abrarsyed.gmcp:GMCP:0.8.+' }
 }
 
 apply plugin: "gmcp"
 
 group = 'dayz'
-version = "9"
+version = "5"
 archivesBaseName = 'DayZ-Minecraft'
 
 logger.lifecycle ""+version
@@ -24,41 +19,36 @@ version = "${minecraft.minecraftVersion}-$version.${System.getenv().BUILD_NUMBER
 
 processResources
 {
-    from(sourceSets.main.resources.srcDirs) 
-	{
+    from(sourceSets.main.resources.srcDirs) {
         include '**/*.lang'
         include '**/*.info'
+
         expand 'version':project.version, 'mcversion':project.minecraft.minecraftVersion
     }
 
-    from(sourceSets.main.resources.srcDirs) 
-	{
+    from(sourceSets.main.resources.srcDirs) {
         exclude '**/*.lang'
         exclude '**/*.info'
     }
 }
 
-jar 
-{ 
-	appendix = 'universal'
-}
+repositories { mavenCentral() }
 
-task sourceJar(type: Jar) 
-{
+jar { appendix = 'universal'}
+
+task sourceJar(type: Jar) {
 	from sourceSets.main.allSource
 	appendix = 'src'
 }
 
-task deobfJar(type: Jar) 
-{
+task deobfJar(type: Jar) {
 	from sourceSets.main.output
 	appendix = 'deobf'
 }
 
-artifacts 
-{
+artifacts {
 	//archives sourceJar
-	archives deobfJar
+	//archives deobfJar
 	//archives javadocJar
 	//archives obfJar
 }
