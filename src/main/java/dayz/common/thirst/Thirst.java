@@ -40,26 +40,17 @@ public class Thirst
         }
         else if (playerThirst == 20000)
         {
-            if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
-            {
-                ChatHandler.chatWarning(player, "I should find some water...");
-            }
+            ChatHandler.chatWarning(player, "I should find some water soon...");
             playerThirst++;
         }
         else if (playerThirst == 18000)
         {
-            if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
-            {
-                ChatHandler.chatWarning(player, "I feel quite thirsty now...");
-            }
+            ChatHandler.chatWarning(player, "I feel quite thirsty now...");
             playerThirst++;
         }
         else if (playerThirst == 16000)
         {
-            if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
-            {
-                ChatHandler.chatWarning(player, "My mouth feels a little dry...");
-            }
+            ChatHandler.chatWarning(player, "My mouth feels a little dry...");
             playerThirst++;
         }
         else if (playerThirst >= 24000 && FMLCommonHandler.instance().getMinecraftServerInstance().getTickCounter() % 40 == 0)

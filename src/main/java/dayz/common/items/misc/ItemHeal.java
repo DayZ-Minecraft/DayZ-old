@@ -30,10 +30,7 @@ public class ItemHeal extends ItemMod
         entityPlayer.heal(healAmount);
         for (Potion potion : potionsToStop)
         {
-            if (entityPlayer.getActivePotionEffects() != null && entityPlayer.isPotionActive(potion))
-            {
-                entityPlayer.removePotionEffect(potion.id);
-            }
+            entityPlayer.clearActivePotions();
         }
         return itemStack;
     }

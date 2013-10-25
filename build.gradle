@@ -8,14 +8,9 @@ buildscript {
 apply plugin: "gmcp"
 
 group = 'dayz'
-version = "5"
+version = "8.5"
 archivesBaseName = 'DayZ-Minecraft'
-
-logger.lifecycle ""+version
-
 minecraft { minecraftVersion = "1.6.4" }
-
-version = "${minecraft.minecraftVersion}-$version.${System.getenv().BUILD_NUMBER}"
 
 processResources
 {
@@ -32,23 +27,4 @@ processResources
     }
 }
 
-repositories { mavenCentral() }
-
-jar { appendix = 'universal'}
-
-task sourceJar(type: Jar) {
-	from sourceSets.main.allSource
-	appendix = 'src'
-}
-
-task deobfJar(type: Jar) {
-	from sourceSets.main.output
-	appendix = 'deobf'
-}
-
-artifacts {
-	//archives sourceJar
-	//archives deobfJar
-	//archives javadocJar
-	//archives obfJar
-}
+jar { extension = 'jar'}
